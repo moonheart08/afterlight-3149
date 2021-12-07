@@ -557,5 +557,21 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<bool> RestrictedNames =
             CVarDef.Create("ic.restricted_names", true, CVar.SERVER | CVar.REPLICATED);
+
+        /*
+         * Overworld and sector management
+         */
+
+        /// <summary>
+        /// Width and height of a map chunk as used by DynamicLoadSystem.
+        /// </summary>
+        public static readonly CVarDef<int> MapChunkSize =
+            CVarDef.Create("overworld.mapchunksize", 32, CVar.SERVER | CVar.REPLICATED);
+
+        public static readonly CVarDef<int> MaxChunkEntities =
+            CVarDef.Create("overworld.maxchunkentities", 32, CVar.SERVER | CVar.REPLICATED);
+
+
+
     }
 }
