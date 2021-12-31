@@ -4,6 +4,8 @@ using System.Linq;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Managers;
 using Content.Server.Hands.Components;
+using Content.Server.Inventory.Components;
+using Content.Server.Items;
 using Content.Server.PDA;
 using Content.Server.Players;
 using Content.Server.Spawners.Components;
@@ -40,7 +42,6 @@ public class TraitorDeathMatchRuleSystem : GameRuleSystem
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly MaxTimeRestartRuleSystem _restarter = default!;
-    [Dependency] private readonly InventorySystem _inventory = default!;
 
     public override string Prototype => "TraitorDeathMatch";
 
@@ -85,13 +86,13 @@ public class TraitorDeathMatchRuleSystem : GameRuleSystem
 
         // Delete anything that may contain "dangerous" role-specific items.
         // (This includes the PDA, as everybody gets the captain PDA in this mode for true-all-access reasons.)
-        if (mind.OwnedEntity is {Valid: true} owned)
+        if (mind.OwnedEntity is {Valid: true} owned && TryComp(owned, out InventoryComponent? inventory))
         {
-            var victimSlots = new[] {"id", "belt", "back"};
+            var victimSlots = new[] {EquipmentSlotDefines.Slots.IDCARD, EquipmentSlotDefines.Slots.BELT, EquipmentSlotDefines.Slots.BACKPACK};
             foreach (var slot in victimSlots)
             {
-                if(_inventory.TryUnequip(owned, slot, out var entityUid, true, true))
-                    Del(entityUid.Value);
+                if (inventory.TryGetSlotItem(slot, out ItemComponent? vItem))
+                    Del(vItem.Owner);
             }
 
             // Replace their items:
@@ -100,15 +101,15 @@ public class TraitorDeathMatchRuleSystem : GameRuleSystem
 
             //  pda
             var newPDA = Spawn(PDAPrototypeName, ownedCoords);
-            _inventory.TryEquip(owned, newPDA, "id", true);
+            inventory.Equip(EquipmentSlotDefines.Slots.IDCARD, Comp<ItemComponent>(newPDA));
 
             //  belt
             var newTmp = Spawn(BeltPrototypeName, ownedCoords);
-            _inventory.TryEquip(owned, newTmp, "belt", true);
+            inventory.Equip(EquipmentSlotDefines.Slots.BELT, Comp<ItemComponent>(newTmp));
 
             //  backpack
             newTmp = Spawn(BackpackPrototypeName, ownedCoords);
-            _inventory.TryEquip(owned, newTmp, "back", true);
+            inventory.Equip(EquipmentSlotDefines.Slots.BACKPACK, Comp<ItemComponent>(newTmp));
 
             // Like normal traitors, they need access to a traitor account.
             var uplinkAccount = new UplinkAccount(startingBalance, owned);

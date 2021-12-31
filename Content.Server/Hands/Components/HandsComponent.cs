@@ -4,12 +4,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.Act;
 using Content.Server.Interaction;
+using Content.Server.Items;
 using Content.Server.Popups;
 using Content.Server.Pulling;
 using Content.Shared.Audio;
 using Content.Shared.Body.Part;
 using Content.Shared.Hands.Components;
-using Content.Shared.Item;
 using Content.Shared.Popups;
 using Content.Shared.Pulling.Components;
 using Content.Shared.Sound;
@@ -39,7 +39,7 @@ namespace Content.Server.Hands.Components
 
         protected override void OnHeldEntityRemovedFromHand(EntityUid heldEntity, HandState handState)
         {
-            if (_entities.TryGetComponent(heldEntity, out SharedItemComponent? item))
+            if (_entities.TryGetComponent(heldEntity, out ItemComponent? item))
             {
                 item.RemovedFromSlot();
                 _entitySystemManager.GetEntitySystem<InteractionSystem>().UnequippedHandInteraction(Owner, heldEntity, handState);
@@ -153,19 +153,19 @@ namespace Content.Server.Hands.Components
         /// <summary>
         ///     Tries to get the ItemComponent on the entity held by a hand.
         /// </summary>
-        public SharedItemComponent? GetItem(string handName)
+        public ItemComponent? GetItem(string handName)
         {
             if (!TryGetHeldEntity(handName, out var heldEntity))
                 return null;
 
-            _entities.TryGetComponent(heldEntity, out SharedItemComponent? item);
+            _entities.TryGetComponent(heldEntity, out ItemComponent? item);
             return item;
         }
 
         /// <summary>
         ///     Tries to get the ItemComponent on the entity held by a hand.
         /// </summary>
-        public bool TryGetItem(string handName, [NotNullWhen(true)] out SharedItemComponent? item)
+        public bool TryGetItem(string handName, [NotNullWhen(true)] out ItemComponent? item)
         {
             item = null;
 
@@ -178,23 +178,23 @@ namespace Content.Server.Hands.Components
         /// <summary>
         ///     Tries to get the ItemComponent off the entity in the active hand.
         /// </summary>
-        public SharedItemComponent? GetActiveHand
+        public ItemComponent? GetActiveHand
         {
             get
             {
                 if (!TryGetActiveHeldEntity(out var heldEntity))
                     return null;
 
-                _entities.TryGetComponent(heldEntity, out SharedItemComponent? item);
+                _entities.TryGetComponent(heldEntity, out ItemComponent? item);
                 return item;
             }
         }
 
-        public IEnumerable<SharedItemComponent> GetAllHeldItems()
+        public IEnumerable<ItemComponent> GetAllHeldItems()
         {
             foreach (var entity in GetAllHeldEntities())
             {
-                if (_entities.TryGetComponent(entity, out SharedItemComponent? item))
+                if (_entities.TryGetComponent(entity, out ItemComponent? item))
                     yield return item;
             }
         }
@@ -202,7 +202,7 @@ namespace Content.Server.Hands.Components
         /// <summary>
         ///     Checks if any hand can pick up an item.
         /// </summary>
-        public bool CanPutInHand(SharedItemComponent item, bool mobCheck = true)
+        public bool CanPutInHand(ItemComponent item, bool mobCheck = true)
         {
             var entity = item.Owner;
 

@@ -1,5 +1,5 @@
 using Content.Server.Hands.Components;
-using Content.Shared.Item;
+using Content.Server.Items;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 
@@ -29,7 +29,7 @@ namespace Content.Server.AI.Operators.Inventory
                 return Outcome.Failed;
             }
 
-            if (!entMan.TryGetComponent(_target, out SharedItemComponent? itemComponent))
+            if (!entMan.TryGetComponent(_target, out ItemComponent? itemComponent))
             {
                 return Outcome.Failed;
             }

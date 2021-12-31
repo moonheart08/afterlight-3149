@@ -38,7 +38,7 @@ namespace Content.Server.Medical.SuitSensors
         ///     Activate sensor if user wear it in this slot.
         /// </summary>
         [DataField("activationSlot")]
-        public string ActivationSlot = "jumpsuit";
+        public EquipmentSlotDefines.Slots ActivationSlot = EquipmentSlotDefines.Slots.INNERCLOTHING;
 
         /// <summary>
         ///     How often does sensor update its owners status (in seconds).

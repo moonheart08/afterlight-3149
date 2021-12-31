@@ -1,11 +1,12 @@
 using Content.Server.DoAfter;
 using Content.Server.Engineering.Components;
 using Content.Server.Hands.Components;
+using Content.Server.Items;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Helpers;
-using Content.Shared.Item;
 using JetBrains.Annotations;
 using Robust.Shared.GameObjects;
+using Robust.Shared.IoC;
 
 namespace Content.Server.Engineering.EntitySystems
 {
@@ -46,7 +47,7 @@ namespace Content.Server.Engineering.EntitySystems
             var entity = EntityManager.SpawnEntity(component.Prototype, EntityManager.GetComponent<TransformComponent>(component.Owner).Coordinates);
 
             if (EntityManager.TryGetComponent<HandsComponent?>(args.User, out var hands)
-                && EntityManager.TryGetComponent<SharedItemComponent?>(entity, out var item))
+                && EntityManager.TryGetComponent<ItemComponent?>(entity, out var item))
             {
                 hands.PutInHandOrDrop(item);
             }

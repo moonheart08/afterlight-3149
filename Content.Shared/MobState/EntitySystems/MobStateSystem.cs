@@ -26,9 +26,9 @@ namespace Content.Shared.MobState.EntitySystems
             SubscribeLocalEvent<MobStateComponent, InteractionAttemptEvent>(OnInteractAttempt);
             SubscribeLocalEvent<MobStateComponent, ThrowAttemptEvent>(OnThrowAttempt);
             SubscribeLocalEvent<MobStateComponent, SpeakAttemptEvent>(OnSpeakAttempt);
-            SubscribeLocalEvent<MobStateComponent, IsEquippingAttemptEvent>(OnEquipAttempt);
+            SubscribeLocalEvent<MobStateComponent, EquipAttemptEvent>(OnEquipAttempt);
             SubscribeLocalEvent<MobStateComponent, EmoteAttemptEvent>(OnEmoteAttempt);
-            SubscribeLocalEvent<MobStateComponent, IsUnequippingAttemptEvent>(OnUnequipAttempt);
+            SubscribeLocalEvent<MobStateComponent, UnequipAttemptEvent>(OnUnequipAttempt);
             SubscribeLocalEvent<MobStateComponent, AttackAttemptEvent>(OnAttackAttempt);
             SubscribeLocalEvent<MobStateComponent, DropAttemptEvent>(OnDropAttempt);
             SubscribeLocalEvent<MobStateComponent, PickupAttemptEvent>(OnPickupAttempt);
@@ -77,7 +77,7 @@ namespace Content.Shared.MobState.EntitySystems
             CheckAct(uid, component, args);
         }
 
-        private void OnEquipAttempt(EntityUid uid, MobStateComponent component, IsEquippingAttemptEvent args)
+        private void OnEquipAttempt(EntityUid uid, MobStateComponent component, EquipAttemptEvent args)
         {
             CheckAct(uid, component, args);
         }
@@ -87,7 +87,7 @@ namespace Content.Shared.MobState.EntitySystems
             CheckAct(uid, component, args);
         }
 
-        private void OnUnequipAttempt(EntityUid uid, MobStateComponent component, IsUnequippingAttemptEvent args)
+        private void OnUnequipAttempt(EntityUid uid, MobStateComponent component, UnequipAttemptEvent args)
         {
             CheckAct(uid, component, args);
         }

@@ -36,6 +36,7 @@
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/gar.rsi
     HeldPrefix: alt
+    ClothingPrefix: alt
   - type: MeleeWeapon
     damage:
       types:
@@ -52,7 +53,7 @@
     state: icon-super
   - type: Clothing
     sprite: Clothing/Eyes/Glasses/gar.rsi
-    HeldPrefix: super
+    ClothingPrefix: super
   - type: MeleeWeapon
     damage:
       types:

@@ -12,10 +12,10 @@
 - type: startingGear
   id: AssistantGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitColorGrey
-    back: ClothingBackpackFilled
+    innerclothing: ClothingUniformJumpsuitColorGrey
+    backpack: ClothingBackpackFilled
     shoes: ClothingShoesColorBlack
-    id: AssistantPDA
+    idcard: AssistantPDA
     ears: ClothingHeadsetService
   innerclothingskirt: ClothingUniformJumpskirtColorGrey
   satchel: ClothingBackpackSatchelFilled

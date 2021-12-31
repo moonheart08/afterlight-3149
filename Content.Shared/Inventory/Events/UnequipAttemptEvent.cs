@@ -1,56 +1,14 @@
 ﻿using Robust.Shared.GameObjects;
 
-namespace Content.Shared.Inventory.Events;
-
-public class UnequipAttemptEventBase : CancellableEntityEventArgs
+namespace Content.Shared.Inventory.Events
 {
-    /// <summary>
-    /// The entity unequipping.
-    /// </summary>
-    public readonly EntityUid Unequipee;
-
-    /// <summary>
-    /// The entity being unequipped from.
-    /// </summary>
-    public readonly EntityUid UnEquipTarget;
-
-    /// <summary>
-    /// The entity to be unequipped.
-    /// </summary>
-    public readonly EntityUid Equipment;
-
-    /// <summary>
-    /// The slot the entity is being unequipped from.
-    /// </summary>
-    public readonly string Slot;
-
-    /// <summary>
-    /// If cancelling and wanting to provide a custom reason, use this field. Not that this expects a loc-id.
-    /// </summary>
-    public string? Reason;
-
-    public UnequipAttemptEventBase(EntityUid unequipee, EntityUid unEquipTarget, EntityUid equipment,
-        SlotDefinition slotDefinition)
+    public class UnequipAttemptEvent : CancellableEntityEventArgs
     {
-        UnEquipTarget = unEquipTarget;
-        Equipment = equipment;
-        Unequipee = unequipee;
-        Slot = slotDefinition.Name;
-    }
-}
+        public UnequipAttemptEvent(EntityUid uid)
+        {
+            Uid = uid;
+        }
 
-public class BeingUnequippedAttemptEvent : UnequipAttemptEventBase
-{
-    public BeingUnequippedAttemptEvent(EntityUid unequipee, EntityUid unEquipTarget, EntityUid equipment,
-        SlotDefinition slotDefinition) : base(unequipee, unEquipTarget, equipment, slotDefinition)
-    {
-    }
-}
-
-public class IsUnequippingAttemptEvent : UnequipAttemptEventBase
-{
-    public IsUnequippingAttemptEvent(EntityUid unequipee, EntityUid unEquipTarget, EntityUid equipment,
-        SlotDefinition slotDefinition) : base(unequipee, unEquipTarget, equipment, slotDefinition)
-    {
+        public EntityUid Uid { get; }
     }
 }

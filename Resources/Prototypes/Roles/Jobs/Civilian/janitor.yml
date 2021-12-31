@@ -17,11 +17,11 @@
 - type: startingGear
   id: JanitorGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitJanitor
-    back: ClothingBackpackFilled
+    innerclothing: ClothingUniformJumpsuitJanitor
+    backpack: ClothingBackpackFilled
     shoes: ClothingShoesGaloshes
     head: ClothingHeadHatPurplesoft
-    id: JanitorPDA
+    idcard: JanitorPDA
     ears: ClothingHeadsetService
     belt: ClothingBeltJanitorFilled
   innerclothingskirt: ClothingUniformJumpskirtJanitor

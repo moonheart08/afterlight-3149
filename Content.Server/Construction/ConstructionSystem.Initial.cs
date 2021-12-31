@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Content.Server.Construction.Components;
 using Content.Server.DoAfter;
 using Content.Server.Hands.Components;
+using Content.Server.Inventory.Components;
+using Content.Server.Items;
 using Content.Server.Storage.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Construction;
@@ -12,8 +14,6 @@ using Content.Shared.Construction.Prototypes;
 using Content.Shared.Construction.Steps;
 using Content.Shared.Coordinates;
 using Content.Shared.Interaction.Helpers;
-using Content.Shared.Inventory;
-using Content.Shared.Item;
 using Content.Shared.Popups;
 using Robust.Shared.Containers;
 using Robust.Shared.GameObjects;
@@ -27,8 +27,6 @@ namespace Content.Server.Construction
 {
     public partial class ConstructionSystem
     {
-
-        [Dependency] private readonly InventorySystem _inventorySystem = default!;
 
         // --- WARNING! LEGACY CODE AHEAD! ---
         // This entire file contains the legacy code for initial construction.
@@ -63,12 +61,11 @@ namespace Content.Server.Construction
                 }
             }
 
-            if (_inventorySystem.TryGetContainerSlotEnumerator(user, out var containerSlotEnumerator))
+            if (EntityManager.TryGetComponent(user!, out InventoryComponent? inventory))
             {
-                while (containerSlotEnumerator.MoveNext(out var containerSlot))
+                foreach (var held in inventory.GetAllHeldItems())
                 {
-                    if(!containerSlot.ContainedEntity.HasValue) continue;
-                    if (EntityManager.TryGetComponent(containerSlot.ContainedEntity.Value, out ServerStorageComponent? storage))
+                    if (EntityManager.TryGetComponent(held, out ServerStorageComponent? storage))
                     {
                         foreach (var storedEntity in storage.StoredEntities!)
                         {
@@ -76,7 +73,7 @@ namespace Content.Server.Construction
                         }
                     }
 
-                    yield return containerSlot.ContainedEntity.Value;
+                    yield return held;
                 }
             }
 
@@ -333,7 +330,7 @@ namespace Content.Server.Construction
             }
 
             if (await Construct(user, "item_construction", constructionGraph, edge, targetNode) is {Valid: true} item &&
-                EntityManager.TryGetComponent(item, out SharedItemComponent? itemComp))
+                EntityManager.TryGetComponent(item, out ItemComponent? itemComp))
                 hands.PutInHandOrDrop(itemComp);
         }
 

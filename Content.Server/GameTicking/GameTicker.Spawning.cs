@@ -6,12 +6,17 @@ using Content.Server.Access.Systems;
 using Content.Server.Ghost;
 using Content.Server.Ghost.Components;
 using Content.Server.Hands.Components;
+using Content.Server.Inventory.Components;
+using Content.Server.Items;
+using Content.Server.PDA;
 using Content.Server.Players;
 using Content.Server.Roles;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
 using Content.Server.Station;
 using Content.Shared.Access.Components;
+using Content.Shared.Administration.Logs;
+using Content.Shared.CharacterAppearance.Systems;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Ghost;
@@ -28,6 +33,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Robust.Shared.ViewVariables;
+using static Content.Server.Station.StationSystem;
 
 namespace Content.Server.GameTicking
 {
@@ -37,7 +43,6 @@ namespace Content.Server.GameTicking
         private const string ObserverPrototypeName = "MobObserver";
 
         [Dependency] private readonly IdCardSystem _cardSystem = default!;
-        [Dependency] private readonly InventorySystem _inventorySystem = default!;
 
         /// <summary>
         /// Can't yet be removed because every test ever seems to depend on it. I'll make removing this a different PR.
@@ -239,15 +244,15 @@ namespace Content.Server.GameTicking
         #region Equip Helpers
         public void EquipStartingGear(EntityUid entity, StartingGearPrototype startingGear, HumanoidCharacterProfile? profile)
         {
-            if (_inventorySystem.TryGetSlots(entity, out var slotDefinitions))
+            if (EntityManager.TryGetComponent(entity, out InventoryComponent? inventory))
             {
-                foreach (var slot in slotDefinitions)
+                foreach (var slot in EquipmentSlotDefines.AllSlots)
                 {
-                    var equipmentStr = startingGear.GetGear(slot.Name, profile);
+                    var equipmentStr = startingGear.GetGear(slot, profile);
                     if (!string.IsNullOrEmpty(equipmentStr))
                     {
                         var equipmentEntity = EntityManager.SpawnEntity(equipmentStr, EntityManager.GetComponent<TransformComponent>(entity).Coordinates);
-                        _inventorySystem.TryEquip(entity, equipmentEntity, slot.Name, true);
+                        inventory.Equip(slot, EntityManager.GetComponent<ItemComponent>(equipmentEntity));
                     }
                 }
             }
@@ -265,10 +270,17 @@ namespace Content.Server.GameTicking
 
         public void EquipIdCard(EntityUid entity, string characterName, JobPrototype jobPrototype)
         {
-            if (!_inventorySystem.TryGetSlotEntity(entity, "id", out var idUid))
+            if (!EntityManager.TryGetComponent(entity, out InventoryComponent? inventory))
                 return;
 
-            if (!EntityManager.TryGetComponent(idUid, out PDAComponent? pdaComponent) || pdaComponent.ContainedID == null)
+            if (!inventory.TryGetSlotItem(EquipmentSlotDefines.Slots.IDCARD, out ItemComponent? item))
+            {
+                return;
+            }
+
+            var itemEntity = item.Owner;
+
+            if (!EntityManager.TryGetComponent(itemEntity, out PDAComponent? pdaComponent) || pdaComponent.ContainedID == null)
                 return;
 
             var card = pdaComponent.ContainedID;

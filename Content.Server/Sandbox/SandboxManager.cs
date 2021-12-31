@@ -1,12 +1,12 @@
 using System.Linq;
 using Content.Server.GameTicking;
 using Content.Server.Hands.Components;
+using Content.Server.Inventory.Components;
+using Content.Server.Items;
 using Content.Shared.Access;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Containers.ItemSlots;
-using Content.Shared.Inventory;
-using Content.Shared.Item;
 using Content.Shared.PDA;
 using Content.Shared.Sandbox;
 using Robust.Server.Console;
@@ -19,6 +19,7 @@ using Robust.Shared.IoC;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.ViewVariables;
+using static Content.Shared.Inventory.EquipmentSlotDefines;
 
 namespace Content.Server.Sandbox
 {
@@ -123,15 +124,14 @@ namespace Content.Server.Sandbox
                 .EnumeratePrototypes<AccessLevelPrototype>()
                 .Select(p => p.ID).ToArray();
 
-            var invSystem = EntitySystem.Get<InventorySystem>();
-
-            if (invSystem.TryGetSlotEntity(attached, "id", out var slotEntity))
+            if (_entityManager.TryGetComponent(attached, out InventoryComponent? inv)
+                && inv.TryGetSlotItem(Slots.IDCARD, out ItemComponent? wornItem))
             {
-                if (_entityManager.HasComponent<AccessComponent>(slotEntity))
+                if (_entityManager.HasComponent<AccessComponent>(wornItem.Owner))
                 {
-                    UpgradeId(slotEntity.Value);
+                    UpgradeId(wornItem.Owner);
                 }
-                else if (_entityManager.TryGetComponent(slotEntity, out PDAComponent? pda))
+                else if (_entityManager.TryGetComponent(wornItem.Owner, out PDAComponent? pda))
                 {
                     if (pda.ContainedID == null)
                     {
@@ -139,7 +139,7 @@ namespace Content.Server.Sandbox
                         if (_entityManager.TryGetComponent(pda.Owner, out ItemSlotsComponent? itemSlots))
                         {
                             _entityManager.EntitySysManager.GetEntitySystem<ItemSlotsSystem>().
-                                TryInsert(slotEntity.Value, pda.IdSlot, newID, null);
+                                TryInsert(wornItem.Owner, pda.IdSlot, newID, null);
                         }
                     }
                     else
@@ -151,9 +151,9 @@ namespace Content.Server.Sandbox
             else if (_entityManager.TryGetComponent<HandsComponent?>(attached, out var hands))
             {
                 var card = CreateFreshId();
-                if (!invSystem.TryEquip(attached, card, "id", true, true))
+                if (!_entityManager.TryGetComponent(attached, out inv) || !inv.Equip(Slots.IDCARD, card))
                 {
-                    hands.PutInHandOrDrop(_entityManager.GetComponent<SharedItemComponent>(card));
+                    hands.PutInHandOrDrop(_entityManager.GetComponent<ItemComponent>(card));
                 }
             }
 

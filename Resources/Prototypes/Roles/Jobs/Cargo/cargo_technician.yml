@@ -15,10 +15,10 @@
   id: CargoTechGear
   equipment:
     head: ClothingHeadHatCargosoft
-    jumpsuit: ClothingUniformJumpsuitCargo
-    back: ClothingBackpackFilled
+    innerclothing: ClothingUniformJumpsuitCargo
+    backpack: ClothingBackpackFilled
     shoes: ClothingShoesColorBlack
-    id: CargoPDA
+    idcard: CargoPDA
     ears: ClothingHeadsetCargo
   innerclothingskirt: ClothingUniformJumpskirtCargo
   satchel: ClothingBackpackSatchelFilled

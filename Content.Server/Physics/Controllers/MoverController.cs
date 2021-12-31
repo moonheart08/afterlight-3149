@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using Content.Server.Inventory.Components;
+using Content.Server.Items;
 using Content.Server.Movement.Components;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.EntitySystems;
 using Content.Shared.CCVar;
 using Content.Shared.Inventory;
-using Content.Shared.Item;
 using Content.Shared.Maps;
 using Content.Shared.Movement;
 using Content.Shared.Movement.Components;
@@ -301,10 +302,9 @@ namespace Content.Server.Physics.Controllers
 
             mobMover.StepSoundDistance -= distanceNeeded;
 
-            var invSystem = EntitySystem.Get<InventorySystem>();
-
-            if (invSystem.TryGetSlotEntity(mover.Owner, "shoes", out var shoes) &&
-                EntityManager.TryGetComponent<FootstepModifierComponent>(shoes, out var modifier))
+            if (EntityManager.TryGetComponent<InventoryComponent?>(mover.Owner, out var inventory)
+                && inventory.TryGetSlotItem<ItemComponent>(EquipmentSlotDefines.Slots.SHOES, out var item)
+                && EntityManager.TryGetComponent<FootstepModifierComponent?>(item.Owner, out var modifier))
             {
                 modifier.PlayFootstep();
             }

@@ -13,11 +13,11 @@
 - type: startingGear
   id: ScientistGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitScientist
-    back: ClothingBackpackScienceFilled
+    innerclothing: ClothingUniformJumpsuitScientist
+    backpack: ClothingBackpackScienceFilled
     shoes: ClothingShoesColorWhite
     outerclothing: ClothingOuterCoatLab
-    id: SciencePDA
+    idcard: SciencePDA
     ears: ClothingHeadsetScience
   innerclothingskirt: ClothingUniformJumpskirtScientist
   satchel: ClothingBackpackSatchelScienceFilled

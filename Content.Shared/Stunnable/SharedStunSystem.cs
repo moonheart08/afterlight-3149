@@ -56,8 +56,8 @@ namespace Content.Shared.Stunnable
             SubscribeLocalEvent<StunnedComponent, DropAttemptEvent>(OnDropAttempt);
             SubscribeLocalEvent<StunnedComponent, PickupAttemptEvent>(OnPickupAttempt);
             SubscribeLocalEvent<StunnedComponent, AttackAttemptEvent>(OnAttackAttempt);
-            SubscribeLocalEvent<StunnedComponent, IsEquippingAttemptEvent>(OnEquipAttempt);
-            SubscribeLocalEvent<StunnedComponent, IsUnequippingAttemptEvent>(OnUnequipAttempt);
+            SubscribeLocalEvent<StunnedComponent, EquipAttemptEvent>(OnEquipAttempt);
+            SubscribeLocalEvent<StunnedComponent, UnequipAttemptEvent>(OnUnequipAttempt);
         }
 
         private void OnSlowGetState(EntityUid uid, SlowedDownComponent component, ref ComponentGetState args)
@@ -256,16 +256,14 @@ namespace Content.Shared.Stunnable
             args.Cancel();
         }
 
-        private void OnEquipAttempt(EntityUid uid, StunnedComponent stunned, IsEquippingAttemptEvent args)
+        private void OnEquipAttempt(EntityUid uid, StunnedComponent stunned, EquipAttemptEvent args)
         {
-            if(args.Equipee == uid)
-                args.Cancel();
+            args.Cancel();
         }
 
-        private void OnUnequipAttempt(EntityUid uid, StunnedComponent stunned, IsUnequippingAttemptEvent args)
+        private void OnUnequipAttempt(EntityUid uid, StunnedComponent stunned, UnequipAttemptEvent args)
         {
-            if(args.Unequipee == uid)
-                args.Cancel();
+            args.Cancel();
         }
 
         #endregion

@@ -14,13 +14,13 @@
 - type: startingGear
   id: CentcomGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitCentcomOfficial
+    innerclothing: ClothingUniformJumpsuitCentcomOfficial
     shoes: ClothingShoesBootsJack
     head: ClothingHeadHatCentcom
     eyes: ClothingEyesGlassesSunglasses
     gloves: ClothingHandsGlovesColorBlack
     outerclothing: ClothingOuterVestKevlar
-    id: CentcomPDA
+    idcard: CentcomPDA
     ears: ClothingHeadsetAltCommand
     pocket1: Paper
     pocket2: Pen

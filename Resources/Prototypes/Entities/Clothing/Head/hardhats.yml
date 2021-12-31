@@ -11,6 +11,7 @@
       visible: false
   - type: Clothing
     HeldPrefix: off
+    ClothingPrefix: off
   - type: PointLight
     enabled: false
     radius: 3

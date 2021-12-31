@@ -4,7 +4,6 @@ using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Helpers;
 using Content.Shared.Inventory;
-using Content.Shared.Sound;
 using Robust.Shared.GameObjects;
 using Robust.Shared.GameStates;
 using Robust.Shared.IoC;
@@ -20,7 +19,7 @@ namespace Content.Shared.Item
     ///    Players can pick up, drop, and put items in bags, and they can be seen in player's hands.
     /// </summary>
     [NetworkedComponent()]
-    public class SharedItemComponent : Component, IInteractHand
+    public abstract class SharedItemComponent : Component, IEquipped, IUnequipped, IInteractHand
     {
         [Dependency] private readonly IEntityManager _entMan = default!;
 
@@ -45,7 +44,6 @@ namespace Content.Shared.Item
         /// <summary>
         ///     Part of the state of the sprite shown on the player when this item is in their hands.
         /// </summary>
-        // todo paul make this update slotvisuals on client on change
         [ViewVariables(VVAccess.ReadWrite)]
         public string? EquippedPrefix
         {
@@ -60,13 +58,6 @@ namespace Content.Shared.Item
         [DataField("HeldPrefix")]
         private string? _equippedPrefix;
 
-        [ViewVariables]
-        [DataField("Slots")]
-        public SlotFlags SlotFlags = SlotFlags.PREVENTEQUIP; //Different from None, NONE allows equips if no slot flags are required
-
-        [DataField("EquipSound")]
-        public SoundSpecifier? EquipSound { get; set; } = default!;
-
         /// <summary>
         ///     Color of the sprite shown on the player when this item is in their hands.
         /// </summary>
@@ -74,7 +65,7 @@ namespace Content.Shared.Item
         public Color Color
         {
             get => _color;
-            set
+            protected set
             {
                 _color = value;
                 Dirty();
@@ -99,6 +90,24 @@ namespace Content.Shared.Item
         [DataField("sprite")]
         private string? _rsiPath;
 
+        public override ComponentState GetComponentState()
+        {
+            return new ItemComponentState(Size, EquippedPrefix, Color, RsiPath);
+        }
+
+        public override void HandleComponentState(ComponentState? curState, ComponentState? nextState)
+        {
+            base.HandleComponentState(curState, nextState);
+
+            if (curState is not ItemComponentState state)
+                return;
+
+            Size = state.Size;
+            EquippedPrefix = state.EquippedPrefix;
+            Color = state.Color;
+            RsiPath = state.RsiPath;
+        }
+
         /// <summary>
         ///     If a player can pick up this item.
         /// </summary>
@@ -114,6 +123,16 @@ namespace Content.Shared.Item
                 return false;
 
             return user.InRangeUnobstructed(Owner, ignoreInsideBlocker: true, popup: popup);
+        }
+
+        void IEquipped.Equipped(EquippedEventArgs eventArgs)
+        {
+            EquippedToSlot();
+        }
+
+        void IUnequipped.Unequipped(UnequippedEventArgs eventArgs)
+        {
+            RemovedFromSlot();
         }
 
         bool IInteractHand.InteractHand(InteractHandEventArgs eventArgs)

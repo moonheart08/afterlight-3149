@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Content.Server.Chemistry.Components;
 using Content.Server.Chemistry.Components.SolutionManager;
 using Content.Server.Chemistry.EntitySystems;
+using Content.Server.Items;
 using Content.Server.Tools.Components;
 using Content.Server.Weapon.Melee;
 using Content.Shared.Audio;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Interaction;
-using Content.Shared.Item;
 using Content.Shared.Popups;
 using Content.Shared.Temperature;
 using Content.Shared.Tools.Components;
@@ -63,7 +64,7 @@ namespace Content.Server.Tools
         public bool TryToggleWelder(EntityUid uid, EntityUid? user,
             WelderComponent? welder = null,
             SolutionContainerManagerComponent? solutionContainer = null,
-            SharedItemComponent? item = null,
+            ItemComponent? item = null,
             PointLightComponent? light = null,
             SpriteComponent? sprite = null)
         {
@@ -80,7 +81,7 @@ namespace Content.Server.Tools
         public bool TryTurnWelderOn(EntityUid uid, EntityUid? user,
             WelderComponent? welder = null,
             SolutionContainerManagerComponent? solutionContainer = null,
-            SharedItemComponent? item = null,
+            ItemComponent? item = null,
             PointLightComponent? light = null,
             SpriteComponent? sprite = null)
         {
@@ -131,7 +132,7 @@ namespace Content.Server.Tools
 
         public bool TryTurnWelderOff(EntityUid uid, EntityUid? user,
             WelderComponent? welder = null,
-            SharedItemComponent? item = null,
+            ItemComponent? item = null,
             PointLightComponent? light = null,
             SpriteComponent? sprite = null)
         {

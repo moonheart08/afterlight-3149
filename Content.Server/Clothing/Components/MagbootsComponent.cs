@@ -1,5 +1,7 @@
 using Content.Server.Alert;
 using Content.Server.Atmos.Components;
+using Content.Server.Inventory.Components;
+using Content.Server.Items;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Behaviors.Item;
 using Content.Shared.Actions.Components;
@@ -7,7 +9,6 @@ using Content.Shared.Alert;
 using Content.Shared.Clothing;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
-using Content.Shared.Item;
 using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
@@ -15,15 +16,15 @@ using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Serialization.Manager.Attributes;
 using Robust.Shared.ViewVariables;
+using static Content.Shared.Inventory.EquipmentSlotDefines;
 
 namespace Content.Server.Clothing.Components
 {
     [RegisterComponent]
     [ComponentReference(typeof(IActivate))]
-    [ComponentReference(typeof(SharedMagbootsComponent))]
-    public sealed class MagbootsComponent : SharedMagbootsComponent, IUse, IActivate
+    public sealed class MagbootsComponent : SharedMagbootsComponent, IUnequipped, IEquipped, IUse, IActivate
     {
-        [ComponentDependency] private SharedItemComponent? _item = null;
+        [ComponentDependency] private ItemComponent? _item = null;
         [ComponentDependency] private ItemActionsComponent? _itemActions = null;
         [ComponentDependency] private SpriteComponent? _sprite = null;
 
@@ -39,12 +40,7 @@ namespace Content.Server.Clothing.Components
             {
                 _on = value;
 
-                if (Owner.TryGetContainer(out var container) && EntitySystem.Get<InventorySystem>()
-                        .TryGetSlotEntity(container.Owner, "shoes", out var entityUid) && entityUid == Owner)
-                {
-                    EntitySystem.Get<MagbootsSystem>().UpdateMagbootEffects(container.Owner, Owner, true, this);
-                }
-
+                UpdateContainer();
                 _itemActions?.Toggle(ItemActionType.ToggleMagboots, On);
                 if (_item != null)
                     _item.EquippedPrefix = On ? "on" : null;
@@ -57,6 +53,54 @@ namespace Content.Server.Clothing.Components
         public void Toggle(EntityUid user)
         {
             On = !On;
+        }
+
+        void IUnequipped.Unequipped(UnequippedEventArgs eventArgs)
+        {
+            if (On && eventArgs.Slot == Slots.SHOES)
+            {
+                if (_entMan.TryGetComponent(eventArgs.User, out MovedByPressureComponent? movedByPressure))
+                {
+                    movedByPressure.Enabled = true;
+                }
+
+                if (_entMan.TryGetComponent(eventArgs.User, out ServerAlertsComponent? alerts))
+                {
+                    alerts.ClearAlert(AlertType.Magboots);
+                }
+            }
+        }
+
+        void IEquipped.Equipped(EquippedEventArgs eventArgs)
+        {
+            UpdateContainer();
+        }
+
+        private void UpdateContainer()
+        {
+            if (!Owner.TryGetContainer(out var container))
+                return;
+
+            if (_entMan.TryGetComponent(container.Owner, out InventoryComponent? inventoryComponent)
+                && inventoryComponent.GetSlotItem(Slots.SHOES)?.Owner == Owner)
+            {
+                if (_entMan.TryGetComponent(container.Owner, out MovedByPressureComponent? movedByPressure))
+                {
+                    movedByPressure.Enabled = false;
+                }
+
+                if (_entMan.TryGetComponent(container.Owner, out ServerAlertsComponent? alerts))
+                {
+                    if (On)
+                    {
+                        alerts.ShowAlert(AlertType.Magboots);
+                    }
+                    else
+                    {
+                        alerts.ClearAlert(AlertType.Magboots);
+                    }
+                }
+            }
         }
 
         bool IUse.UseEntity(UseEntityEventArgs eventArgs)

@@ -1,5 +1,7 @@
 using Content.Shared.Smoking;
 using Content.Shared.Sound;
+using Content.Shared.Temperature;
+using Content.Server.Items;
 using Content.Server.Light.EntitySystems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Analyzers;

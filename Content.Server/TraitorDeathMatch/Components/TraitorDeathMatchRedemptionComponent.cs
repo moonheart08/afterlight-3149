@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Content.Server.Inventory.Components;
 using Content.Server.Mind.Components;
 using Content.Server.Traitor.Uplink.Account;
 using Content.Server.Traitor.Uplink.Components;
@@ -8,7 +9,6 @@ using Content.Shared.Popups;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Localization;
-using InventoryComponent = Content.Shared.Inventory.InventoryComponent;
 
 namespace Content.Server.TraitorDeathMatch.Components
 {
@@ -22,6 +22,13 @@ namespace Content.Server.TraitorDeathMatch.Components
 
         async Task<bool> IInteractUsing.InteractUsing(InteractUsingEventArgs eventArgs)
         {
+            if (!_entMan.TryGetComponent<InventoryComponent?>(eventArgs.User, out var userInv))
+            {
+                Owner.PopupMessage(eventArgs.User, Loc.GetString("traitor-death-match-redemption-component-interact-using-main-message",
+                                                                 ("secondMessage", Loc.GetString("traitor-death-match-redemption-component-interact-using-no-inventory-message"))));
+                return false;
+            }
+
             if (!_entMan.TryGetComponent<MindComponent?>(eventArgs.User, out var userMindComponent))
             {
                 Owner.PopupMessage(eventArgs.User, Loc.GetString("traitor-death-match-redemption-component-interact-using-main-message",
@@ -59,13 +66,10 @@ namespace Content.Server.TraitorDeathMatch.Components
             }
 
             UplinkComponent? userUplink = null;
-            var invSystem = EntitySystem.Get<InventorySystem>();
 
-            if (invSystem.TryGetSlotEntity(eventArgs.User, "id", out var pdaUid) &&
-                _entMan.TryGetComponent<UplinkComponent>(pdaUid, out var userUplinkComponent))
-            {
-                userUplink = userUplinkComponent;
-            }
+            if (userInv.GetSlotItem(EquipmentSlotDefines.Slots.IDCARD)?.Owner is {Valid: true} userPDAEntity)
+                if (_entMan.TryGetComponent<UplinkComponent?>(userPDAEntity, out var userUplinkComponent))
+                    userUplink = userUplinkComponent;
 
             if (userUplink == null)
             {

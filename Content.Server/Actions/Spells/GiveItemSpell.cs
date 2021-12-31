@@ -1,9 +1,9 @@
 using Content.Server.Hands.Components;
+using Content.Server.Items;
 using Content.Server.Popups;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions.Behaviors;
 using Content.Shared.Cooldown;
-using Content.Shared.Item;
 using Content.Shared.Popups;
 using Content.Shared.Sound;
 using JetBrains.Annotations;
@@ -57,9 +57,9 @@ namespace Content.Server.Actions.Spells
             // TODO: Look this is shitty and ideally a test would do it
             var spawnedProto = entMan.SpawnEntity(ItemProto, entMan.GetComponent<TransformComponent>(caster).MapPosition);
 
-            if (!entMan.TryGetComponent(spawnedProto, out SharedItemComponent? itemComponent))
+            if (!entMan.TryGetComponent(spawnedProto, out ItemComponent? itemComponent))
             {
-                Logger.Error($"Tried to use {nameof(GiveItemSpell)} but prototype has no {nameof(SharedItemComponent)}?");
+                Logger.Error($"Tried to use {nameof(GiveItemSpell)} but prototype has no {nameof(ItemComponent)}?");
                 entMan.DeleteEntity(spawnedProto);
                 return;
             }

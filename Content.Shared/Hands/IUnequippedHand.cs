@@ -19,16 +19,14 @@ namespace Content.Shared.Hands
         void UnequippedHand(UnequippedHandEventArgs eventArgs);
     }
 
-    public class UnequippedHandEventArgs : EntityEventArgs
+    public class UnequippedHandEventArgs : UserEventArgs
     {
-        public UnequippedHandEventArgs(EntityUid user, HandState hand)
+        public UnequippedHandEventArgs(EntityUid user, HandState hand) : base(user)
         {
             Hand = hand;
-            User = user;
         }
 
-        public readonly HandState Hand;
-        public readonly EntityUid User;
+        public HandState Hand { get; }
     }
 
     /// <summary>

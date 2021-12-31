@@ -256,8 +256,9 @@
   - type: Clothing
     sprite: Clothing/Head/Misc/hides.rsi
     HeldPrefix: bear
+    ClothingPrefix: bear
     Slots:
-    - HEAD
+    - Helmet
 
 - type: entity
   parent: MaterialBase
@@ -270,8 +271,9 @@
   # - type: Clothing
   #   sprite: Clothing/Head/Misc/hides.rsi
   #   HeldPrefix: cat
+  #   ClothingPrefix: cat
   #   Slots:
-  #   - HEAD
+  #   - Helmet
 
 - type: entity
   parent: MaterialBase
@@ -283,6 +285,7 @@
     state: corgihide
   - type: Clothing
     sprite: Clothing/Head/Misc/hides.rsi
-    HeldPrefix: corgi
+  #   HeldPrefix: corgi
+    ClothingPrefix: corgi2
     Slots:
-    - HEAD
+    - Helmet

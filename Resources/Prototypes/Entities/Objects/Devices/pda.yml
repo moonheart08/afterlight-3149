@@ -56,7 +56,7 @@
   description: Why isn't it gray?
   components:
   - type: PDA
-    id: AssistantIDCard
+    idCard: AssistantIDCard
 
 - type: entity
   parent: BasePDA
@@ -65,7 +65,7 @@
   description: Covered in grease and flour.
   components:
   - type: PDA
-    id: ChefIDCard
+    idCard: ChefIDCard
   - type: Appearance
     visuals:
     - type: PDAVisualizer
@@ -80,7 +80,7 @@
   description: Has an earthy scent.
   components:
   - type: PDA
-    id: BotanistIDCard
+    idCard: BotanistIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -95,7 +95,7 @@
   description: Looks can be deceiving.
   components:
   - type: PDA
-    id: ClownIDCard
+    idCard: ClownIDCard
     penSlot:
       startingItem: CrayonOrange # no pink crayon?!?
       # Maybe this is a bad idea.
@@ -140,7 +140,7 @@
   description: Suprisingly not on mute.
   components:
   - type: PDA
-    id: MimeIDCard
+    idCard: MimeIDCard
     idSlot:
       name: ID Card
       whitelist:
@@ -160,7 +160,7 @@
   description: God's chosen PDA.
   components:
   - type: PDA
-    id: ChaplainIDCard
+    idCard: ChaplainIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -175,7 +175,7 @@
   description: PDA for the guy that orders the guns.
   components:
   - type: PDA
-    id: QuartermasterIDCard
+    idCard: QuartermasterIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -190,7 +190,7 @@
   description: PDA for the guys that order the pizzas.
   components:
   - type: PDA
-    id: CargoIDCard
+    idCard: CargoIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -205,7 +205,7 @@
   description: Smells like beer.
   components:
   - type: PDA
-    id: BartenderIDCard
+    idCard: BartenderIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -221,7 +221,7 @@
   description: Smells like bleach.
   components:
   - type: PDA
-    id: JanitorIDCard
+    idCard: JanitorIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -236,7 +236,7 @@
   description: Surprisingly no different from your PDA.
   components:
   - type: PDA
-    id: CaptainIDCard
+    idCard: CaptainIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -252,7 +252,7 @@
   description: Looks like it's been chewed on.
   components:
   - type: PDA
-    id: HoPIDCard
+    idCard: HoPIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -268,7 +268,7 @@
   description: Looks like it's barely been used.
   components:
   - type: PDA
-    id: CEIDCard
+    idCard: CEIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -284,7 +284,7 @@
   description: Rugged and well-worn.
   components:
   - type: PDA
-    id: EngineeringIDCard
+    idCard: EngineeringIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -299,7 +299,7 @@
   description: Extraordinarily shiny and sterile.
   components:
   - type: PDA
-    id: CMOIDCard
+    idCard: CMOIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -314,7 +314,7 @@
   description: Shiny and sterile.
   components:
   - type: PDA
-    id: MedicalIDCard
+    idCard: MedicalIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -329,7 +329,7 @@
   description: It has a few discolored blotches here and there.
   components:
   - type: PDA
-    id: ChemistIDCard
+    idCard: ChemistIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -344,7 +344,7 @@
   description: It appears surprisingly ordinary.
   components:
   - type: PDA
-    id: RDIDCard
+    idCard: RDIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -359,7 +359,7 @@
   description: It's covered with an unknown gooey substance.
   components:
   - type: PDA
-    id: ResearchIDCard
+    idCard: ResearchIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -374,7 +374,7 @@
   description: Whosoever bears this PDA is the law.
   components:
   - type: PDA
-    id: HoSIDCard
+    idCard: HoSIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -389,7 +389,7 @@
   description: The OS appears to have been jailbroken.
   components:
   - type: PDA
-    id: WardenIDCard
+    idCard: WardenIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -404,7 +404,7 @@
   description: Red to hide the stains of assistant blood.
   components:
   - type: PDA
-    id: SecurityIDCard
+    idCard: SecurityIDCard
   - type: Appearance
     visuals:
       - type: PDAVisualizer
@@ -419,4 +419,4 @@
   description: Colored the numbing grey of bureaucracy.
   components:
   - type: PDA
-    id: CentcomIDCardSyndie
+    idCard: CentcomIDCardSyndie

@@ -13,10 +13,10 @@
 - type: startingGear
   id: ChaplainGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitChaplain
-    back: ClothingBackpackFilled
+    innerclothing: ClothingUniformJumpsuitChaplain
+    backpack: ClothingBackpackFilled
     shoes: ClothingShoesColorBlack
-    id: ChaplainPDA
+    idcard: ChaplainPDA
     ears: ClothingHeadsetService
   innerclothingskirt: ClothingUniformJumpskirtChaplain
 

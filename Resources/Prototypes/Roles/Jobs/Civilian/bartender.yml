@@ -15,11 +15,11 @@
   id: BartenderGear
   equipment:
     head: ClothingHeadHatTophat
-    jumpsuit: ClothingUniformJumpsuitBartender
+    innerclothing: ClothingUniformJumpsuitBartender
     outerclothing: ClothingOuterVestKevlar
-    back: ClothingBackpackFilled
+    backpack: ClothingBackpackFilled
     shoes: ClothingShoesColorBlack
-    id: BartenderPDA
+    idcard: BartenderPDA
     ears: ClothingHeadsetService
   innerclothingskirt: ClothingUniformJumpskirtBartender
   satchel: ClothingBackpackSatchelFilled

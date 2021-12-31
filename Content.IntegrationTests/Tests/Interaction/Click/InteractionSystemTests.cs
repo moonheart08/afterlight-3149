@@ -1,11 +1,10 @@
 #nullable enable annotations
 using System.Threading.Tasks;
-using Content.Client.Items.Components;
 using Content.Server.Hands.Components;
 using Content.Server.Interaction;
+using Content.Server.Items;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
-using Content.Shared.Item;
 using Content.Shared.Weapons.Melee;
 using NUnit.Framework;
 using Robust.Shared.Containers;
@@ -14,7 +13,6 @@ using Robust.Shared.IoC;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
 using Robust.Shared.Reflection;
-using ItemComponent = Content.Server.Clothing.Components.ItemComponent;
 
 namespace Content.IntegrationTests.Tests.Interaction.Click
 {
@@ -99,7 +97,7 @@ namespace Content.IntegrationTests.Tests.Interaction.Click
                 Assert.That(interactHand);
 
                 Assert.That(sEntities.TryGetComponent<HandsComponent>(user, out var hands));
-                Assert.That(hands.PutInHand(sEntities.GetComponent<SharedItemComponent>(item)));
+                Assert.That(hands.PutInHand(sEntities.GetComponent<ItemComponent>(item)));
 
                 interactionSystem.UserInteraction(user, sEntities.GetComponent<TransformComponent>(target).Coordinates, target);
                 Assert.That(interactUsing);
@@ -171,7 +169,7 @@ namespace Content.IntegrationTests.Tests.Interaction.Click
                 Assert.That(interactHand, Is.False);
 
                 Assert.That(sEntities.TryGetComponent<HandsComponent?>(user, out var hands));
-                Assert.That(hands.PutInHand(sEntities.GetComponent<SharedItemComponent>(item)));
+                Assert.That(hands.PutInHand(sEntities.GetComponent<ItemComponent>(item)));
 
                 interactionSystem.UserInteraction(user, sEntities.GetComponent<TransformComponent>(target).Coordinates, target);
                 Assert.That(interactUsing, Is.False);
@@ -240,7 +238,7 @@ namespace Content.IntegrationTests.Tests.Interaction.Click
                 Assert.That(interactHand);
 
                 Assert.That(sEntities.TryGetComponent<HandsComponent>(user, out var hands));
-                Assert.That(hands.PutInHand(sEntities.GetComponent<SharedItemComponent>(item)));
+                Assert.That(hands.PutInHand(sEntities.GetComponent<ItemComponent>(item)));
 
                 interactionSystem.UserInteraction(user, sEntities.GetComponent<TransformComponent>(target).Coordinates, target);
                 Assert.That(interactUsing);
@@ -310,7 +308,7 @@ namespace Content.IntegrationTests.Tests.Interaction.Click
                 Assert.That(interactHand, Is.False);
 
                 Assert.That(sEntities.TryGetComponent<HandsComponent?>(user, out var hands));
-                Assert.That(hands.PutInHand(sEntities.GetComponent<SharedItemComponent>(item)));
+                Assert.That(hands.PutInHand(sEntities.GetComponent<ItemComponent>(item)));
 
                 interactionSystem.UserInteraction(user, sEntities.GetComponent<TransformComponent>(target).Coordinates, target);
                 Assert.That(interactUsing, Is.False);
@@ -395,7 +393,7 @@ namespace Content.IntegrationTests.Tests.Interaction.Click
                 Assert.That(interactHand);
 
                 Assert.That(sEntities.TryGetComponent<HandsComponent?>(user, out var hands));
-                Assert.That(hands.PutInHand(sEntities.GetComponent<SharedItemComponent>(item)));
+                Assert.That(hands.PutInHand(sEntities.GetComponent<ItemComponent>(item)));
 
                 interactionSystem.UserInteraction(user, sEntities.GetComponent<TransformComponent>(target).Coordinates, target);
                 Assert.That(interactUsing, Is.False);

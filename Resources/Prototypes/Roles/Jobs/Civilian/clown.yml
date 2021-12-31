@@ -16,12 +16,12 @@
 - type: startingGear
   id: ClownGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitClown
-    back: ClothingBackpackClownFilled
+    innerclothing: ClothingUniformJumpsuitClown
+    backpack: ClothingBackpackClownFilled
     shoes: ClothingShoesClown
     mask: ClothingMaskClown
     pocket1: BikeHorn
-    id: ClownPDA
+    idcard: ClownPDA
     ears: ClothingHeadsetService
   satchel: ClothingBackpackSatchelFilled
   duffelbag: ClothingBackpackDuffelClownFilled

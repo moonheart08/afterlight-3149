@@ -127,7 +127,7 @@
     state: icon-ammo
   - type: Clothing
     sprite: Clothing/Back/Duffels/syndicate.rsi
-    HeldPrefix: ammo
+    ClothingPrefix: ammo
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicate
@@ -139,7 +139,7 @@
     state: icon-med
   - type: Clothing
     sprite: Clothing/Back/Duffels/syndicate.rsi
-    HeldPrefix: med
+    ClothingPrefix: med
 
 - type: entity
   parent: ClothingBackpackDuffel
