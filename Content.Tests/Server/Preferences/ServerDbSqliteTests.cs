@@ -36,7 +36,13 @@ namespace Content.Tests.Server.Preferences
 - type: dataset
   id: names_last
   values:
-  - Ackerley";
+  - Ackerley
+
+- type: species
+  id: Human
+  name: Human
+  prototype: MobHuman
+  dollPrototype: MobHumanDummy";
 
         private static HumanoidCharacterProfile CharlieCharlieson()
         {
