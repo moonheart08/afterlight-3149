@@ -95,7 +95,7 @@
       preset: SlimePreset
     - type: DoorBumpOpener
     - type: HumanoidAppearance
-      hairMatcheSkin: true
+      hairMatchesSkin: true
       hairAlpha: 0.5
 
 - type: entity
@@ -191,5 +191,5 @@
         - map: [ "pocket1" ]
         - map: [ "pocket2" ]
     - type: HumanoidAppearance
-      hairMatcheSkin: true
+      hairMatchesSkin: true
       hairAlpha: 0.5
