@@ -163,7 +163,7 @@ namespace Content.Server.Database
             var antags = profile.Antags.Select(a => a.AntagName);
 
             var species = SpeciesManager.DefaultSpecies;
-            if (profile.Species != "" && IoCManager.Resolve<IPrototypeManager>().TryIndex<SpeciesPrototype>(profile.Species, out _))
+            if (profile.Species != "" && SpeciesManager.SpeciesIdToProto.ContainsKey(profile.Species))
                 species = profile.Species;
 
             var sex = Sex.Male;

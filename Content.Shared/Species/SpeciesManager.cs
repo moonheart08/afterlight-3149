@@ -9,7 +9,12 @@ public class SpeciesManager
 {
     public const string DefaultSpecies = "Human";
 
-    public IReadOnlyDictionary<string, string> SpeciesNameToId = IoCManager.Resolve<IPrototypeManager>()
-        .EnumeratePrototypes<SpeciesPrototype>().ToDictionary(x => x.Name, x => x.ID);
+    //HACK: Makes the database actually able to verify a species is valid.
+    public static IReadOnlyDictionary<string, SpeciesPrototype> SpeciesIdToProto = default!;
 
+    public void Initialize()
+    {
+        SpeciesIdToProto = IoCManager.Resolve<IPrototypeManager>()
+            .EnumeratePrototypes<SpeciesPrototype>().ToDictionary(x => x.ID, x => x);
+    }
 }
