@@ -54,6 +54,8 @@ public class WorldChunkSystem : EntitySystem
     private void OnDebrisMoved(EntityUid uid, WorldManagedComponent component, ref MoveEvent args)
     {
         var chunk = (Transform(uid).MapPosition.Position / 128).Floored();
+        if (component.DebrisData is null)
+            return; // AllComponentsOneEntityDeleteTest moment.
         component.DebrisData.Coords = Transform(uid).MapPosition;
         if (component.CurrentChunk == chunk)
             return;
