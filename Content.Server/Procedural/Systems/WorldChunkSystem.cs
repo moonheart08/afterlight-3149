@@ -37,6 +37,7 @@ public class WorldChunkSystem : EntitySystem
     // CVar replicas
     private float _debrisSeparation = 0;
     private DebrisLayoutPrototype _defaultLayout = default!;
+    private bool _enabled = false;
 
     public override void Initialize()
     {
@@ -45,6 +46,7 @@ public class WorldChunkSystem : EntitySystem
         {
             _defaultLayout = _prototypeManager.Index<DebrisLayoutPrototype>(l);
         }, true);
+        _configuration.OnValueChanged(CCVars.WorldGenEnabled, e => _enabled = e, true);
 
         SubscribeLocalEvent<WorldManagedComponent, MoveEvent>(OnDebrisMoved);
     }
@@ -67,6 +69,9 @@ public class WorldChunkSystem : EntitySystem
     //TODO: Optimization pass over EVERYTHING here. This is one of the most performance sensitive parts of OR14!
     public override void Update(float frameTime)
     {
+        if (!_enabled)
+            return;
+
         _frameAccumulator += frameTime;
 
         if (!(_frameAccumulator > 1.0f / 3.0f))
