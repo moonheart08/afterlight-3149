@@ -8,7 +8,7 @@ namespace Content.Server.Procedural.Components;
 /// </summary>
 public class UnloadableComponent : Component
 {
-    public override string Name => "unloadable";
+    public override string Name => "Unloadable";
 
     /// <summary>
     /// Populator to add with an UnpopulatedComponent should it unload again.

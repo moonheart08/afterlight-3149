@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Content.Server.Ghost.Components;
+using Content.Server.Procedural.Components;
 using Content.Server.Procedural.Prototypes;
 using Content.Server.Procedural.Tools;
 using Content.Shared.CCVar;
@@ -34,16 +35,33 @@ public class WorldChunkSystem : EntitySystem
     private float _frameAccumulator = 0.0f;
 
     // CVar replicas
-    private float debrisSeparation = 0;
-    private DebrisLayoutPrototype defaultLayout = default!;
+    private float _debrisSeparation = 0;
+    private DebrisLayoutPrototype _defaultLayout = default!;
 
     public override void Initialize()
     {
-        _configuration.OnValueChanged(CCVars.MinDebrisSeparation, f => debrisSeparation = f, true);
+        _configuration.OnValueChanged(CCVars.MinDebrisSeparation, f => _debrisSeparation = f, true);
         _configuration.OnValueChanged(CCVars.SpawnDebrisLayout, l =>
         {
-            defaultLayout = _prototypeManager.Index<DebrisLayoutPrototype>(l);
+            _defaultLayout = _prototypeManager.Index<DebrisLayoutPrototype>(l);
         }, true);
+
+        SubscribeLocalEvent<WorldManagedComponent, MoveEvent>(OnDebrisMoved);
+    }
+
+    private void OnDebrisMoved(EntityUid uid, WorldManagedComponent component, ref MoveEvent args)
+    {
+        var chunk = (Transform(uid).MapPosition.Position / 128).Floored();
+        component.DebrisData.Coords = Transform(uid).MapPosition;
+        if (component.CurrentChunk == chunk)
+            return;
+
+        var old = component.CurrentChunk;
+        component.CurrentChunk = chunk;
+        _chunks[old].Debris.Remove(component.DebrisData);
+        _chunks[chunk].Debris.Add(component.DebrisData);
+        if (!_currLoaded.Contains(chunk))
+            UnloadDebris(component.DebrisData);
     }
 
     //TODO: Optimization pass over EVERYTHING here. This is one of the most performance sensitive parts of OR14!
@@ -57,13 +75,13 @@ public class WorldChunkSystem : EntitySystem
 
         UpdateWorldLoadState(); // Repopulate the load queue and unload queue; ensure _currLoad is up to date.
         LoadChunks(); // Load everything that needs loaded.
-        UnloadChunks();
+        UnloadChunks(); // Unload chunks outside of view.
     }
 
     public void Reset()
     {
         _chunks.Clear();
-        ;_loadQueue.Clear();
+        _loadQueue.Clear();
         _unloadQueue.Clear();
         _currLoaded.Clear();
     }
@@ -113,7 +131,7 @@ public class WorldChunkSystem : EntitySystem
 
         _chunks[chunk] = new WorldChunk()
         {
-            Debris = new List<DebrisData>()
+            Debris = new HashSet<DebrisData>()
         };
     }
 
@@ -142,22 +160,25 @@ public class WorldChunkSystem : EntitySystem
                 continue;
 
             debris.CurrGrid = _debrisGeneration.GenerateDebris(debris.Kind!, debris.Coords);
+            var comp = AddComp<WorldManagedComponent>(debris.CurrGrid.Value);
+            comp.DebrisData = debris;
+            comp.CurrentChunk = chunk;
         }
     }
 
     private void MakeChunk(Vector2i chunk)
     {
         Logger.DebugS("worldgen", $"Made chunk {chunk}.");
-        var offs = (int)((ChunkSize - (debrisSeparation / 2)) / 2);
+        var offs = (int)((ChunkSize - (_debrisSeparation / 2)) / 2);
         var center = chunk * ChunkSize;
         var topLeft = (-offs, -offs);
         var lowerRight = (offs, offs);
-        var debrisPoints = _sampler.SampleRectangle(topLeft, lowerRight, debrisSeparation);
-        var debris = new List<DebrisData>(debrisPoints.Count);
+        var debrisPoints = _sampler.SampleRectangle(topLeft, lowerRight, _debrisSeparation);
+        var debris = new HashSet<DebrisData>(debrisPoints.Count);
 
         foreach (var p in debrisPoints)
         {
-            var kind = defaultLayout.Pick();
+            var kind = _defaultLayout.Pick();
             if (kind is null)
                 continue;
 
@@ -175,7 +196,7 @@ public class WorldChunkSystem : EntitySystem
         };
     }
 
-    public void UnloadChunks()
+    private void UnloadChunks()
     {
         foreach (var chunk in _unloadQueue)
         {
@@ -184,12 +205,17 @@ public class WorldChunkSystem : EntitySystem
 
             foreach (var debris in _chunks[chunk].Debris)
             {
-                if (debris.CurrGrid is not null)
-                    Del(debris.CurrGrid.Value);
-                debris.CurrGrid = null;
+                UnloadDebris(debris);
             }
         }
         _unloadQueue.Clear();
+    }
+
+    private void UnloadDebris(DebrisData debris)
+    {
+        if (debris.CurrGrid is not null)
+            Del(debris.CurrGrid.Value);
+        debris.CurrGrid = null;
     }
 
     public IEnumerable<Vector2i> ChunksNear(EntityUid ent)
@@ -211,7 +237,7 @@ public class WorldChunkSystem : EntitySystem
 
 public struct WorldChunk
 {
-    public List<DebrisData> Debris;
+    public HashSet<DebrisData> Debris;
 }
 
 public class DebrisData

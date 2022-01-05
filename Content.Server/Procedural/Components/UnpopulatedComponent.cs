@@ -14,7 +14,7 @@ namespace Content.Server.Procedural.Components;
 [Friend(typeof(PopulatorSystem), typeof(DebrisGenerationSystem))]
 public class UnpopulatedComponent : Component
 {
-    public override string Name => "unpopulated";
+    public override string Name => "Unpopulated";
 
     public DebrisPopulator? Populator;
 }
