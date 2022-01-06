@@ -74,12 +74,20 @@ public partial class WorldChunkSystem
 
     private void MakeChunk(Vector2i chunk)
     {
-        Logger.DebugS("worldgen", $"Made chunk {chunk}.");
-        var offs = (int)((ChunkSize - (_debrisSeparation / 2)) / 2);
+        if (ShouldClipChunk(chunk))
+        {
+            Logger.DebugS("worldgen", $"Clipped chunk {chunk}");
+            ForceEmptyChunk(chunk);
+            return;
+        }
+
+        var density = GetChunkDensity(chunk);
+        Logger.DebugS("worldgen", $"Made chunk {chunk} w/ density {density}.");
+        var offs = (int)((ChunkSize - (density / 2)) / 2);
         var center = chunk * ChunkSize;
         var topLeft = (-offs, -offs);
         var lowerRight = (offs, offs);
-        var debrisPoints = _sampler.SampleRectangle(topLeft, lowerRight, _debrisSeparation);
+        var debrisPoints = _sampler.SampleRectangle(topLeft, lowerRight, density);
         var debris = new HashSet<DebrisData>(debrisPoints.Count);
 
         foreach (var p in debrisPoints)

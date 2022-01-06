@@ -50,6 +50,8 @@ public partial class WorldChunkSystem : EntitySystem
         _configuration.OnValueChanged(CCVars.WorldGenEnabled, e => _enabled = e, true);
         _configuration.OnValueChanged(CCVars.MaxDebrisLoadTimeMs, t => _maxDebrisLoadTimeMs = t, true);
 
+        ResetNoise();
+
         SubscribeLocalEvent<WorldManagedComponent, MoveEvent>(OnDebrisMoved);
     }
 
@@ -93,6 +95,7 @@ public partial class WorldChunkSystem : EntitySystem
         _loadQueue.Clear();
         _unloadQueue.Clear();
         _currLoaded.Clear();
+        ResetNoise();
     }
 
     private void UpdateWorldLoadState()
