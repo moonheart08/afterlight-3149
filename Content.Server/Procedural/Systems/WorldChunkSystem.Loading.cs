@@ -15,7 +15,7 @@ public partial class WorldChunkSystem
 
     public void ForceEmptyChunk(Vector2i chunk)
     {
-        if (_currLoaded.Contains(chunk))
+        if (_chunks.ContainsKey(chunk))
         {
             Logger.ErrorS("worldgen", "Tried to empty a chunk that's already loaded!");
             return;

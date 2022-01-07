@@ -1,25 +1,30 @@
 using System;
 using Content.Server.Procedural.Tools;
+using Robust.Shared.IoC;
 using Robust.Shared.Log;
 using Robust.Shared.Maths;
+using Robust.Shared.Random;
 
 namespace Content.Server.Procedural.Systems;
 
 public partial class WorldChunkSystem
 {
-
-    private const float DensityControllerCoordinateScale = 10f;
+    private const float DensityControllerCoordinateScale = 6f;
     private const float MinDensity = 90.0f;
     private const float MaxDensity = 40.0f;
     private const float DensityScale = MinDensity - MaxDensity;
-    private const float DensityClipPoint = 0.8f;
+    private const float DensityClipPointMin = 0.4f;
+    private const float DensityClipPointMax = 0.5f;
 
     private FastNoise _densityController = default!;
 
     private void ResetNoise()
     {
         _densityController = new FastNoise();
-        _densityController.SetNoiseType(FastNoise.NoiseType.Perlin);
+        _densityController.SetSeed(_random.Next());
+        _densityController.SetNoiseType(FastNoise.NoiseType.PerlinFractal);
+        _densityController.SetFractalType(FastNoise.FractalType.FBM);
+        _densityController.SetFractalLacunarity((float) (Math.PI * 2 / 3));
     }
 
     private float GetDensityValue(Vector2i chunk)
@@ -37,6 +42,6 @@ public partial class WorldChunkSystem
     {
         var density = GetDensityValue(chunk);
         Logger.DebugS("worldgen", $"Checking clip with {density}");
-        return density > DensityClipPoint;
+        return density is > DensityClipPointMin and < DensityClipPointMax;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Content.Server.EUI;
 using Content.Server.Ghost.Components;
 using Content.Server.Procedural.Components;
 using Content.Server.Procedural.Prototypes;
@@ -13,6 +14,7 @@ using Robust.Shared.Log;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Procedural.Systems;
@@ -24,6 +26,8 @@ public partial class WorldChunkSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _configuration = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly DebrisGenerationSystem _debrisGeneration = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly EuiManager _euiManager = default!;
 
     public const int WorldLoadRadius = 256;
     public const int ChunkSize = 128;
