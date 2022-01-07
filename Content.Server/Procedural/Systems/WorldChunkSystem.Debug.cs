@@ -43,8 +43,10 @@ public partial class WorldChunkSystem
                 data[y][x] = new DebugChunkData()
                 {
                     Density = (int)(GetDensityValue(chunk) * 10),
+                    Radiation = (int)(GetRadiationClipped(chunk) * 10),
                     Clipped = ShouldClipChunk(chunk),
-                    Loaded = _currLoaded.Contains(chunk)
+                    Loaded = _currLoaded.Contains(chunk),
+                    Radstorming = ShouldRadstorm(chunk),
                 };
             }
         }

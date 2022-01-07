@@ -6,6 +6,9 @@
         <BoxContainer Orientation="Horizontal" HorizontalExpand="True" VerticalExpand="True">
             <Label Text="Zoom"/>
             <SliderIntInput HorizontalExpand="True" Name="ZoomSlider" Access="Public" MinValue="8" MaxValue="64"/>
+            <Label Text="Numeric"/>
+            <OptionButton Name="NumericOption"/>
+            <OptionButton Name="VisualOption"/>
         </BoxContainer>
         <radar:OverworldDebugControl Name="View"/>
     </BoxContainer>

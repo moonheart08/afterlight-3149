@@ -32,7 +32,9 @@ public class OverworldDebugSettingsMessage : EuiMessageBase
 public record struct DebugChunkData
 {
     public float Density;
+    public float Radiation;
     public bool Clipped;
     public bool Loaded;
+    public bool Radstorming;
 }
 
