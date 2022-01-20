@@ -108,19 +108,21 @@ public partial class WorldChunkSystem
         var debrisPoints = _sampler.SampleRectangle(topLeft, lowerRight, density);
         var debris = new HashSet<DebrisData>(debrisPoints.Count);
         var biome = SelectBiome(chunk);
-
-        foreach (var p in debrisPoints)
+        if (biome.DebrisLayouts.Length != 0)
         {
-            var kind = _prototypeManager.Index<DebrisLayoutPrototype>(_random.Pick(biome.DebrisLayouts)).Pick();
-            if (kind is null)
-                continue;
-
-            debris.Add(new DebrisData()
+            foreach (var p in debrisPoints)
             {
-                CurrGrid = null,
-                Kind = kind,
-                Coords = new MapCoordinates(p + center, WorldMap),
-            });
+                var kind = _prototypeManager.Index<DebrisLayoutPrototype>(_random.Pick(biome.DebrisLayouts)).Pick();
+                if (kind is null)
+                    continue;
+
+                debris.Add(new DebrisData()
+                {
+                    CurrGrid = null,
+                    Kind = kind,
+                    Coords = new MapCoordinates(p + center, WorldMap),
+                });
+            }
         }
 
         _chunks[chunk] = new WorldChunk()

@@ -108,6 +108,11 @@ public partial class WorldChunkSystem
         var density = GetDensityValue(chunk);
         return density is > DensityClipPointMin and < DensityClipPointMax;
     }
+
+    private float GetDensityClipped(Vector2i chunk)
+    {
+        return ShouldClipChunk(chunk) ? 0.0f : GetDensityValue(chunk);
+    }
     #endregion
 
     #region Radiation
@@ -166,7 +171,7 @@ public partial class WorldChunkSystem
     {
         foreach (var biome in BiomesByPriority())
         {
-            if (biome.CheckValid(GetTemperatureClipped(chunk), GetRadiationClipped(chunk), GetWreckClipped(chunk), GetChunkDensity(chunk)))
+            if (biome.CheckValid(GetTemperatureClipped(chunk), GetRadiationClipped(chunk), GetWreckClipped(chunk), GetDensityClipped(chunk)))
                 return biome;
         }
 

@@ -7,8 +7,8 @@
 - type: biome
   id: Empty
   symbol: ' '
-  priority: 0
-  densityRange: [ { min: 0.0, max: 0.0 } ]
+  priority: -9999
+  densityRange: [ { min: 0.0, max: 0.01 } ]
   debrisLayouts: [ ]
 
 - type: biome

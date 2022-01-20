@@ -27,8 +27,8 @@ public class BiomePrototype : IPrototype
     /// <summary>
     /// Layouts this can pick from.
     /// </summary>
-    [DataField("debrisLayouts")]
-    public string[] DebrisLayouts { get; } = default!;
+    [DataField("debrisLayouts", required: true)]
+    public string[] DebrisLayouts { get; } = System.Array.Empty<string>();
 
     /// <summary>
     /// Temperature ranges for this biome.
