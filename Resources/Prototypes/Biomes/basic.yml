@@ -1,0 +1,26 @@
+﻿- type: biome
+  id: SpawnBiome
+  symbol: S
+  priority: 9999
+  debrisLayouts: [ "SpawnDebris" ]
+
+- type: biome
+  id: Empty
+  symbol: ' '
+  priority: 0
+  densityRange: [ { min: 0.0, max: 0.0 } ]
+  debrisLayouts: [ ]
+
+- type: biome
+  id: Rocky
+  symbol: r
+  priority: 0
+  wreckRange: [ { min: 0.0, max: 0.33 } ]
+  debrisLayouts: [ "Wreckless" ]
+
+- type: biome
+  id: Wrecked
+  symbol: w
+  priority: 0
+  wreckRange: [ { min: 0.66, max: 1.0 } ]
+  debrisLayout: [ "Rockless" ]

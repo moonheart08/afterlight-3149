@@ -11,3 +11,21 @@
       prob: 0.25
     - proto: WreckDebris2
       prob: 1
+
+- type: debrisLayout
+  id: Wreckless
+  layout:
+    - proto: RoidDebris2
+      prob: 0.25
+    - proto: RoidDebris3
+      prob: 0.1
+    - proto: RoidDebris1
+      prob: 1
+
+- type: debrisLayout
+  id: Rockless
+  layout:
+    - proto: WreckDebris1
+      prob: 0.25
+    - proto: WreckDebris2
+      prob: 1

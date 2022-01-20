@@ -99,6 +99,9 @@ public sealed class OverworldDebugControl : Control
                     {
                         NumericChoice.Density => Data[y][x].Density.ToString(CultureInfo.InvariantCulture),
                         NumericChoice.Radiation => Data[y][x].Radiation.ToString(CultureInfo.InvariantCulture),
+                        NumericChoice.Temperature => Data[y][x].Temperature.ToString(CultureInfo.InvariantCulture),
+                        NumericChoice.Wrecks => Data[y][x].Wrecks.ToString(CultureInfo.InvariantCulture),
+                        NumericChoice.Biome => Data[y][x].BiomeSymbol.ToString(),
                         _ => throw new ArgumentOutOfRangeException()
                     };
                     if (n != "0")
@@ -113,6 +116,9 @@ public enum NumericChoice
 {
     Density = 0,
     Radiation,
+    Temperature,
+    Wrecks,
+    Biome,
 }
 
 public enum VisualChoice

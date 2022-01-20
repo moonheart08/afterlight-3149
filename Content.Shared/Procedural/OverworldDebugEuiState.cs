@@ -33,8 +33,11 @@ public record struct DebugChunkData
 {
     public float Density;
     public float Radiation;
+    public float Wrecks;
+    public float Temperature;
     public bool Clipped;
     public bool Loaded;
     public bool Radstorming;
+    public char BiomeSymbol;
 }
 
