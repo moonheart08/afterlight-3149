@@ -512,6 +512,7 @@ namespace Content.Server.GameTicking
             _spawnedPositions.Clear();
             _manifest.Clear();
             DisallowLateJoin = false;
+            _world.Reset();
         }
 
         public bool DelayStart(TimeSpan time)
