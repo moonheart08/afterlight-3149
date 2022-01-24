@@ -87,7 +87,8 @@
         path: /Audio/Ambience/Objects/gravity_gen_hum.ogg
     - type: Sprite
       netsync: false
-      sprite: Structures/Machines/gravity_generator_mini.rsi
+      sprite: Structures/Machines/gravity_generator.rsi
+      scale: 0.333, 0.333
       layers:
         - state: on
           map: ["enum.GravityGeneratorVisualLayers.Base"]
