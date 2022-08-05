@@ -1,0 +1,22 @@
+﻿- type: entity
+  name: handheld scanner
+  parent: BaseItem
+  id: HandheldScannerBasic
+  description: Helping the finders find the lost since 2022, doesn't function as a GPS for some reason.
+  components:
+    - type: Sprite
+      sprite: OuterRim/Objects/Devices/scanner.rsi
+      netsync: false
+      layers:
+        - state: icon
+        - state: active
+    - type: Item
+      sprite: OuterRim/Objects/Devices/scanner.rsi
+    - type: RadarConsole
+      maxRange: 25.0
+    - type: ActivatableUI
+      key: enum.RadarConsoleUiKey.Key
+    - type: UserInterface
+      interfaces:
+        - key: enum.RadarConsoleUiKey.Key
+          type: RadarConsoleBoundUserInterface
