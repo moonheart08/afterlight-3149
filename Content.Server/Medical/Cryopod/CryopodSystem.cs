@@ -50,7 +50,7 @@ public sealed class CryopodSystem : EntitySystem
         if (args.SpawnResult != null)
             return;
 
-        var validPods = EntityQuery<CryopodComponent>().Where(c => !IsOccupied(c)).ToArray();
+        var validPods = EntityQuery<CryopodComponent>().Where(c => !IsOccupied(c) && c.DoSpawns).ToArray();
         Logger.Debug($"{validPods.Length}");
         _random.Shuffle(validPods);
         if (!validPods.Any())

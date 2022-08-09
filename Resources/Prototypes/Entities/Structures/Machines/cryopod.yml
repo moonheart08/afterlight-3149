@@ -42,3 +42,4 @@
   suffix: No Spawns
   components:
   - type: Cryopod
+    doSpawns: false
