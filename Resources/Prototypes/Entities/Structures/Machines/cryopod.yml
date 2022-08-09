@@ -38,6 +38,7 @@
   - type: Cryopod
 
 - type: entity
+  id: MachineCryopodNoSpawns
   parent: MachineCryopod
   suffix: No Spawns
   components:
