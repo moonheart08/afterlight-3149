@@ -44,6 +44,7 @@
         - OxygenCanister
         - CarbonDioxideCanister
         - WaterVaporCanister
+        - WaterTank
       chance: 0.9
       offset: 0.0
 
