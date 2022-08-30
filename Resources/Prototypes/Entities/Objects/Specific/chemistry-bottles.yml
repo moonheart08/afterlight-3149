@@ -47,6 +47,10 @@
   parent: BaseChemistryEmptyBottle
   id: ChemistryEmptyBottle01
   components:
+  - type: Tag
+    tags:
+      - Bottle
+      - Trash
   - type: Sprite
     sprite: Objects/Specific/Chemistry/bottle.rsi
     layers:
@@ -64,6 +68,10 @@
   parent: BaseChemistryEmptyBottle
   id: ChemistryEmptyBottle02
   components:
+  - type: Tag
+    tags:
+      - Bottle
+      - Trash
   - type: Sprite
     sprite: Objects/Specific/Chemistry/bottle.rsi
     layers:
@@ -81,6 +89,10 @@
   parent: BaseChemistryEmptyBottle
   id: ChemistryEmptyBottle03
   components:
+  - type: Tag
+    tags:
+      - Bottle
+      - Trash
   - type: Sprite
     sprite: Objects/Specific/Chemistry/bottle.rsi
     layers:
@@ -98,6 +110,10 @@
   parent: BaseChemistryEmptyBottle
   id: ChemistryEmptyBottle04
   components:
+  - type: Tag
+    tags:
+      - Bottle
+      - Trash
   - type: Sprite
     sprite: Objects/Specific/Chemistry/bottle.rsi
     layers:
