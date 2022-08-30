@@ -17,7 +17,7 @@
   - type: StorageFill
     contents:
       - id: BoxSurvival
-      - id: BriefcaseBrownFilled
+      #- id: BriefcaseBrownFilled # No briefcase 4 u until storagefill lets you overfill.
 
 - type: entity
   noSpawn: true
