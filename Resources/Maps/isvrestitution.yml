@@ -119,6 +119,7 @@ entities:
     type: Fixtures
   - gravityShakeSound: !type:SoundPathSpecifier
       path: /Audio/Effects/alert.ogg
+    enabled: True
     type: Gravity
   - chunkCollection: {}
     type: DecalGrid
@@ -781,7 +782,7 @@ entities:
       3,5: 0
       3,6: 0
       3,7: 0
-      3,8: 0
+      3,8: 2
       3,9: 0
       3,10: 0
       4,0: 0
@@ -1087,6 +1088,21 @@ entities:
       - 0
     - volume: 2500
       temperature: 235
+      moles:
+      - 21.824879
+      - 82.10312
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    - volume: 2500
+      temperature: 278.6125
       moles:
       - 21.824879
       - 82.10312
@@ -10515,4 +10531,16 @@ entities:
   - pos: 1.5,11.5
     parent: 2
     type: Transform
+- uid: 1468
+  type: GravityGeneratorMini
+  components:
+  - pos: -14.5,-8.5
+    parent: 2
+    type: Transform
+  - enabled: False
+    type: AmbientSound
+  - powerLoad: 50
+    type: ApcPowerReceiver
+  - radius: 2.5
+    type: PointLight
 ...
