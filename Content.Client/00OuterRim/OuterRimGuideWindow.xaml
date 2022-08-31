@@ -1,0 +1,18 @@
+﻿<ui:FancyWindow xmlns:ui="clr-namespace:Content.Client.UserInterface"
+                xmlns="https://spacestation14.io"
+                xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+                SetSize="750 700"
+                MinSize="100 200"
+                Resizable="True"
+                Title="Guidebook">
+    <BoxContainer Orientation="Horizontal" HorizontalExpand="True">
+        <!-- Guide select -->
+        <BoxContainer Orientation="Horizontal" HorizontalExpand="True" SizeFlagsStretchRatio="1">
+            <Tree Name="GuideSelect" VerticalExpand="True" HorizontalExpand="True"/>
+            <cc:VSeparator StyleClasses="LowDivider"/>
+        </BoxContainer>
+        <BoxContainer Name="GuideContainer" Orientation="Vertical" HorizontalExpand="True" SizeFlagsStretchRatio="2" Margin="5 5 5 5">
+
+        </BoxContainer>
+    </BoxContainer>
+</ui:FancyWindow>

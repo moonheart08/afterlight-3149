@@ -1,0 +1,1 @@
+﻿Biofuel generators are standard 20hW portable generators, ran on whatever produce or biological matter you can provide, converting nutrients into watts to power a vessel. It is strongly recommended to reserve three planters per generator to fuel production.

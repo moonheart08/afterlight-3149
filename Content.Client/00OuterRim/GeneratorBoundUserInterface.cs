@@ -2,7 +2,7 @@
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 
-namespace Content.Client.OuterRim;
+namespace Content.Client._00OuterRim;
 
 [UsedImplicitly]
 public sealed class GeneratorBoundUserInterface : BoundUserInterface
