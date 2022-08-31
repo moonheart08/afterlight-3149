@@ -9,6 +9,8 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/meat.rsi
     netsync: false
+  - type: ChemicalFuelGeneratorDirectSource
+    solution: food
   - type: SolutionContainerManager
     solutions:
       food:

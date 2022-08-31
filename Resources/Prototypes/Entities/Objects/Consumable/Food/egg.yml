@@ -17,6 +17,8 @@
     sprite: Objects/Consumable/Food/egg.rsi
     netsync: false
     size: 1
+  - type: ChemicalFuelGeneratorDirectSource
+    solution: food
   - type: SolutionContainerManager
     solutions:
       food:

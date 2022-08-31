@@ -223,10 +223,12 @@
         Flour: 0.05
         Oats: 0.05
         Vitamin: 0.1
+        Egg: 0.1
         Water: 0.0
         JuiceCarrot: 0.05
         PulpedBananaPeel: 0.2
         Histamine: 0.0125
+        UncookedAnimalProteins: 0.05
     - type: ActivatableUI
       key: enum.GeneratorComponentUiKey.Key
     - type: UserInterface
