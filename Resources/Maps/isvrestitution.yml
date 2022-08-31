@@ -119,7 +119,6 @@ entities:
     type: Fixtures
   - gravityShakeSound: !type:SoundPathSpecifier
       path: /Audio/Effects/alert.ogg
-    enabled: True
     type: Gravity
   - chunkCollection: {}
     type: DecalGrid
@@ -10543,4 +10542,97 @@ entities:
     type: ApcPowerReceiver
   - radius: 2.5
     type: PointLight
+- uid: 1469
+  type: AtmosDeviceFanTiny
+  components:
+  - anchored: True
+    pos: 17.5,8.5
+    parent: 2
+    type: Transform
+- uid: 1470
+  type: AtmosDeviceFanTiny
+  components:
+  - anchored: True
+    pos: 16.5,8.5
+    parent: 2
+    type: Transform
+- uid: 1471
+  type: AtmosDeviceFanTiny
+  components:
+  - anchored: True
+    pos: 15.5,8.5
+    parent: 2
+    type: Transform
+- uid: 1472
+  type: FoodBreadPlain
+  components:
+  - pos: -5.6285315,-2.4948058
+    parent: 2
+    type: Transform
+- uid: 1473
+  type: FoodBreadPlain
+  components:
+  - pos: -5.607438,-2.2416415
+    parent: 2
+    type: Transform
+- uid: 1474
+  type: FoodBreadPlain
+  components:
+  - pos: -5.6285315,-2.3682237
+    parent: 2
+    type: Transform
+- uid: 1475
+  type: FoodBreadPlain
+  components:
+  - pos: -5.164469,-2.2416415
+    parent: 2
+    type: Transform
+- uid: 1476
+  type: FoodBreadPlain
+  components:
+  - pos: -5.164469,-2.4737086
+    parent: 2
+    type: Transform
+- uid: 1477
+  type: FoodBreadPlain
+  components:
+  - pos: -5.164469,-2.3260293
+    parent: 2
+    type: Transform
+- uid: 1478
+  type: FoodBreadPlain
+  components:
+  - pos: -4.6793127,-2.5580964
+    parent: 2
+    type: Transform
+- uid: 1479
+  type: FoodBreadPlain
+  components:
+  - pos: -4.700407,-2.3682237
+    parent: 2
+    type: Transform
+- uid: 1480
+  type: FoodBreadPlain
+  components:
+  - pos: -4.700407,-2.2205443
+    parent: 2
+    type: Transform
+- uid: 1481
+  type: FoodBreadPlain
+  components:
+  - pos: -4.2363443,-2.5580964
+    parent: 2
+    type: Transform
+- uid: 1482
+  type: FoodBreadPlain
+  components:
+  - pos: -4.2363443,-2.304932
+    parent: 2
+    type: Transform
+- uid: 1483
+  type: FoodBreadPlain
+  components:
+  - pos: -4.2363443,-2.17835
+    parent: 2
+    type: Transform
 ...
