@@ -9,6 +9,8 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/Baked/pizza.rsi
     netsync: false
+  - type: ChemicalFuelGeneratorDirectSource
+    solution: food
   - type: SolutionContainerManager
     solutions:
       food:
@@ -35,6 +37,8 @@
   - type: Sprite
     sprite: Objects/Consumable/Food/Baked/pizza.rsi
     netsync: false
+  - type: ChemicalFuelGeneratorDirectSource
+    solution: food
   - type: SolutionContainerManager
     solutions:
       food:
