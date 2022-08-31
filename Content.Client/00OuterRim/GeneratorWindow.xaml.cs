@@ -9,7 +9,7 @@ namespace Content.Client._00OuterRim;
 [GenerateTypedNameReferences]
 public sealed partial class GeneratorWindow : FancyWindow
 {
-    public GeneratorWindow(GeneratorBoundUserInterface bui, EntityUid vis)
+    public GeneratorWindow(SolidFuelGeneratorBoundUserInterface bui, EntityUid vis)
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);

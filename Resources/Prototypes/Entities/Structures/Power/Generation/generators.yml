@@ -168,7 +168,7 @@
   - type: UserInterface
     interfaces:
       - key: enum.GeneratorComponentUiKey.Key
-        type: GeneratorBoundUserInterface
+        type: SolidFuelGeneratorBoundUserInterface
   - type: Sprite
     sprite: Structures/Power/Generation/portable_generator.rsi
     state: portgen0_1
@@ -194,7 +194,7 @@
   - type: UserInterface
     interfaces:
       - key: enum.GeneratorComponentUiKey.Key
-        type: GeneratorBoundUserInterface
+        type: SolidFuelGeneratorBoundUserInterface
   - type: PowerSupplier
     supplyRate: 0
   - type: Sprite
@@ -214,8 +214,8 @@
     - type: PowerSupplier
       supplyRate: 0
     - type: SolidFuelGenerator
-      targetPower: 2000
-      optimalPower: 2000
+      targetPower: 3000
+      optimalPower: 2300
       optimalBurnRate: 0.00555555555 # 1/180
     - type: ChemicalFuelGeneratorAdapter
       chemConversionFactors:
@@ -232,7 +232,7 @@
     - type: UserInterface
       interfaces:
         - key: enum.GeneratorComponentUiKey.Key
-          type: GeneratorBoundUserInterface
+          type: SolidFuelGeneratorBoundUserInterface
     - type: Sprite
       sprite: Structures/Power/Generation/portable_generator.rsi
       state: portgen2_1

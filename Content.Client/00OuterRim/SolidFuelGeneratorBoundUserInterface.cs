@@ -5,11 +5,11 @@ using Robust.Client.GameObjects;
 namespace Content.Client._00OuterRim;
 
 [UsedImplicitly]
-public sealed class GeneratorBoundUserInterface : BoundUserInterface
+public sealed class SolidFuelGeneratorBoundUserInterface : BoundUserInterface
 {
     private GeneratorWindow? _window;
 
-    public GeneratorBoundUserInterface(ClientUserInterfaceComponent owner, Enum uiKey) : base(owner, uiKey)
+    public SolidFuelGeneratorBoundUserInterface(ClientUserInterfaceComponent owner, Enum uiKey) : base(owner, uiKey)
     {
     }
 
