@@ -29,7 +29,6 @@ namespace Content.Server.Xenoarchaeology.XenoArtifacts.Effects.Systems
             "SpaceFlu",
             "BirdFlew",
             "TongueTwister",
-            "ORDisease1",
             "AMIV"
         };
 
