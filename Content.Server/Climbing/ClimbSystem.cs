@@ -120,13 +120,13 @@ public sealed class ClimbSystem : SharedClimbSystem
         if (TryBonk(component, user))
             return;
 
-        _doAfterSystem.DoAfter(new DoAfterEventArgs(entityToMove, component.ClimbDelay, default, climbable)
+        _doAfterSystem.DoAfter(new DoAfterEventArgs(entityToMove, component.ClimbDelay, default, climbable, user)
         {
             BreakOnTargetMove = true,
             BreakOnUserMove = true,
             BreakOnDamage = true,
             BreakOnStun = true,
-            UserFinishedEvent = new ClimbFinishedEvent(user, climbable)
+            UserFinishedEvent = new ClimbFinishedEvent(user, climbable, entityToMove)
         });
     }
 
@@ -159,10 +159,10 @@ public sealed class ClimbSystem : SharedClimbSystem
 
     private void OnClimbFinished(EntityUid uid, ClimbingComponent climbing, ClimbFinishedEvent args)
     {
-        Climb(uid, args.User, args.Climbable, climbing: climbing);
+        Climb(uid, args.User, args.Instigator, args.Climbable, climbing: climbing);
     }
 
-    private void Climb(EntityUid uid, EntityUid user, EntityUid climbable, bool silent = false, ClimbingComponent? climbing = null,
+    private void Climb(EntityUid uid, EntityUid user, EntityUid instigator, EntityUid climbable, bool silent = false, ClimbingComponent? climbing = null,
         PhysicsComponent? physics = null, FixturesComponent? fixtures = null)
     {
         if (!Resolve(uid, ref climbing, ref physics, ref fixtures, false))
@@ -178,7 +178,7 @@ public sealed class ClimbSystem : SharedClimbSystem
         // there's also the cases where the user might collide with the person they are forcing onto the climbable that i haven't accounted for
 
         RaiseLocalEvent(uid, new StartClimbEvent(climbable), false);
-        RaiseLocalEvent(climbable, new ClimbedOnEvent(uid), false);
+        RaiseLocalEvent(climbable, new ClimbedOnEvent(uid, user), false);
 
         if (silent)
             return;
@@ -347,7 +347,7 @@ public sealed class ClimbSystem : SharedClimbSystem
 
     public void ForciblySetClimbing(EntityUid uid, EntityUid climbable, ClimbingComponent? component = null)
     {
-        Climb(uid, uid, climbable, true, component);
+        Climb(uid, uid, uid, climbable, true, component);
     }
 
     private void OnBuckleChange(EntityUid uid, ClimbingComponent component, BuckleChangeEvent args)
@@ -440,14 +440,16 @@ public sealed class ClimbSystem : SharedClimbSystem
 
 internal sealed class ClimbFinishedEvent : EntityEventArgs
 {
-    public ClimbFinishedEvent(EntityUid user, EntityUid climbable)
+    public ClimbFinishedEvent(EntityUid user, EntityUid climbable, EntityUid instigator)
     {
         User = user;
         Climbable = climbable;
+        Instigator = instigator;
     }
 
     public EntityUid User { get; }
     public EntityUid Climbable { get; }
+    public EntityUid Instigator { get; }
 }
 
 /// <summary>
@@ -456,10 +458,12 @@ internal sealed class ClimbFinishedEvent : EntityEventArgs
 public sealed class ClimbedOnEvent : EntityEventArgs
 {
     public EntityUid Climber;
+    public EntityUid Instigator;
 
-    public ClimbedOnEvent(EntityUid climber)
+    public ClimbedOnEvent(EntityUid climber, EntityUid instigator)
     {
         Climber = climber;
+        Instigator = instigator;
     }
 }
 
