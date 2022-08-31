@@ -11,7 +11,7 @@
   populator:
     !type:ScrapyardPopulator
     entityTable:
-      floor_steel:
+      FloorSteel:
         - id: SalvageMaterialCrateSpawner
           prob: 0.1
           orGroup: Debris
@@ -21,7 +21,7 @@
         - id: RandomArtifactSpawner
           prob: 0.005
           orGroup: Debris
-      plating:
+      Plating:
         - id: WallSolid
           prob: 0.3
           orGroup: Debris
@@ -34,7 +34,7 @@
         - id: RandomArtifactSpawner
           prob: 0.005
           orGroup: Debris
-      lattice:
+      Lattice:
         - id: SalvageMaterialCrateSpawner
           prob: 0.05
           orGroup: Debris
@@ -63,7 +63,7 @@
   populator:
     !type:ScrapyardPopulator
     entityTable:
-      floor_steel:
+      FloorSteel:
         - id: SalvageMaterialCrateSpawner
           prob: 0.1
           orGroup: Debris
@@ -73,7 +73,7 @@
         - id: RandomArtifactSpawner
           prob: 0.005
           orGroup: Debris
-      plating:
+      Plating:
         - id: WallSolid
           prob: 0.3
           orGroup: Debris
@@ -86,7 +86,7 @@
         - id: RandomArtifactSpawner
           prob: 0.005
           orGroup: Debris
-      lattice:
+      Lattice:
         - id: SalvageMaterialCrateSpawner
           prob: 0.05
           orGroup: Debris

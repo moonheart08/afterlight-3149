@@ -104,6 +104,9 @@
   id: JobSalvageSpecialist
 
 - type: playTimeTracker
+  id: JobSalvageEngineer
+
+- type: playTimeTracker
   id: JobScientist
 
 - type: playTimeTracker
