@@ -215,20 +215,20 @@
       supplyRate: 0
     - type: SolidFuelGenerator
       targetPower: 3000
-      optimalPower: 2300
+      optimalPower: 2000
       optimalBurnRate: 0.00555555555 # 1/180
     - type: ChemicalFuelGeneratorAdapter
       chemConversionFactors:
-        Nutriment: 0.05
-        Flour: 0.05
-        Oats: 0.05
-        Vitamin: 0.1
-        Egg: 0.1
+        Nutriment: 0.025
+        Flour: 0.025
+        Oats: 0.025
+        Vitamin: 0.05
+        Egg: 0.05
         Water: 0.0
-        JuiceCarrot: 0.05
-        PulpedBananaPeel: 0.2
+        JuiceCarrot: 0.025
+        PulpedBananaPeel: 0.1
         Histamine: 0.0125
-        UncookedAnimalProteins: 0.05
+        UncookedAnimalProteins: 0.025
     - type: ActivatableUI
       key: enum.GeneratorComponentUiKey.Key
     - type: UserInterface
