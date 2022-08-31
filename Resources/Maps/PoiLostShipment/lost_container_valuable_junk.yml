@@ -4,7 +4,7 @@ meta:
   author: Space-Wizards
   postmapinit: false
 tilemap:
-  0: space
+  0: Space
   1: FloorArcadeBlue
   2: FloorArcadeBlue2
   3: FloorArcadeRed
@@ -62,7 +62,7 @@ tilemap:
   55: floor_white
   56: floor_wood
   57: lattice
-  58: plating
+  58: Plating
 grids:
 - settings:
     chunksize: 16
