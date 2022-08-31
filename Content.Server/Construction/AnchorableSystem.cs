@@ -9,6 +9,7 @@ using Content.Shared.Construction.EntitySystems;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Pulling.Components;
+using Content.Shared.Tag;
 using Content.Shared.Tools.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -116,9 +117,13 @@ namespace Content.Server.Construction
             var tileIndices = grid.TileIndicesFor(coordinates);
             var enumerator = grid.GetAnchoredEntitiesEnumerator(tileIndices);
             var bodyQuery = GetEntityQuery<PhysicsComponent>();
+            var tagQuery = GetEntityQuery<TagComponent>();
 
             while (enumerator.MoveNext(out var ent))
             {
+                if (tagQuery.TryGetComponent(ent, out var tag) && tag.Tags.Contains("NoBlockAnchoring"))
+                    continue;
+
                 if (!bodyQuery.TryGetComponent(ent, out var body) ||
                     !body.CanCollide)
                     continue;

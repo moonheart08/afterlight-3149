@@ -333,6 +333,9 @@
   id: NoSpinOnThrow
 
 - type: Tag
+  id: NoBlockAnchoring
+
+- type: Tag
   id: NukeOpsUplink
 
 - type: Tag

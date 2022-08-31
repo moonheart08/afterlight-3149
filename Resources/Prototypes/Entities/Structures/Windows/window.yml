@@ -104,6 +104,7 @@
   - type: Tag
     tags:
       - Window
+      - NoBlockAnchoring # Thindows don't block structures.
   - type: Sprite
     drawdepth: Mobs
     netsync: false
