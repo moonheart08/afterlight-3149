@@ -13,7 +13,7 @@
         </BoxContainer>
         <ScrollContainer HScrollEnabled="False" HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="2">
             <BoxContainer Orientation="Vertical" Name="GuideContainer" Margin="5 5 5 5">
-
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Text="Select an entry."/>
             </BoxContainer>
         </ScrollContainer>
     </BoxContainer>

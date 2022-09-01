@@ -10,6 +10,13 @@
   - type: InteractionOutline
   - type: Physics
     bodyType: Dynamic
+  - type: HealOnBuckle
+    damage:
+      groups:
+        Brute: -0.05 ## 0.1 per
+        Burn: -0.05
+      types:
+        Poison: -0.025
   - type: Fixtures
     fixtures:
     - shape:
