@@ -229,6 +229,9 @@
         PulpedBananaPeel: 0.1
         Histamine: 0.0125
         UncookedAnimalProteins: 0.025
+    - type: SolidFuelGeneratorAdapter
+      fuelMaterial: Biomass
+      multiplier: 0.1
     - type: ActivatableUI
       key: enum.GeneratorComponentUiKey.Key
     - type: UserInterface

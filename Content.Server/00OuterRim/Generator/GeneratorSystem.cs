@@ -77,7 +77,7 @@ public sealed class GeneratorSystem : SharedGeneratorSystem
         if (!mat.MaterialIds.Contains(component.FuelMaterial))
             return;
 
-        generator.RemainingFuel += stack.Count;
+        generator.RemainingFuel += stack.Count * component.Multiplier;
         QueueDel(args.Used);
         args.Handled = true;
         return;
