@@ -9,10 +9,12 @@
         <!-- Guide select -->
         <BoxContainer Orientation="Horizontal" HorizontalExpand="True" SizeFlagsStretchRatio="1">
             <Tree Name="GuideSelect" VerticalExpand="True" HorizontalExpand="True"/>
-            <cc:VSeparator StyleClasses="LowDivider"/>
+            <cc:VSeparator StyleClasses="LowDivider" Margin="0 -2"/>
         </BoxContainer>
-        <BoxContainer Name="GuideContainer" Orientation="Vertical" HorizontalExpand="True" SizeFlagsStretchRatio="2" Margin="5 5 5 5">
+        <ScrollContainer HScrollEnabled="False" HorizontalExpand="True" VerticalExpand="True" SizeFlagsStretchRatio="2">
+            <BoxContainer Orientation="Vertical" Name="GuideContainer" Margin="5 5 5 5">
 
-        </BoxContainer>
+            </BoxContainer>
+        </ScrollContainer>
     </BoxContainer>
 </ui:FancyWindow>

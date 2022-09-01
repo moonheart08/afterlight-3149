@@ -1,7 +1,7 @@
 ﻿- type: entity
   id: ThermalPipework
   name: thermal pump
-  description: A wall-mounted bi-directional heatpump for rapid transfer between spaces, including space. A label on the backplate indicates it's rated for 100W of radiative dissipation and is equipped with an automatic shutoff.
+  description: A wall-mounted bi-directional heatpump for rapid transfer between spaces, including space. A label on the backplate indicates it's rated for 400W of radiative dissipation and is equipped with an automatic shutoff.
   placement:
     mode: SnapgridCenter
   components:

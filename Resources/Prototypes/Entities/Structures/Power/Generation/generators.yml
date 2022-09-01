@@ -162,6 +162,7 @@
   - type: SolidFuelGenerator
     targetPower: 2000
     optimalPower: 2000
+    optimalBurnRate: 0.02222222222
   - type: SolidFuelGeneratorAdapter
   - type: ActivatableUI
     key: enum.GeneratorComponentUiKey.Key
@@ -186,7 +187,7 @@
   - type: SolidFuelGenerator
     targetPower: 2000
     optimalPower: 2000
-    optimalBurnRate: 0.00208333333
+    optimalBurnRate: 0.003125
   - type: SolidFuelGeneratorAdapter
     fuelMaterial: Uranium
   - type: ActivatableUI

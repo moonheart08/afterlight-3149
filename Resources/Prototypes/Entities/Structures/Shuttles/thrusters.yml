@@ -42,7 +42,6 @@
   components:
   - type: Thruster
   - type: Temperature
-  - type: ApcPassiveHeater
   - type: AtmosExposed
   - type: ApcPowerReceiver
     powerLoad: 150
@@ -104,7 +103,6 @@
   - type: Thruster
     requireSpace: false
   - type: Temperature
-  - type: ApcPassiveHeater
   - type: AtmosExposed
   - type: ApcPowerReceiver
     needsPower: false
@@ -128,7 +126,6 @@
   parent: BaseThruster
   components:
   - type: Temperature
-  - type: ApcPassiveHeater
   - type: AtmosExposed
   - type: ApcPowerReceiver
     powerLoad: 150
@@ -169,7 +166,6 @@
     - type: Thruster
       requireSpace: false
     - type: Temperature
-    - type: ApcPassiveHeater
     - type: AtmosExposed
     - type: ApcPowerReceiver
       needsPower: false

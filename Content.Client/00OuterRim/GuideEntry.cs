@@ -13,4 +13,6 @@ public class GuideEntry
     [DataField("name", required: true)] public string Name = default!;
 
     [DataField("parent")] public string? Parent = default!;
+
+    [DataField("priority")] public int Priority = 0;
 }

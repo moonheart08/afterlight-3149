@@ -30,9 +30,15 @@ public sealed partial class OuterRimGuideWindow : FancyWindow
         var text = _resourceManager.ContentFileReadText(entry.Text).ReadToEnd();
 
         GuideContainer.RemoveAllChildren();
+
+        GuideContainer.AddChild(new Label()
+        {
+            StyleClasses = { "LabelHeading" },
+            Text = entry.Name
+        });
         var rt = new RichTextLabel();
         rt.SetMessage(FormattedMessage.FromMarkup(text));
-        rt.MaxWidth = this.Size.X * (2.0f/3.0f);
+        GuideContainer.MaxWidth = this.Size.X * (2.0f / 3.0f) - 20.0f * UIScale;
         GuideContainer.AddChild(rt);
     }
 
@@ -45,8 +51,9 @@ public sealed partial class OuterRimGuideWindow : FancyWindow
     private void RedrawTree()
     {
         var map = new Dictionary<string, Tree.Item>();
-        var unassigned = _entries.ToList();
+        var unassigned = _entries.OrderBy(x => x.Priority).ThenBy(x => x.Parent ?? "").ThenBy(x => x.Name).ToList();
         var i = 0;
+        var bulletFirst = false;
         GuideSelect.Clear();
 
         while (unassigned.Count != 0 && i < 128)
@@ -65,7 +72,12 @@ public sealed partial class OuterRimGuideWindow : FancyWindow
 
                 var item = GuideSelect.CreateItem(parent);
                 item.Metadata = entry;
-                item.Text = entry.Name;
+                if (!bulletFirst)
+                    item.Text = entry.Name;
+                else
+                    item.Text = $"› {entry.Name}";
+
+                bulletFirst = true;
 
                 map.Add(entry.Id, item);
 

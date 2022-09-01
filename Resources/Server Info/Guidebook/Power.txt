@@ -1,11 +1,15 @@
-﻿The power options you have are fairly slim, with AMEs, singularities, and solar generation being unavailable. The majority of vessels use 20hW portable generators run off of either plasma or uranium, alongside a select few that run on Biofuel generation instead.
+﻿    The power options you have are fairly slim, with AMEs, singularities, and solar generation being unavailable. The majority of vessels use 20hW portable generators run off of either plasma or uranium, alongside a select few that run on Biofuel generation instead.
 
-[color=#ffd700]Ramping[/color]
+[color=#ffd700]# Efficiency[/color]
 
-Contrary to popular belief, generators and batteries are not very fast, taking a notable amount of time to ramp up to load. When modifying power generation settings give generators about 60 seconds to settle into their new configuration. This also applies to batteries. Standard portable generators take about one second to ramp up to an added 50w of load, so if you wish to be more exact, multiply your target hW by two and wait that many seconds for ramp-up to complete.
+    Most generators have a sweet spot at which they are said to be at an ideal fuel efficiency to fuel consumption ratio, marked as 100% efficiency in their UI. It is generally better to use multiple, lower output power generators instead of a single high output one, if possible.
 
-[color=#ffd700]Reference sheet[/color]
+[color=#ffd700]# Ramping[/color]
 
-A watt is simply a joule per second. If something were to emit 20 joules of heat, it would presumably be doing so instantly, but if it emitted 20 watts of heat, it'd presumably be doing so continuously at a rate of 20 joules per second.
+    Contrary to popular belief, generators and batteries are not very fast, taking a notable amount of time to ramp up to load. When modifying power generation settings give generators about 60 seconds to settle into their new configuration. This also applies to batteries. Standard portable generators take about one second to ramp up to an added 50w of load, so if you wish to be more exact, multiply your target hW by two and wait that many seconds for ramp-up to complete.
 
-Most power usage is measures in [color=#a4885c]kilowatts[/color] (1,000 watts, kilo-) and [color=#a4885c]hectowatts[/color] (100 watts, hecto-)
+[color=#ffd700]# Reference Sheet[/color]
+
+    A watt is simply a joule per second. If something were to emit 20 joules of heat, it would presumably be doing so instantly, but if it emitted 20 watts of heat, it'd presumably be doing so continuously at a rate of 20 joules per second.
+
+    Most power usage is measures in [color=#a4885c]kilowatts[/color] (1,000 watts, kilo-) and [color=#a4885c]hectowatts[/color] (100 watts, hecto-)
