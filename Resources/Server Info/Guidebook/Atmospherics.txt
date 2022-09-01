@@ -14,4 +14,4 @@
 
 [color=#ffd700]# Reference Sheet[/color]
 
-    - Standard atmospheric mix is [color=#a4885c]78% N2 and 22% O2 at 101.24kPa.[/color]
+    › Standard atmospheric mix is [color=#a4885c]78% N2 and 22% O2 at 101.24kPa.[/color]
