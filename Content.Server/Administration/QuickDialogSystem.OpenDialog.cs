@@ -7,6 +7,27 @@ namespace Content.Server.Administration;
 public sealed partial class QuickDialogSystem
 {
     /// <summary>
+    /// Opens a dialog for the given client with no entries.
+    /// </summary>
+    /// <param name="session"></param>
+    /// <param name="title"></param>
+    /// <param name="okAction"></param>
+    /// <param name="cancelAction"></param>
+    [PublicAPI]
+    public void OpenDialog(IPlayerSession session, string title, Action okAction,
+        Action? cancelAction = null)
+    {
+        OpenDialogInternal(
+            session,
+            title,
+            new List<QuickDialogEntry>{},
+            QuickDialogButtonFlag.OkButton | QuickDialogButtonFlag.CancelButton,
+            ev => okAction.Invoke(),
+            cancelAction ?? (() => { })
+        );
+    }
+
+    /// <summary>
     /// Opens a dialog for the given client, allowing them to enter in the desired data.
     /// </summary>
     /// <param name="session">Client to show a dialog for.</param>
