@@ -18,8 +18,10 @@ public sealed class ScrapyardPopulator : DebrisPopulator
 
         foreach (var tile in grid.GetAllTiles())
         {
-            var name = tile.Tile.GetContentTileDefinition().Name;
-            if (!EntityTable.ContainsKey(name)) continue;
+            var name = tile.Tile.GetContentTileDefinition().ID;
+            if (!EntityTable.ContainsKey(name))
+                continue;
+
 
             var coords = grid.GridTileToLocal(tile.GridIndices);
 
