@@ -209,13 +209,13 @@
 - type: entity
   parent: [ BaseGenerator, ConstructibleMachine ]
   id: GeneratorBiofuel
-  suffix: Biofuel, 20hW
+  suffix: Biofuel, 15hW
   components:
     - type: PowerSupplier
       supplyRate: 0
     - type: SolidFuelGenerator
-      targetPower: 3000
-      optimalPower: 2000
+      targetPower: 2500
+      optimalPower: 1500
       optimalBurnRate: 0.00555555555 # 1/180
     - type: ChemicalFuelGeneratorAdapter
       chemConversionFactors:
