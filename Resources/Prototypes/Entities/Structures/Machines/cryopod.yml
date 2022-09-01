@@ -10,6 +10,8 @@
     sprite: Structures/Machines/cryopod.rsi
     layers:
     - state: closed
+  - type: Anchorable
+    delay: 999999
   - type: Physics
     bodyType: Static
   - type: Fixtures
