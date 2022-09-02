@@ -1,11 +1,9 @@
 ﻿    It is generally wise to avoid situations that will cause you harm, as the general lack of immediate health-care renders even less dangerous situations potentially deadly.
 
-[color=#ffd700]# Identifying your situation[/color]
-
+# Identifying your situation
     Your PDA contains both a vessel name and list of crew currently active in your vessel, a reminder for your name if needed, and your assigned job for the shift, allowing you to quickly assess the situation.
 
-[color=#ffd700]# Emergency Treatment[/color]
-
+# Emergency Treatment
     In the event of a serious emergency, there's a few things you can do to help ensure your long-term survival, including:
 
     › If actively bleeding out, or simply withing to prepare, it's possible to slice up cloth items with a knife or other sharp object and use the resulting cloth to create gauze to stem bleeding with.

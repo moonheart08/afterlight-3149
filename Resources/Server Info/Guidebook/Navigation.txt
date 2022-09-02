@@ -1,7 +1,6 @@
 ﻿    Navigation has been simplified to simple video game style controls instead of the typical individual thruster control of other systems, review the Shuttle section of the options menu keybinds for more information, and please do not forget that you have a brake.
 
-[color=#ffd700]# Debris Indication[/color]
-
+# Debris Indication
     Your navigational mass scanner will automatically color recognized objects based on simple classification.
 
     › [color=#FFFFFF]Strongly metallic debris[/color] is shown as white.

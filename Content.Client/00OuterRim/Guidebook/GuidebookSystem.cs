@@ -2,9 +2,8 @@
 using Robust.Shared.Input;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization;
 
-namespace Content.Client._00OuterRim;
+namespace Content.Client._00OuterRim.Guidebook;
 
 /// <summary>
 /// This handles...

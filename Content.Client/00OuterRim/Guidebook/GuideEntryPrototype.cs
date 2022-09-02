@@ -1,7 +1,6 @@
 ﻿using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
-namespace Content.Client._00OuterRim;
+namespace Content.Client._00OuterRim.Guidebook;
 
 /// <summary>
 /// This is a prototype for...

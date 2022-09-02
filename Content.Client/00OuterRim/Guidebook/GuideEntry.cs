@@ -1,7 +1,6 @@
-﻿using Robust.Shared.Serialization;
-using Robust.Shared.Utility;
+﻿using Robust.Shared.Utility;
 
-namespace Content.Client._00OuterRim;
+namespace Content.Client._00OuterRim.Guidebook;
 
 [Serializable, DataDefinition, Virtual]
 public class GuideEntry
