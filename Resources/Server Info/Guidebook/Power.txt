@@ -1,16 +1,29 @@
-﻿    The power options you have are fairly slim, with AMEs, singularities, and solar generation being unavailable. The majority of vessels use 20hW portable generators run off of either plasma or uranium, alongside a select few that run on Biofuel generation instead.
+SS14 has a fairly in-depth power system through which all devices on the station receive electricity. It's divided into three main powernets; HV, LV, and MV.
 ?{|:Horizontal:Center
-?embedEntity:GeneratorPlasma:2
-?embedEntity:GeneratorUranium:2
-?embedEntity:GeneratorBiofuel:2
+?embedEntityCaption:CableHVStack:2
+?embedEntityCaption:CableMVStack:2
+?embedEntityCaption:CableApcStack:2
 ?|}
-# Efficiency
-    Most generators have a sweet spot at which they are said to be at an ideal fuel efficiency to fuel consumption ratio, marked as 100% efficiency in their UI. It is generally better to use multiple, lower output power generators instead of a single high output one, if possible.
+#Cabling
+The three major cable types (HV, MV, and LV) can be used to form independent powernets. Examine them for a description of their uses.
+?{|:Horizontal:Center
+?embedEntityCaption:CableHV:2
+?embedEntityCaption:CableMV:2
+?embedEntityCaption:CableApcExtension:2
+?|}
+#Power storage
+Each power storage device presented functions as the transformer for its respective power level (HV, MV, and LV) and also provides a fairly sizable backup battery to help flatten out spikes and dips in power usage.
+?{|:Horizontal:Center
+?embedEntityCaption:SMESBasic:2
+?embedEntityCaption:SubstationBasic:2
+?embedEntityCaption:APCBasic:2
+?|}
+#Ramping
+Contrary to what one might expect from a video game electrical simulation, power is not instantly provided upon request. Generators and batteries take time to ramp up to match the draw imposed on them, which leads to brownouts when there are large changes in current draw all at once, for example when batteries run out.
 
-# Ramping
-    Contrary to popular belief, generators and batteries are not very fast, taking a notable amount of time to ramp up to load. When modifying power generation settings give generators about 60 seconds to settle into their new configuration. This also applies to batteries. Standard portable generators take about one second to ramp up to an added 50w of load, so if you wish to be more exact, multiply your target hW by two and wait that many seconds for ramp-up to complete.
+#Installing power storage
+Substations are the most self-explanatory. Simply install the machine on top of an MV and HV cable, it will draw power from the HV cable to provide to MV.
 
-# Reference Sheet
-    A watt is simply a joule per second. If something were to emit 20 joules of heat, it would presumably be doing so instantly, but if it emitted 20 watts of heat, it'd presumably be doing so continuously at a rate of 20 joules per second.
+Installing APCs is similarly simple, except APCs are exclusively wallmounted machinery and cannot be installed on the floor. Make sure it has both MV and LV connections.
 
-    Most power usage is measures in [color=#a4885c]kilowatts[/color] (1,000 watts, kilo-) and [color=#a4885c]hectowatts[/color] (100 watts, hecto-)
+Installing a SMES requires you construct a cable terminal to use as the input. The SMES will draw power from the terminal and send power out from underneath. The terminal will ensure that the HV input and HV output do not connect. Avoid connecting a SMES to itself, this will result in a short circuit which can result in power flickering or outages depending on severity.
