@@ -1,9 +1,4 @@
 ﻿- type: guideEntry
-  id: Power
-  name: Power
-  text: "/Server Info/Guidebook/Power.txt"
-
-- type: guideEntry
   id: PlasmaAndUranium
   name: Plasma & Uranium
   parent: Power

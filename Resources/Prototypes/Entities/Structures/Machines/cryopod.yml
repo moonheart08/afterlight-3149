@@ -2,7 +2,7 @@
   id: MachineCryopod
   parent: BaseMachine
   name: cryopod
-  description: Perfect for a 1000 year nap.
+  description: Perfect for a month's nap.
   suffix: Spawns
   components:
   - type: Sprite

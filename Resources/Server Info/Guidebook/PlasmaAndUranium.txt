@@ -1,6 +1,6 @@
-﻿    Plasma and Uranium based portable generators are the most common power source you'll deal with, with typical generators producing 20hW at standard settings.
+﻿Plasma and Uranium based portable generators are the most common power source you'll deal with, with typical generators producing 20hW at standard settings.
 ?{|:Horizontal:Center
 ?embedEntity:GeneratorPlasma:2
 ?embedEntity:GeneratorUranium:2
 ?|}
-    Plasma generators consume fuel at a rate of one unit forty-five seconds for standard operation, while uranium generators consume fuel at a rate of one unit per five and a third minutes of operation during standard operation.
+Plasma generators consume fuel at a rate of one unit forty-five seconds for standard operation, while uranium generators consume fuel at a rate of one unit per five and a third minutes of operation during standard operation.

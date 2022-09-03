@@ -4,11 +4,6 @@
   text: "/Server Info/Guidebook/CharacterCreation.txt"
 
 - type: guideEntry
-  id: Jobs
-  name: Jobs
-  text: "/Server Info/Guidebook/Jobs.txt"
-
-- type: guideEntry
   id: Survival
   name: Survival
   text: "/Server Info/Guidebook/Survival.txt"

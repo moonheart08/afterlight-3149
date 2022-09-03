@@ -27,3 +27,6 @@ Substations are the most self-explanatory. Simply install the machine on top of 
 Installing APCs is similarly simple, except APCs are exclusively wallmounted machinery and cannot be installed on the floor. Make sure it has both MV and LV connections.
 
 Installing a SMES requires you construct a cable terminal to use as the input. The SMES will draw power from the terminal and send power out from underneath. The terminal will ensure that the HV input and HV output do not connect. Avoid connecting a SMES to itself, this will result in a short circuit which can result in power flickering or outages depending on severity.
+
+#Generators
+Your options for power sources are fairly slim, currently constrained to Plasma, Uranium, and Biofuel power generation, with AMEs not being present.

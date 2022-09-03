@@ -1,3 +1,8 @@
+
+?{|:Horizontal:Center
+#This feature isn't in Outer Rim
+?|}
+
 The AME is one of the simplest engines available. You put together the multi-tile structure, stick some fuel into it, and you're all set. This doesn't mean it isn't potentially dangerous with overheating though.
 
 #Construction

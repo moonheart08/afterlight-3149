@@ -1,7 +1,6 @@
 ﻿- type: guideEntry
   id: Engineering
   name: Engineering
-  parent: Jobs
   text: "/Server Info/Guidebook/Engineering.txt"
 
 - type: guideEntry
@@ -9,12 +8,6 @@
   name: Construction
   parent: Engineering
   text: "/Server Info/Guidebook/Construction.txt"
-
-- type: guideEntry
-  id: Atmospherics
-  name: Atmospherics
-  parent: Engineering
-  text: "/Server Info/Guidebook/Atmospherics.txt"
 
 - type: guideEntry
   id: Fires
@@ -33,12 +26,6 @@
   name: Power
   parent: Engineering
   text: "/Server Info/Guidebook/Power.txt"
-
-- type: guideEntry
-  id: Singularity
-  name: Singularity
-  parent: Power
-  text: "/Server Info/Guidebook/Singularity.txt"
 
 - type: guideEntry
   id: AME
