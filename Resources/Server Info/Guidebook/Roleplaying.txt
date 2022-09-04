@@ -1,1 +1,6 @@
-TODO: Write this.
+
+?{|:Vertical:Center
+#"Roleplaying took everything from me!"
+#--Your mom.
+?|}
+

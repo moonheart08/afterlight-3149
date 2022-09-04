@@ -3,8 +3,14 @@
 #Debris Indication
 Your navigational mass scanner will automatically color recognized objects based on simple classification.
 
-  › [color=#FFFFFF]Strongly metallic debris[/color] is shown as white.
-  › [color=#B2CFCF]High water content rocky debris[/color] is shown as blue-gray.
-  › [color=#F4A460]Low water content rocky debris[/color] is shown as sandy brown.
-  › [color=#7FFFD4]Vessels with IFF[/color] are shown as aquamarine.
-  › [color=#FF00FF]Atypical structures[/color] are shown in magenta.
+- [color=#FFFFFF]Strongly metallic debris[/color] is shown as white.
+- [color=#B2CFCF]High water content rocky debris[/color] is shown as blue-gray.
+- [color=#F4A460]Low water content rocky debris[/color] is shown as sandy brown.
+- [color=#7FFFD4]Vessels with IFF[/color] are shown as aquamarine.
+- [color=#FF00FF]Atypical structures[/color] are shown in magenta.
+
+?{|:Horizontal
+?embedEntity:AcousticGuitarInstrument:2
+Never gonna give you uuuuuuuup, never gonna let you dooooooooooooooown, never gonna turn arouuuuuuuuuuuuuuuuuund and leave you.
+?|}
+sdfahjfjh

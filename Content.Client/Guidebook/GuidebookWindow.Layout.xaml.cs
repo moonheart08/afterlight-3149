@@ -8,6 +8,15 @@ namespace Content.Client.Guidebook;
 
 public sealed partial class GuidebookWindow
 {
+    private enum LayoutMode
+    {
+        RichText,
+        Header,
+        List,
+        Directive,
+    }
+
+
     private void LayoutGuidebook(string inputData, Control initialParent)
     {
         var buffer = new StringBuilder();
@@ -31,6 +40,13 @@ public sealed partial class GuidebookWindow
                     case '#':
                     {
                         layoutMode = LayoutMode.Header;
+                        newLine = false;
+                        continue;
+                    }
+
+                    case '-':
+                    {
+                        layoutMode = LayoutMode.List;
                         newLine = false;
                         continue;
                     }
@@ -72,6 +88,34 @@ public sealed partial class GuidebookWindow
                         var header = new Label()
                             {Text = buffer.ToString(), StyleClasses = {"LabelHeading"}};
                         parentStack[^1].AddChild(header);
+                        break;
+                    }
+                    case LayoutMode.List:
+                    {
+                        var rt = new RichTextLabel()
+                        {
+                            HorizontalExpand = false
+                        };
+
+                        var msg = new FormattedMessage();
+                        // THANK YOU RICHTEXT VERY COOL
+                        msg.PushColor(Color.White);
+                        msg.AddMarkup(buffer.ToString().TrimStart());
+                        msg.Pop();
+                        rt.SetMessage(msg);
+                        parentStack[^1].AddChild(new BoxContainer()
+                        {
+                            Children =
+                            {
+                                new Label()
+                                {
+                                    Text = "  › ",
+                                    VerticalAlignment = VAlignment.Top,
+                                },
+                                rt
+                            },
+                            Orientation = BoxContainer.LayoutOrientation.Horizontal,
+                        });
                         break;
                     }
                     case LayoutMode.Directive:
@@ -119,6 +163,7 @@ public sealed partial class GuidebookWindow
 
                 break;
             }
+            case "{|even":
             case "{|":
             {
                 if (args.Length > 3)
@@ -129,7 +174,7 @@ public sealed partial class GuidebookWindow
 
                 parentStack.Add(new BoxContainer()
                 {
-                    HorizontalExpand = true,
+                    HorizontalExpand = !args[0].EndsWith("nexp"),
                     Orientation = args.Length >= 2
                         ? Enum.Parse<BoxContainer.LayoutOrientation>(args[1])
                         : BoxContainer.LayoutOrientation.Horizontal,
