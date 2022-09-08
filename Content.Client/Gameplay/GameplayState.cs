@@ -22,7 +22,7 @@ namespace Content.Client.Gameplay
 {
     public sealed class GameplayState : GameplayStateBase, IMainViewportState
     {
-        public static readonly Vector2i ViewportSize = (EyeManager.PixelsPerMeter * 27, EyeManager.PixelsPerMeter * 15);
+        public static readonly Vector2i ViewportSize = (EyeManager.PixelsPerMeter * 30, EyeManager.PixelsPerMeter * 17);
 
         [Dependency] private readonly IUserInterfaceManager _userInterfaceManager = default!;
         [Dependency] private readonly IGameHud _gameHud = default!;
