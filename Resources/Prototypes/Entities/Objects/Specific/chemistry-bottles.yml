@@ -41,6 +41,8 @@
     solution: drink
   - type: TrashOnEmpty
     solution: drink
+  - type: StaticPrice
+    price: 0
 
 - type: entity
   name: bottle
