@@ -1,5 +1,5 @@
 ﻿using System.Text;
-using Content.Client.EscapeMenu.UI;
+using Content.Client.Options.UI;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Utility;
@@ -110,7 +110,7 @@ public sealed partial class GuidebookWindow
                                 new Label()
                                 {
                                     Text = "  › ",
-                                    VerticalAlignment = VAlignment.Top,
+                                    VerticalAlignment = Control.VAlignment.Top,
                                 },
                                 rt
                             },
@@ -157,8 +157,8 @@ public sealed partial class GuidebookWindow
                     HorizontalExpand = true,
                     Columns = int.Parse(args[1]),
                     HorizontalAlignment = args.Length >= 3
-                        ? Enum.Parse<HAlignment>(args[2])
-                        : HAlignment.Left,
+                        ? Enum.Parse<Control.HAlignment>(args[2])
+                        : Control.HAlignment.Left,
                 });
 
                 break;
@@ -179,8 +179,8 @@ public sealed partial class GuidebookWindow
                         ? Enum.Parse<BoxContainer.LayoutOrientation>(args[1])
                         : BoxContainer.LayoutOrientation.Horizontal,
                     HorizontalAlignment = args.Length >= 3
-                        ? Enum.Parse<HAlignment>(args[2])
-                        : HAlignment.Left,
+                        ? Enum.Parse<Control.HAlignment>(args[2])
+                        : Control.HAlignment.Left,
                 });
 
                 break;
@@ -214,7 +214,7 @@ public sealed partial class GuidebookWindow
                 var scale = args.Length >= 2 ? float.Parse(args[2]) : 1.0f;
                 control = new GuideEntityEmbed(ent, args[0].Contains("Caption"), args[0].Contains("Interactive"))
                 {
-                    HorizontalAlignment = HAlignment.Center,
+                    HorizontalAlignment = Control.HAlignment.Center,
                     Scale = new Vector2(scale, scale),
                     HorizontalExpand = args.Length >= 4 ? bool.Parse(args[3]) : false,
                 };

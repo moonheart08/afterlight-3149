@@ -1,4 +1,4 @@
-﻿<userInterface:FancyWindow
+﻿<controls1:FancyWindow
     xmlns:userInterface="clr-namespace:Content.Client.UserInterface"
     xmlns="https://spacestation14.io"
     xmlns:ui="clr-namespace:Content.Client.HUD.UI"
@@ -23,4 +23,4 @@
             <RichTextLabel Name="VesselDescription" Margin="10 10"/>
         </BoxContainer>
     </BoxContainer>
-</userInterface:FancyWindow>
+</controls1:FancyWindow>

@@ -1,7 +1,8 @@
-﻿<cui:FancyWindow xmlns:cui="clr-namespace:Content.Client.UserInterface"
+﻿<controls:FancyWindow xmlns:cui="clr-namespace:Content.Client.UserInterface"
                  xmlns="https://spacestation14.io"
                  xmlns:lateJoin="clr-namespace:Content.Client.LateJoin"
                  xmlns:cc="clr-namespace:Content.Client.Administration.UI.CustomControls"
+                 xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
                  Title="Join Game"
                  SetSize="600 500">
     <BoxContainer Orientation="Horizontal">
@@ -18,4 +19,4 @@
             <RichTextLabel Name="ShipDescription"/>
         </BoxContainer>-->
     </BoxContainer>
-</cui:FancyWindow>
+</controls:FancyWindow>
