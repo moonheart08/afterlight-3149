@@ -18,7 +18,7 @@
     jumpsuit: ClothingUniformJumpsuitMusician
     back: ClothingBackpackMusicianFilled
     eyes: ClothingEyesGlassesSunglasses
-    shoes: ClothingShoesColorBlack
+    shoes: ClothingShoesBootsLaceup
     id: MusicianPDA
     ears: ClothingHeadsetService
   satchel: ClothingBackpackSatchelMusicianFilled

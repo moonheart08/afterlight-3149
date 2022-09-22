@@ -19,6 +19,7 @@
     sendBroadcastAttemptEvent: true
   - type: DeviceList
   - type: WiredNetworkConnection
+  - type: DeviceNetworkRequiresPower
   - type: AtmosDevice
   - type: AtmosAlarmable
     syncWith:

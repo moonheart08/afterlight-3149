@@ -17,6 +17,7 @@
     shoes: ClothingShoesColorBlack
     id: CargoPDA
     ears: ClothingHeadsetCargo
+    pocket1: AppraisalTool
   innerclothingskirt: ClothingUniformJumpskirtCargo
   satchel: ClothingBackpackSatchelFilled
   duffelbag: ClothingBackpackDuffelFilled
