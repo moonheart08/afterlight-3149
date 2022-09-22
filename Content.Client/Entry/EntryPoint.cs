@@ -139,6 +139,7 @@ namespace Content.Client.Entry
             _prototypeManager.RegisterIgnore("debris");
             _prototypeManager.RegisterIgnore("debrisLayout");
             _prototypeManager.RegisterIgnore("biome");
+            _prototypeManager.RegisterIgnore("pointOfInterest");
 
             _componentFactory.GenerateNetIds();
             _adminManager.Initialize();
