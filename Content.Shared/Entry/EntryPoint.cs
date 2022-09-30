@@ -1,8 +1,7 @@
-using Content.Shared.CharacterAppearance;
+using Content.Shared.Humanoid.Markings;
 using Content.Shared.IoC;
 using Content.Shared.Localizations;
 using Content.Shared.Maps;
-using Content.Shared.Markings;
 using Robust.Shared;
 using Robust.Shared.Configuration;
 using Robust.Shared.ContentPack;
@@ -33,7 +32,6 @@ namespace Content.Shared.Entry
             base.PostInit();
 
             InitTileDefinitions();
-            IoCManager.Resolve<SpriteAccessoryManager>().Initialize();
             IoCManager.Resolve<MarkingManager>().Initialize();
 
             var configMan = IoCManager.Resolve<IConfigurationManager>();
