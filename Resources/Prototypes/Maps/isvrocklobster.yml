@@ -3,7 +3,7 @@
   mapName: 'ISV Rock Lobster'
   mapPath: /Maps/isvrocklobster.yml
   minPlayers: 0
-  fallback: true
+  votable: false
   descriptionPath: "/Server Info/ISVRockLobsterInfo.txt"
   stations:
     ISVRockLobster:
