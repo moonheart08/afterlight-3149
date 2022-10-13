@@ -1,6 +1,6 @@
 ﻿- type: entity
   id: KitchenMicrowave
-  parent: BaseMachinePowered
+  parent: [ BaseMachinePowered, ConstructibleMachine ]
   name: microwave
   description: It's magic.
   components:
@@ -33,7 +33,7 @@
     - shape:
         !type:PhysShapeAabb
         bounds: "-0.3,-0.16,0.3,0.16"
-      mass: 25
+      density: 190
       mask:
       - TabletopMachineMask
       layer:
@@ -62,6 +62,10 @@
   - type: AtmosExposed
   - type: ApcPowerReceiver
     powerLoad: 40
+  - type: Machine
+    board: MicrowaveMachineCircuitboard
   - type: ContainerContainer
     containers:
       microwave_entity_container: !type:Container
+      machine_board: !type:Container
+      machine_parts: !type:Container
