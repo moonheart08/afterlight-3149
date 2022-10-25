@@ -12,12 +12,7 @@
     drawdepth: SmallObjects
     snapCardinals: true
   - type: Charger
-    chargerSlot:
-      ejectOnInteract: true
-      name: Power cell # used for verbs: "Eject > Power cell "
-      whitelist:
-        components:
-          - PowerCell
+    slotId: charger_slot
   - type: Temperature
   - type: ApcPassiveHeater
   - type: AtmosExposed
@@ -43,9 +38,16 @@
       layer:
         - HighImpassable
   - type: ItemSlots
+    slots:
+      charger_slot:
+        ejectOnInteract: true
+        name: Power cell
+        whitelist:
+          components:
+            - PowerCell
   - type: ContainerContainer
     containers:
-      charger-slot: !type:ContainerSlot
+      charger_slot: !type:ContainerSlot
 
 - type: entity
   name: recharger
@@ -55,13 +57,16 @@
   - type: Sprite
     sprite: Structures/Power/recharger.rsi
   - type: Charger
-    chargerSlot:
-      ejectOnInteract: true
-      whitelist:
-        components:
-        - HitscanBatteryAmmoProvider
-        - ProjectileBatteryAmmoProvider
-        - Stunbaton
+    slotId: charger_slot
+  - type: ItemSlots
+    slots:
+      charger_slot:
+        ejectOnInteract: true
+        whitelist:
+          components:
+          - HitscanBatteryAmmoProvider
+          - ProjectileBatteryAmmoProvider
+          - Stunbaton
 
 - type: entity
   name: wall recharger
@@ -73,10 +78,3 @@
   - type: WallMount
   - type: Charger
     chargeRate: 25
-    chargerSlot:
-      ejectOnInteract: true
-      whitelist:
-        components:
-        - HitscanBatteryAmmoProvider
-        - ProjectileBatteryAmmoProvider
-        - Stunbaton

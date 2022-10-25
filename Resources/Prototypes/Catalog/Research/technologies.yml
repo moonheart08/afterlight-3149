@@ -78,6 +78,7 @@
     - Shovel
     - ButchCleaver
     - MicrowaveMachineCircuitboard
+    - SeedExtractorMachineCircuitboard
 
 - type: technology
   name: technologies-advanced-surgery
@@ -322,6 +323,7 @@
     - GeneratorBiofuelMachineCircuitboard
     - Signaller
     - SignalTrigger
+    - VoiceTrigger
 
 - type: technology
   name: technologies-compact-power-technology

@@ -19,8 +19,6 @@ namespace Content.Shared.Entry
         {
             IoCManager.InjectDependencies(this);
             SharedContentIoC.Register();
-
-            Localization.Init();
         }
 
         public override void Init()

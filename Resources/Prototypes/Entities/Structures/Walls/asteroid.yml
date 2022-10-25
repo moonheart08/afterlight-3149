@@ -9,8 +9,6 @@
     whitelist:
       tags:
         - Pickaxe
-    loot:
-      Pickaxe: MiningLootTableLowYield
   - type: Sprite
     sprite: Structures/Walls/asteroid_rock.rsi
     state: full
@@ -21,7 +19,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 30
+        damage: 150
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -42,6 +40,9 @@
   - type: IconSmooth
     key: walls
     base: rock_
+  - type: OreVein
+    oreChance: 0.2
+    oreRarityPrototypeId: RandomOreDistributionStandard
 
 - type: entity
   id: AsteroidRockMining
@@ -50,12 +51,13 @@
   suffix: higher ore yield
   description: An asteroid. Who knows what this one's seen.
   components:
-  - type: Gatherable
-    whitelist:
-      tags:
-        - Pickaxe
-    loot:
-      Pickaxe: MiningLootTable
+    - type: Gatherable
+      whitelist:
+        tags:
+          - Pickaxe
+    - type: OreVein
+      oreChance: 0.33
+      oreRarityPrototypeId: RandomOreDistributionStandard
 
 
 - type: entity
@@ -69,7 +71,8 @@
       whitelist:
         tags:
           - Pickaxe
-      loot:
-        Pickaxe: MiningLootTable
+    - type: OreVein
+      oreChance: 0.33
+      oreRarityPrototypeId: RandomOreDistributionStandard
     - type: Sprite
       color: "#C2E0F9"
