@@ -1,1 +1,5 @@
-﻿A small fragment of what was probably a decently large ship. It's a miracle this even flies, you should probably know at least the basics of construction if you want to live.
+A small fragment of a maintenance hideout what was probably a decently large ship.
+Powered with ion thrusters and a plasma generator, the bare minimum to even survive on the Rim.
+
+Remarks: It's a miracle this even flies, you should probably know at least the basics of construction if you want to live.
+Roster: 3 Salvage Specialists
