@@ -1,1 +1,7 @@
-The Pincer is a upper class ship with a mix of science and salvage equipment, while not fully geared towards science it’s one of the only ships available at the Rim that has a proper research room.
+An upper class ship with a mix of science and salvage equipment
+While not fully geared towards science it’s one of the only ships
+available at the Rim that has a proper research room.
+
+Remarks: A ship that is not too cramped nor too wide. Contains
+a cargo bay to prevent hallways overflowing with crates.
+Roster: 2 Salvage Specialists, 3 Scientists
