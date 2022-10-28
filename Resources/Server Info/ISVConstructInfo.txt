@@ -1,1 +1,5 @@
-﻿A mid-size vessel, with plasma-powered thrusters and uranium power generation. Recommended for experienced atmospherics technicians and engineers, and ONLY them. Not self sustaining at all, actually a bit tricky in that regard. Good luck.
+A mid-size vessel designed for experienced atmospheric technicians and engineers, and ONLY them.
+Plasma-powered thrusters and uranium power generation, do not forget to tune the generators.
+
+Remarks: Not self sustaining at all, actually a bit tricky in that regard. Good luck.
+Roster: 2 Atmospheric Technicians, 2 Salvage Specialists
