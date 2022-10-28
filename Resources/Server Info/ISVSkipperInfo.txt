@@ -1,1 +1,7 @@
-﻿A smaller vessel with a plethora of medical equipment. Not capable of self sustaining outside of what it can find on debris, however, so be prepared to need a hand from your fellows.
+A smaller vessel with a plethora of medical equipment.
+Not capable of self sustaining outside of what it can find on debris,
+however, so be prepared to need a hand from your fellows.
+
+Remarks: You start with chemicals, which are rare on the Rim. Use these
+to your advantage, whether it is for healing or trading for goods.
+Roster: 1 Chief Medical Officer, 1 Salvage Specialists, 2 Medical Doctors
