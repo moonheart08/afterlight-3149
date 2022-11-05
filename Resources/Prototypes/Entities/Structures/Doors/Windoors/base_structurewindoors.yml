@@ -46,6 +46,12 @@
   - type: AtmosExposed
   - type: ApcPowerReceiver
   - type: ExtensionCableReceiver
+  - type: DoorSignalControl
+  - type: SignalReceiver
+    inputs:
+      Open: []
+      Close: []
+      Toggle: []
   - type: Damageable
     damageContainer: Inorganic
     damageModifierSet: Glass

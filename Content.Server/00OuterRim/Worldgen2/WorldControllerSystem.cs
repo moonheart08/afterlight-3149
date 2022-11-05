@@ -52,3 +52,5 @@ public sealed class WorldControllerSystem : EntitySystem
 
 
 public readonly record struct WorldChunkAddedEvent(EntityUid Chunk, Vector2i Coords);
+
+public readonly record struct WorldChunkLoadedEvent(EntityUid Chunk, Vector2i Coords);
