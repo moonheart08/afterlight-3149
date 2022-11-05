@@ -1,0 +1,10 @@
+﻿- type: entity
+  id: ORChunk
+  parent: MarkerBase
+  name: World Chunk
+  description: |
+    It's rude to stare.
+    It's also a bit odd you're looking at the abstract representation of the grid of reality.
+  noSpawn: true
+  components:
+    - type: WorldChunk

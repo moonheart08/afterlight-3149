@@ -33,7 +33,7 @@ public sealed class DebrisGenerationSystem : EntitySystem
     public (IMapGrid, EntityUid) GenerateFloorplan(DebrisPrototype proto, MapCoordinates location)
     {
         var grid = _mapManager.CreateGrid(location.MapId);
-        grid.WorldPosition = location.Position;
+        //grid.WorldPosition = location.Position;
 
         switch (proto.FloorplanStyle)
         {
