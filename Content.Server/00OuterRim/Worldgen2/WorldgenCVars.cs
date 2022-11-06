@@ -9,11 +9,11 @@ public sealed class WorldgenCVars
     /// Whether or not world generation is enabled.
     /// </summary>
     public static readonly CVarDef<bool> WorldgenEnabled =
-        CVarDef.Create("al3149.worldgen.enabled", false, CVar.SERVERONLY);
+        CVarDef.Create("al_3149.worldgen.enabled", true, CVar.SERVERONLY);
 
     /// <summary>
     /// The worldgen config to use.
     /// </summary>
     public static readonly CVarDef<string> WorldgenConfig =
-        CVarDef.Create("al3149.worldgen.worldgen_config", "Default", CVar.SERVERONLY);
+        CVarDef.Create("al_3149.worldgen.worldgen_config", "Default", CVar.SERVERONLY);
 }

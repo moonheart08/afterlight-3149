@@ -25,12 +25,13 @@ public sealed class NoiseIndexSystem : EntitySystem
             var proto = _prototype.Index<NoiseChannelPrototype>(protoId);
             var gen = new NoiseGenerator(proto, _random.Next());
             idx.Generators[protoId] = gen;
-            return generator;
+            return gen;
         }
     }
 
     public float Evaluate(EntityUid holder, string protoId, Vector2 coords)
     {
-        return Get(holder, protoId).Evaluate(coords);
+        var gen = Get(holder, protoId);
+        return gen.Evaluate(coords);
     }
 }

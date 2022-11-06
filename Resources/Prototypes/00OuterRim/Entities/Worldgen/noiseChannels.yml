@@ -3,6 +3,7 @@
   noiseType: PerlinFractal
   fractalType: FBM
   fractalLacunarityByPi: 0.666666666
+  remapTo0Through1: true
   clippingRanges:
     - 0.4, 0.6
   inputMultiplier: 6.0 # Makes density hopefully low noise in the local area while still being interesting at scale.
@@ -13,6 +14,7 @@
   noiseType: PerlinFractal
   fractalType: FBM
   fractalLacunarityByPi: 0.666666666
+  remapTo0Through1: true
   inputMultiplier: 16.0 # Makes wreck concentration very low noise at scale.
 
 - type: noiseChannel
@@ -20,4 +22,5 @@
   noiseType: PerlinFractal
   fractalType: FBM
   fractalLacunarityByPi: 0.666666666
+  remapTo0Through1: true
   inputMultiplier: 6.0 # Makes wreck concentration very low noise at scale.

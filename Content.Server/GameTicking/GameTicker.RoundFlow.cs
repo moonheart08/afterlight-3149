@@ -151,6 +151,7 @@ namespace Content.Server.GameTicking
                 LoadGameMap(map, toLoad, null);
             }
 
+            RaiseLocalEvent(new LoadedMapsEvent());
             var timeSpan = _gameTiming.RealTime - startTime;
             _sawmill.Info($"Loaded maps in {timeSpan.TotalMilliseconds:N2}ms.");
         }
@@ -596,6 +597,11 @@ namespace Content.Server.GameTicking
             Maps = maps;
         }
     }
+
+    /// <summary>
+    /// Fired after maps are loaded.
+    /// </summary>
+    public readonly record struct LoadedMapsEvent();
 
     /// <summary>
     ///     Event raised before the game loads a given map.

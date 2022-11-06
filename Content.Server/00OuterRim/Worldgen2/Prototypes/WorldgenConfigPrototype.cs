@@ -16,20 +16,31 @@ public sealed class WorldgenConfigPrototype : IPrototype
     /// <summary>
     ///     The components that get added to the target map.
     /// </summary>
-    [DataField("components")]
+    [DataField("components", serverOnly: true, required: true)]
     public EntityPrototype.ComponentRegistry Components { get; } = default!;
 
     /// <summary>
     /// Applies the worldgen config to the given target (presumably a map.)
     /// </summary>
-    public void Apply(EntityUid target, ISerializationManager serialization, IEntityManager entityManager)
+    public void Apply(EntityUid target, ISerializationManager serialization, IEntityManager entityManager, IComponentFactory componentFactory)
     {
         // Add all components required by the prototype. Engine update for this whenst.
-        foreach (var entry in Components.Values)
+        foreach (var (name, data) in Components)
         {
-            var comp = (Component) serialization.Copy(entry.Component);
-            comp.Owner = target;
-            entityManager.AddComponent(target, comp);
+            if (!componentFactory.TryGetRegistration(name, out var registration))
+                continue;
+
+            if (entityManager.HasComponent(target, registration.Type))
+                continue;
+
+            if (componentFactory.GetComponent(registration.Type) is not Component component)
+                continue;
+
+            component.Owner = target;
+
+            var temp = (object) component;
+            serialization.Copy(data.Component, ref temp);
+            entityManager.AddComponent(target, (Component)temp!);
         }
     }
 }

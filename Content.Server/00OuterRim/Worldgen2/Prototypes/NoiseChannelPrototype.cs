@@ -91,11 +91,15 @@ public struct NoiseGenerator
     public float Evaluate(Vector2 coords)
     {
         var finCoords = coords * _config.InputMultiplier;
+
         if (_config.NoiseCoordinateProcess is not null)
             finCoords = _config.NoiseCoordinateProcess.Process(finCoords);
+
         var value = _noise.GetNoise(finCoords.X, finCoords.Y);
+
         if (_config.RemapTo0Through1)
             value = (value + 1.0f) / 2.0f;
+
         foreach (var range in _config.ClippingRanges)
         {
             if (range.X < value && value < range.Y)
