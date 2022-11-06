@@ -1,0 +1,23 @@
+﻿- type: noiseChannel
+  id: Density
+  noiseType: PerlinFractal
+  fractalType: FBM
+  fractalLacunarityByPi: 0.666666666
+  clippingRanges:
+    - 0.4, 0.6
+  inputMultiplier: 6.0 # Makes density hopefully low noise in the local area while still being interesting at scale.
+  outputMultiplier: 50.0 # We scale density up significantly for more human-friendly numbers.
+
+- type: noiseChannel
+  id: Wreck
+  noiseType: PerlinFractal
+  fractalType: FBM
+  fractalLacunarityByPi: 0.666666666
+  inputMultiplier: 16.0 # Makes wreck concentration very low noise at scale.
+
+- type: noiseChannel
+  id: Temperature
+  noiseType: PerlinFractal
+  fractalType: FBM
+  fractalLacunarityByPi: 0.666666666
+  inputMultiplier: 6.0 # Makes wreck concentration very low noise at scale.

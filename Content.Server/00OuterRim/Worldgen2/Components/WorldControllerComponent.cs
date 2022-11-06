@@ -8,6 +8,6 @@ namespace Content.Server._00OuterRim.Worldgen2.Components;
 [RegisterComponent, Access(typeof(WorldControllerSystem))]
 public sealed class WorldControllerComponent : Component
 {
-    [ViewVariables]
+    [DataField("chunks")]
     public Dictionary<Vector2i, EntityUid> Chunks = new();
 }

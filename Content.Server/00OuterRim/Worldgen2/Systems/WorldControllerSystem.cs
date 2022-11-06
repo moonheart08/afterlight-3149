@@ -1,4 +1,5 @@
 ﻿using Content.Server._00OuterRim.Worldgen2.Components;
+using Content.Server.Ghost.Components;
 using Content.Server.Mind.Components;
 using Robust.Shared.Map;
 
@@ -20,6 +21,7 @@ public sealed class WorldControllerSystem : EntitySystem
         SubscribeLocalEvent<WorldChunkComponent, ComponentStartup>(OnChunkStartup);
         SubscribeLocalEvent<LoadedChunkComponent, ComponentStartup>(OnChunkLoadedCore);
         SubscribeLocalEvent<LoadedChunkComponent, ComponentShutdown>(OnChunkUnloadedCore);
+        Logger.Debug($"The chunk 0,0 has center 64, 64, which is chunk {WorldGen.WorldToChunkCoords(new Vector2i(64, 64))}");
     }
 
     /// <summary>
@@ -88,13 +90,31 @@ public sealed class WorldControllerSystem : EntitySystem
     /// <param name="frameTime"></param>
     public override void Update(float frameTime)
     {
-        //TODO: Use struct enumerator for this once available.
+        //TODO: Use struct enumerator for all entity queries here once available.
         //TODO: Maybe don't allocate a big collection every frame?
         var chunksToLoad = new Dictionary<EntityUid, HashSet<Vector2i>>();
 
         foreach (var controller in EntityQuery<WorldControllerComponent>())
         {
             chunksToLoad[controller.Owner] = new();
+
+            List<Vector2i>? chunksToRemove = null;
+            foreach (var (idx, chunk) in controller.Chunks)
+            {
+                if (!Deleted(chunk) && !Terminating(chunk))
+                    continue;
+
+                chunksToRemove ??= new(8);
+                chunksToRemove.Add(idx);
+            }
+
+            if (chunksToRemove is not null)
+            {
+                foreach (var chunk in chunksToRemove)
+                {
+                    controller.Chunks.Remove(chunk);
+                }
+            }
         }
 
         foreach (var (worldLoader, xform) in EntityQuery<WorldLoaderComponent, TransformComponent>())
@@ -121,6 +141,8 @@ public sealed class WorldControllerSystem : EntitySystem
         foreach (var (mind, xform) in EntityQuery<MindComponent, TransformComponent>())
         {
             if (!mind.HasMind)
+                continue;
+            if (HasComp<GhostComponent>(mind.Owner))
                 continue;
             var mapOrNull = xform.MapUid;
             if (mapOrNull is null)
@@ -172,8 +194,6 @@ public sealed class WorldControllerSystem : EntitySystem
                     EnsureComp<LoadedChunkComponent>(ent.Value);
             }
         }
-
-
     }
 
     public EntityUid? GetOrCreateChunk(Vector2i chunk, EntityUid map)
@@ -196,7 +216,10 @@ public sealed class WorldControllerSystem : EntitySystem
     private EntityUid CreateChunkEntity(Vector2i chunkCoords, EntityUid map)
     {
         var coords = new EntityCoordinates(map, WorldGen.ChunkToWorldCoords(chunkCoords));
-        return Spawn("ORChunk", coords);
+        var chunk =  Spawn("ORChunk", coords);
+        var md = MetaData(chunk);
+        md.EntityName = $"S-{chunkCoords.X}/{chunkCoords.Y}";
+        return chunk;
     }
 }
 
