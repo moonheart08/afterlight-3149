@@ -6,5 +6,7 @@
 [RegisterComponent]
 public sealed class WorldLoaderComponent : Component
 {
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField("radius")]
     public int Radius = 128;
 }

@@ -1,10 +1,8 @@
 ﻿using Content.Server._00OuterRim.Worldgen2.Components;
-using Content.Server.GameTicking;
 using Content.Server.Mind.Components;
-using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 
-namespace Content.Server._00OuterRim.Worldgen2;
+namespace Content.Server._00OuterRim.Worldgen2.Systems;
 
 /// <summary>
 /// This handles putting together chunk entities and notifying them about important changes.
@@ -12,13 +10,46 @@ namespace Content.Server._00OuterRim.Worldgen2;
 public sealed class WorldControllerSystem : EntitySystem
 {
     [Dependency] private readonly IMapManager _mapManager = default!;
-    [Dependency] private readonly GameTicker _gameTicker = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly ILogManager _logManager = default!;
 
+    private ISawmill _sawmill = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {
+        _sawmill = _logManager.GetSawmill("world");
         SubscribeLocalEvent<WorldChunkComponent, ComponentStartup>(OnChunkStartup);
+        SubscribeLocalEvent<LoadedChunkComponent, ComponentStartup>(OnChunkLoadedCore);
+        SubscribeLocalEvent<LoadedChunkComponent, ComponentShutdown>(OnChunkUnloadedCore);
+    }
+
+    /// <summary>
+    /// Handles the inner logic of loading a chunk, i.e. events.
+    /// </summary>
+    private void OnChunkLoadedCore(EntityUid uid, LoadedChunkComponent component, ComponentStartup args)
+    {
+        var xform = Transform(uid);
+        if (xform.MapUid is null)
+            return;
+        var coords = WorldGen.WorldToChunkCoords(xform.Coordinates.ToVector2i(EntityManager, _mapManager));
+        var ev = new WorldChunkLoadedEvent(uid, coords);
+        RaiseLocalEvent(xform.MapUid.Value, ev);
+        RaiseLocalEvent(uid, ev);
+        _sawmill.Debug($"Loaded chunk {ToPrettyString(uid)} at {coords}");
+    }
+
+    /// <summary>
+    /// Handles the inner logic of unloading a chunk, i.e. events.
+    /// </summary>
+    private void OnChunkUnloadedCore(EntityUid uid, LoadedChunkComponent component, ComponentShutdown args)
+    {
+        var xform = Transform(uid);
+        if (xform.MapUid is null)
+            return;
+        var coords = WorldGen.WorldToChunkCoords(xform.Coordinates.ToVector2i(EntityManager, _mapManager));
+        var ev = new WorldChunkUnloadedEvent(uid, coords);
+        RaiseLocalEvent(xform.MapUid.Value, ev);
+        RaiseLocalEvent(uid, ev);
+        _sawmill.Debug($"Unloaded chunk {ToPrettyString(uid)} at {coords}");
     }
 
     /// <summary>
@@ -51,6 +82,10 @@ public sealed class WorldControllerSystem : EntitySystem
 
     private const int PlayerLoadRadius = 1;
 
+    /// <summary>
+    /// Handles various tasks core to world generation, like chunk loading.
+    /// </summary>
+    /// <param name="frameTime"></param>
     public override void Update(float frameTime)
     {
         //TODO: Use struct enumerator for this once available.
@@ -105,7 +140,57 @@ public sealed class WorldControllerSystem : EntitySystem
             }
         }
 
+        // Make sure these chunks get unloaded at the end of the tick.
+        foreach (var (_, xform) in EntityQuery<LoadedChunkComponent, TransformComponent>())
+        {
+            var mapOrNull = xform.MapUid;
+            if (mapOrNull is null)
+            {
+                RemCompDeferred<LoadedChunkComponent>(xform.Owner);
+                continue;
+            }
 
+            var map = mapOrNull.Value;
+            if (!chunksToLoad.ContainsKey(map))
+            {
+                RemCompDeferred<LoadedChunkComponent>(xform.Owner);
+                continue;
+            }
+
+            var coords = WorldGen.WorldToChunkCoords(xform.Coordinates.ToVector2i(EntityManager, _mapManager));
+
+            if (!chunksToLoad[map].Contains(coords))
+                RemCompDeferred<LoadedChunkComponent>(xform.Owner);
+        }
+
+        foreach (var (map, chunks) in chunksToLoad)
+        {
+            foreach (var chunk in chunks)
+            {
+                var ent = GetOrCreateChunk(chunk, map); // Ensure everything loads.
+                if (ent is not null)
+                    EnsureComp<LoadedChunkComponent>(ent.Value);
+            }
+        }
+
+
+    }
+
+    public EntityUid? GetOrCreateChunk(Vector2i chunk, EntityUid map)
+    {
+        if (!TryComp<WorldControllerComponent>(map, out var controller))
+        {
+            throw new Exception($"tried to use {ToPrettyString(map)} as a world map, without actually being one.");
+        }
+
+        if (controller.Chunks.TryGetValue(chunk, out var ent))
+        {
+            return ent;
+        }
+        else
+        {
+            return CreateChunkEntity(chunk, map);
+        }
     }
 
     private EntityUid CreateChunkEntity(Vector2i chunkCoords, EntityUid map)
@@ -118,3 +203,5 @@ public sealed class WorldControllerSystem : EntitySystem
 public readonly record struct WorldChunkAddedEvent(EntityUid Chunk, Vector2i Coords);
 
 public readonly record struct WorldChunkLoadedEvent(EntityUid Chunk, Vector2i Coords);
+
+public readonly record struct WorldChunkUnloadedEvent(EntityUid Chunk, Vector2i Coords);

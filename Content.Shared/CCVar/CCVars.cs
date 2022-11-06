@@ -194,7 +194,7 @@ namespace Content.Shared.CCVar
         ///     Prototype to use for map pool.
         /// </summary>
         public static readonly CVarDef<string>
-            GameMapPool = CVarDef.Create("game.map_pool", "DefaultMapPool", CVar.SERVERONLY);
+            GameMapPool = CVarDef.Create("game.map_pool", "ORMapPool", CVar.SERVERONLY);
 
         /// <summary>
         ///     Controls if the game should obey map criteria or not. Overriden if a map vote or similar occurs.
@@ -1283,7 +1283,7 @@ namespace Content.Shared.CCVar
          */
 
         public static readonly CVarDef<bool> WorldGenEnabled =
-            CVarDef.Create("worldgen.enabled", true, CVar.SERVERONLY);
+            CVarDef.Create("worldgen.enabled", false, CVar.SERVERONLY);
 
         public static readonly CVarDef<string> SpawnBiome =
             CVarDef.Create("worldgen.spawn_biome", "SpawnBiome", CVar.SERVERONLY);

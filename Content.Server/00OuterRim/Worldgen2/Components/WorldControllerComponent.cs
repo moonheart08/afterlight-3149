@@ -1,4 +1,6 @@
-﻿namespace Content.Server._00OuterRim.Worldgen2.Components;
+﻿using Content.Server._00OuterRim.Worldgen2.Systems;
+
+namespace Content.Server._00OuterRim.Worldgen2.Components;
 
 /// <summary>
 /// This is used for...
@@ -6,5 +8,6 @@
 [RegisterComponent, Access(typeof(WorldControllerSystem))]
 public sealed class WorldControllerComponent : Component
 {
+    [ViewVariables]
     public Dictionary<Vector2i, EntityUid> Chunks = new();
 }
