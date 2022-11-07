@@ -19,4 +19,13 @@ public abstract class BaseWorldSystem : EntitySystem
         return WorldGen.WorldToChunkCoords(xform.Coordinates.ToVector2i(EntityManager, _mapManager));
     }
 
+    [Pure]
+    public Vector2 GetFloatingChunkCoords(EntityUid ent, TransformComponent? xform = null)
+    {
+        if (!Resolve(ent, ref xform))
+            throw new Exception("Failed to resolve transform, somehow.");
+
+        return WorldGen.WorldToChunkCoords(xform.WorldPosition);
+    }
+
 }

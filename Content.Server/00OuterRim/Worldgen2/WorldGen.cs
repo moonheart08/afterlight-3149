@@ -13,6 +13,13 @@ public static class WorldGen
     }
 
     [Pure]
+    public static Vector2 WorldToChunkCoords(Vector2 inp)
+    {
+        return inp / ChunkSize;
+    }
+
+
+    [Pure]
     public static Vector2 ChunkToWorldCoords(Vector2i inp)
     {
         return inp * ChunkSize;

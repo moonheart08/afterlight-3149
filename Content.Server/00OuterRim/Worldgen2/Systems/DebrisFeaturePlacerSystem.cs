@@ -22,7 +22,7 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
     {
         var densityChannel = component.DensityNoiseChannel;
         var xform = Transform(args.Chunk);
-        var density = _noiseIndex.Evaluate(uid, densityChannel, GetChunkCoords(args.Chunk, xform));
+        var density = _noiseIndex.Evaluate(uid, densityChannel, GetFloatingChunkCoords(args.Chunk, xform));
         if (density == 0)
             return;
 
@@ -30,6 +30,9 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
 
         foreach (var point in points)
         {
+            var pointDensity = _noiseIndex.Evaluate(uid, densityChannel, WorldGen.WorldToChunkCoords(point));
+            if (pointDensity == 0)
+                continue;
             Spawn("ORDummy", new EntityCoordinates(uid, point));
         }
     }
@@ -45,7 +48,6 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
 
         var topLeft = (-offs, -offs);
         var lowerRight = (offs, offs);
-        Logger.Debug($"{offs}, {topLeft}, {lowerRight}. {density}");
         var debrisPoints = _sampler.SampleRectangle(topLeft, lowerRight, density);
 
         for (var i = 0; i < debrisPoints.Count; i++)
