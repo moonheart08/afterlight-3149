@@ -1,7 +1,9 @@
-﻿using Content.Server._00OuterRim.Worldgen2.Components;
+﻿using System.Linq;
+using Content.Server._00OuterRim.Worldgen2.Components;
 using Content.Server.Ghost.Components;
 using Content.Server.Mind.Components;
 using Robust.Shared.Map;
+using Robust.Shared.Timing;
 
 namespace Content.Server._00OuterRim.Worldgen2.Systems;
 
@@ -10,6 +12,7 @@ namespace Content.Server._00OuterRim.Worldgen2.Systems;
 /// </summary>
 public sealed class WorldControllerSystem : EntitySystem
 {
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
     [Dependency] private readonly ILogManager _logManager = default!;
 
@@ -21,7 +24,6 @@ public sealed class WorldControllerSystem : EntitySystem
         SubscribeLocalEvent<WorldChunkComponent, ComponentStartup>(OnChunkStartup);
         SubscribeLocalEvent<LoadedChunkComponent, ComponentStartup>(OnChunkLoadedCore);
         SubscribeLocalEvent<LoadedChunkComponent, ComponentShutdown>(OnChunkUnloadedCore);
-        Logger.Debug($"The chunk 0,0 has center 64, 64, which is chunk {WorldGen.WorldToChunkCoords(new Vector2i(64, 64))}");
     }
 
     /// <summary>
@@ -34,9 +36,9 @@ public sealed class WorldControllerSystem : EntitySystem
             return;
         var coords = WorldGen.WorldToChunkCoords(xform.Coordinates.ToVector2i(EntityManager, _mapManager));
         var ev = new WorldChunkLoadedEvent(uid, coords);
-        RaiseLocalEvent(xform.MapUid.Value, ev);
-        RaiseLocalEvent(uid, ev);
-        _sawmill.Debug($"Loaded chunk {ToPrettyString(uid)} at {coords}");
+        RaiseLocalEvent(xform.MapUid.Value, ref ev);
+        RaiseLocalEvent(uid, ref ev);
+        //_sawmill.Debug($"Loaded chunk {ToPrettyString(uid)} at {coords}");
     }
 
     /// <summary>
@@ -49,9 +51,9 @@ public sealed class WorldControllerSystem : EntitySystem
             return;
         var coords = WorldGen.WorldToChunkCoords(xform.Coordinates.ToVector2i(EntityManager, _mapManager));
         var ev = new WorldChunkUnloadedEvent(uid, coords);
-        RaiseLocalEvent(xform.MapUid.Value, ev);
-        RaiseLocalEvent(uid, ev);
-        _sawmill.Debug($"Unloaded chunk {ToPrettyString(uid)} at {coords}");
+        RaiseLocalEvent(xform.MapUid.Value, ref ev);
+        RaiseLocalEvent(uid, ref ev);
+        //_sawmill.Debug($"Unloaded chunk {ToPrettyString(uid)} at {coords}");
     }
 
     /// <summary>
@@ -79,7 +81,8 @@ public sealed class WorldControllerSystem : EntitySystem
 
         chunks[coords] = uid; // Add this entity to chunk index.
 
-        RaiseLocalEvent(parent, new WorldChunkAddedEvent(uid, coords));
+        var ev = new WorldChunkAddedEvent(uid, coords);
+        RaiseLocalEvent(parent, ref ev);
     }
 
     private const int PlayerLoadRadius = 1;
@@ -185,14 +188,29 @@ public sealed class WorldControllerSystem : EntitySystem
                 RemCompDeferred<LoadedChunkComponent>(xform.Owner);
         }
 
+        if (chunksToLoad.All(x => x.Value.Count == 0))
+            return;
+
+        var startTime = _gameTiming.RealTime;
+        var count = 0;
         foreach (var (map, chunks) in chunksToLoad)
         {
+
             foreach (var chunk in chunks)
             {
                 var ent = GetOrCreateChunk(chunk, map); // Ensure everything loads.
-                if (ent is not null)
-                    EnsureComp<LoadedChunkComponent>(ent.Value);
+                if (ent is not null && !HasComp<LoadedChunkComponent>(ent.Value))
+                {
+                    AddComp<LoadedChunkComponent>(ent.Value);
+                    count += 1;
+                }
             }
+        }
+
+        if (count > 0)
+        {
+            var timeSpan = _gameTiming.RealTime - startTime;
+            _sawmill.Info($"Loaded {count} chunks in {timeSpan.TotalMilliseconds:N2}ms.");
         }
     }
 
@@ -223,8 +241,11 @@ public sealed class WorldControllerSystem : EntitySystem
     }
 }
 
+[ByRefEvent]
 public readonly record struct WorldChunkAddedEvent(EntityUid Chunk, Vector2i Coords);
 
+[ByRefEvent]
 public readonly record struct WorldChunkLoadedEvent(EntityUid Chunk, Vector2i Coords);
 
+[ByRefEvent]
 public readonly record struct WorldChunkUnloadedEvent(EntityUid Chunk, Vector2i Coords);

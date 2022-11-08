@@ -9,6 +9,7 @@ namespace Content.Server._00OuterRim.Worldgen2.Systems;
 /// </summary>
 public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
 {
+    [Dependency] private readonly DeferredSpawnSystem _deferred = default!;
     [Dependency] private readonly NoiseIndexSystem _noiseIndex = default!;
     [Dependency] private readonly PoissonDiskSampler _sampler = default!;
 
@@ -16,13 +17,25 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
     public override void Initialize()
     {
         SubscribeLocalEvent<DebrisFeaturePlacerControllerComponent, WorldChunkLoadedEvent>(OnChunkLoaded);
+        SubscribeLocalEvent<TieDebrisToFeaturePlacerEvent>(OnDeferredDone);
     }
 
-    private void OnChunkLoaded(EntityUid uid, DebrisFeaturePlacerControllerComponent component, WorldChunkLoadedEvent args)
+    private void OnDeferredDone(TieDebrisToFeaturePlacerEvent ev)
     {
+        var placer = Comp<DebrisFeaturePlacerControllerComponent>(ev.DebrisPlacer);
+        placer.OwnedDebris.Add(ev.SpawnedEntity);
+    }
+
+    private void OnChunkLoaded(EntityUid uid, DebrisFeaturePlacerControllerComponent component, ref WorldChunkLoadedEvent args)
+    {
+        if (component.DoSpawns == false)
+            return;
+
+        component.DoSpawns = false; // Don't repeat yourself if this crashes.
+
         var densityChannel = component.DensityNoiseChannel;
         var xform = Transform(args.Chunk);
-        var density = _noiseIndex.Evaluate(uid, densityChannel, GetFloatingChunkCoords(args.Chunk, xform));
+        var density = _noiseIndex.Evaluate(uid, densityChannel, GetFloatingChunkCoords(args.Chunk, xform) + new Vector2(0.5f, 0.5f));
         if (density == 0)
             return;
 
@@ -33,7 +46,7 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
             var pointDensity = _noiseIndex.Evaluate(uid, densityChannel, WorldGen.WorldToChunkCoords(point));
             if (pointDensity == 0)
                 continue;
-            Spawn("ORDummy", new EntityCoordinates(uid, point));
+            _deferred.SpawnEntityDeferred("ORDummy", new EntityCoordinates(uid, point), new TieDebrisToFeaturePlacerEvent(args.Chunk));
         }
     }
 
@@ -50,9 +63,10 @@ public sealed class DebrisFeaturePlacerSystem : BaseWorldSystem
         var lowerRight = (offs, offs);
         var debrisPoints = _sampler.SampleRectangle(topLeft, lowerRight, density);
 
+
         for (var i = 0; i < debrisPoints.Count; i++)
         {
-            debrisPoints[i] += xform.WorldPosition;
+            debrisPoints[i] += WorldGen.ChunkToWorldCoordsCentered(coords);
         }
 
         return debrisPoints;
@@ -75,5 +89,15 @@ public struct PostPlaceDebrisFeatureEvent
     public PostPlaceDebrisFeatureEvent(IReadOnlyList<EntityUid> placedFeatures)
     {
         PlacedFeatures = placedFeatures;
+    }
+}
+
+public sealed class TieDebrisToFeaturePlacerEvent : DeferredSpawnDoneEvent
+{
+    public EntityUid DebrisPlacer;
+
+    public TieDebrisToFeaturePlacerEvent(EntityUid debrisPlacer)
+    {
+        DebrisPlacer = debrisPlacer;
     }
 }

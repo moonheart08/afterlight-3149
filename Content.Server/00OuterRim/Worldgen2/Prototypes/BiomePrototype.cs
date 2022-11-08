@@ -1,23 +1,47 @@
 ﻿using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 
 namespace Content.Server._00OuterRim.Worldgen2.Prototypes;
 
 /// <summary>
 /// This is a prototype for...
 /// </summary>
-[Prototype("worldgenConfig")]
-public sealed class WorldgenConfigPrototype : IPrototype
+[Prototype("biome2")]
+public sealed class BiomePrototype : IPrototype, IInheritingPrototype
 {
     /// <inheritdoc/>
     [IdDataField]
     public string ID { get; } = default!;
 
+    /// <inheritdoc/>
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<EntityPrototype>))]
+    public string[]? Parents { get; }
+
+    /// <inheritdoc/>
+    [NeverPushInheritance]
+    [AbstractDataField]
+    public bool Abstract { get; }
+
+    /// <summary>
+    /// Higher priority biomes get picked before lower priority ones.
+    /// </summary>
+    [DataField("priority", required: true)]
+    public int Priority { get; }
+
+    /// <summary>
+    /// The valid ranges of noise values under which this biome can be picked.
+    /// </summary>
+    [DataField("noiseRanges", required: true)]
+    public Dictionary<string, List<Vector2>> NoiseRanges = default!;
+
     /// <summary>
     ///     The components that get added to the target map.
     /// </summary>
-    [DataField("components", required: true)]
-    public EntityPrototype.ComponentRegistry Components { get; } = default!;
+    [DataField("chunkComponents")]
+    [AlwaysPushInheritance]
+    public EntityPrototype.ComponentRegistry ChunkComponents { get; } = new();
 
     /// <summary>
     /// Applies the worldgen config to the given target (presumably a map.)
@@ -25,12 +49,9 @@ public sealed class WorldgenConfigPrototype : IPrototype
     public void Apply(EntityUid target, ISerializationManager serialization, IEntityManager entityManager, IComponentFactory componentFactory)
     {
         // Add all components required by the prototype. Engine update for this whenst.
-        foreach (var (name, data) in Components)
+        foreach (var (name, data) in ChunkComponents)
         {
             if (!componentFactory.TryGetRegistration(name, out var registration))
-                continue;
-
-            if (entityManager.HasComponent(target, registration.Type))
                 continue;
 
             if (componentFactory.GetComponent(registration.Type) is not Component component)

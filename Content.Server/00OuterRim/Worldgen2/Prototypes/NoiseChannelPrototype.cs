@@ -1,5 +1,6 @@
 ﻿using Content.Server._00OuterRim.Worldgen.Tools;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 
 namespace Content.Server._00OuterRim.Worldgen2.Prototypes;
 
@@ -12,12 +13,12 @@ public class NoiseChannelConfig
     /// <summary>
     /// The noise type used by the noise generator.
     /// </summary>
-    [DataField("noiseType", required: true)]
+    [DataField("noiseType")]
     public FastNoise.NoiseType NoiseType { get; } = FastNoise.NoiseType.Cellular;
     /// <summary>
     /// The fractal type used by the noise generator.
     /// </summary>
-    [DataField("fractalType", required: true)]
+    [DataField("fractalType")]
     public FastNoise.FractalType FractalType { get; } = FastNoise.FractalType.Billow;
     /// <summary>
     /// Multiplied by pi in code when used.
@@ -62,10 +63,20 @@ public class NoiseChannelConfig
 }
 
 [Prototype("noiseChannel")]
-public sealed class NoiseChannelPrototype : NoiseChannelConfig, IPrototype
+public sealed class NoiseChannelPrototype : NoiseChannelConfig, IPrototype, IInheritingPrototype
 {
     [IdDataField]
     public string ID { get; } = default!;
+
+    /// <inheritdoc/>
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<EntityPrototype>))]
+    public string[]? Parents { get; }
+
+    /// <inheritdoc/>
+    [NeverPushInheritance]
+    [AbstractDataField]
+    public bool Abstract { get; }
+
 }
 
 public struct NoiseGenerator

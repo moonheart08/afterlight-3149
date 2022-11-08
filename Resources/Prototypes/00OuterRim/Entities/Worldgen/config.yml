@@ -2,5 +2,7 @@
   id: Default
   components:
     - type: WorldController
-    - type: DebrisFeaturePlacerController
-      densityNoiseChannel: Density
+    - type: BiomeSelection
+      biomes:
+        - AsteroidsBasic
+        - Failsafe
