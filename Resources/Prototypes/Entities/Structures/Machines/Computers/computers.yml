@@ -346,7 +346,7 @@
   parent: BaseComputer
   id: ComputerId
   name: ID card computer
-  description: Terminal for programming Nanotrasen employee ID cards to access parts of the station.
+  description: Terminal for programming standard RFID-edge ID cards to access parts of the station.
   components:
   - type: AccessReader
     access: [["HeadOfPersonnel"]]

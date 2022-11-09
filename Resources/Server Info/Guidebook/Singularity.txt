@@ -1,6 +1,6 @@
 
 ?{|:Vertical:Center
-#This feature isn't in Outer Rim
+#This feature isn't in Afterlight: 3159
 #For now.
 ?|}
 

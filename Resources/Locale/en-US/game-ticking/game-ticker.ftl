@@ -6,8 +6,8 @@ game-ticker-unknown-role = Unknown
 game-ticker-delay-start = Round start has been delayed for {$seconds} seconds.
 game-ticker-pause-start = Round start has been paused.
 game-ticker-pause-start-resumed = Round start countdown is now resumed.
-game-ticker-player-join-game-message = Welcome to Outer Rim 14! This is a low-pop variant on SS14's design, focused on scavaging and interstellar space instead of a station.
-game-ticker-get-info-text = Hi and welcome to [color=white]Outer Rim 14![/color]
+game-ticker-player-join-game-message = Welcome to Afterlight: 3159! This is a low-pop variant on SS14's design, focused on scavaging and interstellar space instead of a station.
+game-ticker-get-info-text = Server codebase: [color=white]Afterlight: 3159[/color]
                             The current round is: [color=white]#{$roundId}[/color]
                             The current player count is: [color=white]{$playerCount}[/color]
                             >[color=yellow]{$desc}[/color]

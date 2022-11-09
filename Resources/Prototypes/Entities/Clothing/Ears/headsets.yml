@@ -48,7 +48,7 @@
   parent: ClothingHeadset
   id: ClothingHeadsetCentCom
   name: CentCom headset
-  description: A headset used by the upper echelons of Nanotrasen.
+  description: A headset used by the upper echelons of certain earthly corporations.
   components:
   - type: Headset
     channels:

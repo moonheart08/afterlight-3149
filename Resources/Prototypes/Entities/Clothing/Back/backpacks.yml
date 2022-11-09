@@ -67,7 +67,7 @@
   parent: ClothingBackpack
   id: ClothingBackpackCaptain
   name: captain's backpack
-  description: It's a special backpack made exclusively for Nanotrasen officers.
+  description: It's a special backpack made exclusively for leading officers.
   components:
   - type: Sprite
     sprite: Clothing/Back/Backpacks/captain.rsi
