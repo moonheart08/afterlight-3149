@@ -322,6 +322,8 @@
     - SolarControlComputerCircuitboard
     - PowerComputerCircuitboard
     - GeneratorPlasmaMachineCircuitboard
+    - AnalysisComputerCircuitboard
+    - ArtifactAnalyzerMachineCircuitboard
     - GeneratorBiofuelMachineCircuitboard
     - Signaller
     - SignalTrigger
