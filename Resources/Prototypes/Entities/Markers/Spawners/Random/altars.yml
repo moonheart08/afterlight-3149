@@ -9,7 +9,6 @@
         - texture: Structures/Furniture/Altars/Gods/nanotrasen.rsi/nanotrasen.png
     - type: RandomSpawner
       prototypes:
-        - AltarNanotrasen
         - AltarChaos
         - AltarDruid
         - AltarToolbox

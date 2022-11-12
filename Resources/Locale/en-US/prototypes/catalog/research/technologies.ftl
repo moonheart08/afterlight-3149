@@ -1,5 +1,5 @@
 technologies-basic-research-technology = Basic research technology
-technologies-basic-research-technology-description = Nanotrasen basic research technologies.
+technologies-basic-research-technology-description = Basic research technologies.
 
 technologies-cleaning-technology = Cleaning technology
 technologies-cleaning-technology-description = Start to a shiny clean station.

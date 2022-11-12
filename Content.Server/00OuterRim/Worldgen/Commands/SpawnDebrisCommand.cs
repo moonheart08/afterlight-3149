@@ -1,12 +1,13 @@
 using Content.Server._00OuterRim.Worldgen.Prototypes;
 using Content.Server._00OuterRim.Worldgen.Systems;
+using Content.Server.Administration;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._00OuterRim.Worldgen.Commands;
 
-[AnyCommand]
+[AdminCommand(AdminFlags.Debug)]
 public class SpawnDebrisCommand : IConsoleCommand
 {
     public string Command => "spawndebris";

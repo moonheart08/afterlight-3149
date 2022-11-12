@@ -1,0 +1,9 @@
+﻿- type: gameMapPool
+  id: ORMapPool
+  maps:
+    - ISVBoomerang
+    - ISVCobble
+    - ISVConstruct
+    - ISVPincer
+    - ISVRestitution
+    - ISVSkipper

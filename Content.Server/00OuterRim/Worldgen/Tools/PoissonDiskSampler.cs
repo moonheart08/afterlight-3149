@@ -2,7 +2,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._00OuterRim.Worldgen.Tools;
 
-public class PoissonDiskSampler
+public sealed class PoissonDiskSampler
 {
     [Dependency] private readonly IRobustRandom _random = default!;
 

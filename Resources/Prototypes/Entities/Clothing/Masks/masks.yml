@@ -58,7 +58,7 @@
   parent: ClothingMaskGasAtmos
   id: ClothingMaskGasCaptain
   name: captain's gas mask
-  description: Nanotrasen cut corners and repainted a spare atmospheric gas mask, but don't tell anyone.
+  description: The manufacturer cut corners and repainted a spare atmospheric gas mask, but don't tell anyone.
   components:
   - type: Sprite
     sprite: Clothing/Mask/gascaptain.rsi
@@ -125,6 +125,9 @@
   - type: IngestionBlocker
   - type: DiseaseProtection
     protection: 0.10
+  - type: Tag
+    tags:
+    - PetWearable
 
 - type: entity
   parent: ClothingMaskPullableBase
@@ -140,6 +143,9 @@
   - type: IngestionBlocker
   - type: DiseaseProtection
     protection: 0.05
+  - type: Tag
+    tags:
+    - PetWearable
 
 - type: entity
   parent: ClothingMaskBase

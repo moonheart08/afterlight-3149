@@ -130,10 +130,26 @@ namespace Content.Server.GameTicking
             DefaultMap = _mapManager.CreateMap();
             _mapManager.AddUninitializedMap(DefaultMap);
             var startTime = _gameTiming.RealTime;
-            var maps = new List<GameMapPrototype>() { };
+            var maps = new List<GameMapPrototype>();
 
             if (!LobbyEnabled)
-                maps.Add(_gameMapManager.GetSelectedMapChecked(true, true));
+            {
+                var mainStationMap = _gameMapManager.GetSelectedMap();
+                if (mainStationMap == null)
+                {
+                    // otherwise set the map using the config rules
+                    _gameMapManager.SelectMapByConfigRules();
+                    mainStationMap = _gameMapManager.GetSelectedMap();
+                }
+                if (mainStationMap != null)
+                {
+                    maps.Add(mainStationMap);
+                }
+                else
+                {
+                    throw new Exception("invalid config; couldn't select a valid station map!");
+                }
+            }
 
             // Let game rules dictate what maps we should load.
             RaiseLocalEvent(new LoadingMapsEvent(maps));
@@ -151,6 +167,7 @@ namespace Content.Server.GameTicking
                 LoadGameMap(map, toLoad, null);
             }
 
+            RaiseLocalEvent(new LoadedMapsEvent());
             var timeSpan = _gameTiming.RealTime - startTime;
             _sawmill.Info($"Loaded maps in {timeSpan.TotalMilliseconds:N2}ms.");
         }
@@ -207,6 +224,10 @@ namespace Content.Server.GameTicking
             SendServerMessage(Loc.GetString("game-ticker-start-round"));
 
             LoadMaps();
+
+            // map has been selected so update the lobby info text
+            // applies to players who didn't ready up
+            UpdateInfoText();
 
             StartGamePresetRules();
 
@@ -276,6 +297,7 @@ namespace Content.Server.GameTicking
             ReqWindowAttentionAll();
             UpdateLateJoinStatus();
             AnnounceRound();
+            UpdateInfoText();
 
 #if EXCEPTION_TOLERANCE
             }
@@ -482,6 +504,8 @@ namespace Content.Server.GameTicking
 
             _roleBanManager.Restart();
 
+            _gameMapManager.ClearSelectedMap();
+
             // Clear up any game rules.
             ClearGameRules();
 
@@ -596,6 +620,11 @@ namespace Content.Server.GameTicking
             Maps = maps;
         }
     }
+
+    /// <summary>
+    /// Fired after maps are loaded.
+    /// </summary>
+    public readonly record struct LoadedMapsEvent();
 
     /// <summary>
     ///     Event raised before the game loads a given map.

@@ -26,63 +26,99 @@ tilemap:
   19: FloorCaveDrought
   20: FloorClown
   21: FloorDark
-  22: FloorDirt
-  23: FloorEighties
-  24: FloorElevatorShaft
-  25: FloorFreezer
-  26: FloorGlass
-  27: FloorGold
-  28: FloorGrass
-  29: FloorGrassDark
-  30: FloorGrassJungle
-  31: FloorGrassLight
-  32: FloorGreenCircuit
-  33: FloorGym
-  34: FloorHydro
-  35: FloorKitchen
-  36: FloorLaundry
-  37: FloorLino
-  38: FloorMetalDiamond
-  39: FloorMime
-  40: FloorMono
-  41: FloorRGlass
-  42: FloorReinforced
-  43: FloorRockVault
-  44: FloorShowroom
-  45: FloorShuttleBlue
-  46: FloorShuttleOrange
-  47: FloorShuttlePurple
-  48: FloorShuttleRed
-  49: FloorShuttleWhite
-  50: FloorSilver
-  51: FloorSnow
-  52: FloorSteel
-  53: FloorSteelDirty
-  54: FloorTechMaint
-  55: FloorWhite
-  56: FloorWood
-  57: Lattice
-  58: Plating
+  22: FloorDarkDiagonal
+  23: FloorDarkDiagonalMini
+  24: FloorDarkHerringbone
+  25: FloorDarkMini
+  26: FloorDarkMono
+  27: FloorDarkOffset
+  28: FloorDarkPavement
+  29: FloorDarkPavementVertical
+  30: FloorDarkPlastic
+  31: FloorDirt
+  32: FloorEighties
+  33: FloorElevatorShaft
+  34: FloorFreezer
+  35: FloorGlass
+  36: FloorGold
+  37: FloorGrass
+  38: FloorGrassDark
+  39: FloorGrassJungle
+  40: FloorGrassLight
+  41: FloorGreenCircuit
+  42: FloorGym
+  43: FloorHydro
+  44: FloorKitchen
+  45: FloorLaundry
+  46: FloorLino
+  47: FloorMetalDiamond
+  48: FloorMime
+  49: FloorMono
+  50: FloorPlastic
+  51: FloorRGlass
+  52: FloorReinforced
+  53: FloorRockVault
+  54: FloorShowroom
+  55: FloorShuttleBlue
+  56: FloorShuttleOrange
+  57: FloorShuttlePurple
+  58: FloorShuttleRed
+  59: FloorShuttleWhite
+  60: FloorSilver
+  61: FloorSnow
+  62: FloorSteel
+  63: FloorSteelDiagonal
+  64: FloorSteelDiagonalMini
+  65: FloorSteelDirty
+  66: FloorSteelHerringbone
+  67: FloorSteelMini
+  68: FloorSteelMono
+  69: FloorSteelOffset
+  70: FloorSteelPavement
+  71: FloorSteelPavementVertical
+  72: FloorTechMaint
+  73: FloorTechMaint2
+  74: FloorTechMaint3
+  75: FloorWhite
+  76: FloorWhiteDiagonal
+  77: FloorWhiteDiagonalMini
+  78: FloorWhiteHerringbone
+  79: FloorWhiteMini
+  80: FloorWhiteMono
+  81: FloorWhiteOffset
+  82: FloorWhitePavement
+  83: FloorWhitePavementVertical
+  84: FloorWhitePlastic
+  85: FloorWood
+  86: FloorWoodTile
+  87: Lattice
+  88: Plating
 grids:
-- settings:
+- uid: 5
+  settings:
     chunksize: 16
     tilesize: 1
   chunks:
   - ind: -1,-1
-    tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAADoAAAA6AAAAOgAAADoAAAA0AAAANAAAADQAAAA0AAAANAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA4AAAAOAAAADgAAAA6AAAANAAAADQAAAA0AAAANAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAOgAAADgAAAA4AAAAOAAAADgAAAA4AAAAOAAAADQAAAA0AAAANAAAADQAAAA0AAAAAAAAAAAAAAAAAAAAAAAAADoAAAA4AAAAOAAAADgAAAA4AAAAOAAAADoAAAA0AAAANAAAADQAAAA0AAAANAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAOAAAADgAAAA4AAAAOAAAADgAAAA6AAAANAAAADQAAAA0AAAANAAAADQAAAA6AAAAOgAAABUAAAAVAAAAOgAAADoAAAA4AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAABUAAAAVAAAAFQAAADoAAAAVAAAAFQAAABUAAAA6AAAAAAAAAAAAAAAqAAAAKgAAAAAAAAAqAAAAKgAAADoAAAAVAAAAFQAAABUAAAAVAAAAFQAAABUAAAAVAAAAOgAAAAAAAAAAAAAAKgAAACoAAAAAAAAAKgAAACoAAAA6AAAAFQAAABUAAAAVAAAAOgAAABUAAAAVAAAAFQAAADoAAAAAAAAAAAAAACoAAAAqAAAAAAAAACoAAAAqAAAAOgAAADoAAAAVAAAAFQAAADoAAAA6AAAANAAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAAAAAAAA6AAAAOgAAADoAAAA6AAAANAAAADQAAAA0AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAAAAAAAAAAAAAAAAAAAAAAAOgAAADQAAAAoAAAANAAAADQAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAAAAAAAAAAAAAAAAAAAAAADoAAAA0AAAANAAAADQAAAA0AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAAA==
+    tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAFgAAABYAAAAWAAAAFgAAAA+AAADPgAAAz4AAAI+AAADPgAAAwAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABVAAADVQAAAVUAAANYAAAAPgAAAD4AAAA+AAABPgAAAz4AAAMAAAAAAAAAAAAAAAAAAAAAWAAAAFUAAAFVAAABVQAAA1UAAAJVAAADRgAAAkYAAAJGAAAARgAAA0YAAANGAAABAAAAAAAAAAAAAAAAAAAAAFgAAABVAAAAVQAAAlUAAANVAAAAVQAAAVgAAAA+AAACPgAAAj4AAAA+AAAAPgAAAgAAAABYAAAAWAAAAFgAAABYAAAAVQAAAVUAAAFVAAAAVQAAAFUAAAJYAAAAPgAAAT4AAAI+AAAAPgAAAT4AAAFYAAAAWAAAABYAAAIWAAABWAAAAFgAAABVAAADWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAABYAAAEWAAADFgAAAFgAAAAbAAAAGwAAABsAAABYAAAAAAAAAAAAAAA0AAAANAAAAAAAAAA0AAAANAAAAFgAAAAWAAACFgAAAhYAAAEVAAAAGwAAABsAAAAbAAAAWAAAAAAAAAAAAAAANAAAADQAAAAAAAAANAAAADQAAABYAAAAFgAAAxYAAAIWAAADWAAAABsAAAAbAAAAGwAAAFgAAAAAAAAAAAAAADQAAAA0AAAAAAAAADQAAAA0AAAAWAAAAFgAAAAWAAADFgAAAVgAAABYAAAAPgAAAlgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAAAAAABYAAAAWAAAAFgAAABYAAAAPgAAAT4AAAM+AAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAD4AAAFEAAACPgAAAT4AAAJYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAAAAAFgAAAA+AAAAPgAAAz4AAAI+AAACWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAA==
   - ind: -1,0
-    tiles: AAAAAAAAAAAAAAAAAAAAADoAAAA6AAAAOgAAADQAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    tiles: AAAAAAAAAAAAAAAAAAAAAFgAAABYAAAAWAAAAD4AAANYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAABYAAAAWAAAAFgAAABIAAAASAAAAEgAAABIAAAASAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
   - ind: 0,-1
-    tiles: OgAAADoAAAA6AAAAOgAAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAA6AAAAOgAAADoAAAA6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAADQAAAA0AAAANAAAADQAAAA0AAAANAAAADoAAAA6AAAAOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAA0AAAANAAAADQAAAA0AAAANAAAADQAAAA2AAAANgAAADkAAAA5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0AAAANAAAADQAAAA0AAAANAAAADQAAAA0AAAANgAAADYAAAA5AAAAOQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAADQAAAA0AAAANAAAADQAAAA0AAAANAAAADYAAAA2AAAAOQAAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAA0AAAANAAAADQAAAA0AAAANAAAADQAAAA6AAAAOgAAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACoAAAAqAAAAAAAAACoAAAAqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqAAAAKgAAAAAAAAAqAAAAKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKgAAACoAAAAAAAAAKgAAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    tiles: WAAAAFgAAABYAAAAWAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAABYAAAAWAAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAD4AAAI+AAACPgAAAD4AAAA+AAAAPgAAAlgAAABYAAAAVwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAAA+AAABRAAAAEQAAAFEAAADRAAAAD4AAABIAAAASAAAAFcAAABXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGAAADPgAAAD4AAAE+AAAAPgAAAz4AAAE+AAABSAAAAEgAAABXAAAAVwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAD4AAAFEAAABRAAAA0QAAAFEAAACPgAAAEgAAABIAAAAVwAAAFcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAAA+AAABPgAAAD4AAAA+AAABPgAAAD4AAAFYAAAAWAAAAFcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADQAAAA0AAAAAAAAADQAAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0AAAANAAAAAAAAAA0AAAANAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAAAADQAAAAAAAAANAAAADQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAFQAAABUAAAIVAAACFQAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
   - ind: 0,0
-    tiles: OgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAADoAAAA6AAAAOgAAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADoAAAA6AAAAOgAAADoAAAA6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAADoAAAA6AAAAOgAAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    tiles: WAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAABUAAAMVAAABFQAAAxUAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAFgAAABYAAAAWAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFgAAABYAAAAWAAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAFgAAABYAAAAWAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
   - ind: 0,-2
-    tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA6AAAAOgAAADoAAAA6AAAAOgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOgAAADoAAAA6AAAAOgAAADoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
+    tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYAAAAWAAAAFgAAABYAAAAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAFgAAABYAAAAWAAAAFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==
 entities:
 - uid: 0
   components:
-  - index: 9
+  - type: MetaData
+  - type: Transform
+  - index: 12
     type: Map
+  - type: Broadphase
+  - type: PhysicsMap
+  - type: OccluderTree
 - uid: 1
   type: WallSolid
   components:
@@ -109,11 +145,12 @@ entities:
     type: Transform
 - uid: 5
   components:
+  - type: MetaData
   - pos: 0.5,0.515625
     parent: 0
     type: Transform
-  - index: 0
-    type: MapGrid
+  - type: MapGrid
+  - type: Broadphase
   - angularDamping: 0.05
     linearDamping: 0.05
     fixedRotation: False
@@ -175,6 +212,240 @@ entities:
           color: '#FFFFFFFF'
           id: WarnLineE
           coordinates: 7,-12
+        74:
+          color: '#FFFFFFFF'
+          id: BrickTileSteelLineW
+          coordinates: 7,-12
+        75:
+          color: '#FFFFFFFF'
+          id: BrickTileSteelLineW
+          coordinates: 7,-11
+        76:
+          color: '#FFFFFFFF'
+          id: BrickTileSteelLineW
+          coordinates: 7,-10
+      -1,-1:
+        12:
+          color: '#FFFFFFFF'
+          id: BrickTileSteelCornerNw
+          coordinates: -8,-3
+        14:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelCornerNw
+          coordinates: -8,-3
+        19:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineW
+          coordinates: -7,-1
+        18:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineW
+          coordinates: -7,-2
+        21:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelInnerNw
+          coordinates: -7,-3
+        23:
+          color: '#FFFFFFFF'
+          id: MiniTileDarkLineE
+          coordinates: -13,-6
+        30:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkLineE
+          coordinates: -13,-5
+        38:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkLineE
+          coordinates: -13,-7
+        27:
+          color: '#FFFFFFFF'
+          id: MiniTileDarkLineW
+          coordinates: -11,-6
+        28:
+          color: '#FFFFFFFF'
+          id: MiniTileDarkInnerNw
+          coordinates: -11,-7
+        29:
+          color: '#FFFFFFFF'
+          id: MiniTileDarkInnerSw
+          coordinates: -11,-5
+        31:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkCornerNe
+          coordinates: -13,-4
+        32:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkCornerNw
+          coordinates: -14,-4
+        33:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkCornerNw
+          coordinates: -15,-5
+        34:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkCornerSw
+          coordinates: -15,-7
+        35:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkCornerSw
+          coordinates: -14,-8
+        36:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkLineW
+          coordinates: -15,-6
+        37:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkCornerSe
+          coordinates: -13,-8
+        39:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkInnerNe
+          coordinates: -13,-7
+        40:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkInnerSe
+          coordinates: -13,-5
+        41:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkCornerSw
+          coordinates: -11,-7
+        42:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkCornerNw
+          coordinates: -11,-5
+        43:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkLineN
+          coordinates: -10,-5
+        44:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkLineS
+          coordinates: -10,-7
+        45:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkCornerNe
+          coordinates: -9,-5
+        46:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkCornerSe
+          coordinates: -9,-7
+        47:
+          color: '#FFFFFFFF'
+          id: BrickTileDarkLineE
+          coordinates: -9,-6
+        48:
+          color: '#FFFFFFFF'
+          id: BrickTileSteelLineS
+          coordinates: -10,-3
+        49:
+          color: '#FFFFFFFF'
+          id: BrickTileSteelInnerSw
+          coordinates: -9,-3
+        50:
+          color: '#FFFFFFFF'
+          id: BrickTileSteelInnerSe
+          coordinates: -11,-3
+        52:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinLineW
+          coordinates: -9,-9
+        53:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinLineW
+          coordinates: -9,-10
+        54:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinLineW
+          coordinates: -9,-11
+        55:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinCornerSw
+          coordinates: -9,-12
+        56:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinCornerNw
+          coordinates: -9,-9
+        57:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinLineN
+          coordinates: -8,-9
+        58:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinLineS
+          coordinates: -9,-12
+        59:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinLineS
+          coordinates: -8,-12
+        60:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinCornerSe
+          coordinates: -7,-12
+        61:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinCornerNe
+          coordinates: -7,-9
+        62:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinLineE
+          coordinates: -7,-11
+        63:
+          color: '#FFFFFFFF'
+          id: WoodTrimThinLineE
+          coordinates: -7,-10
+        64:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineN
+          coordinates: -5,-12
+        65:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineN
+          coordinates: -4,-12
+        66:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineN
+          coordinates: -3,-12
+        67:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineN
+          coordinates: -2,-12
+        68:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineN
+          coordinates: -1,-12
+        69:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineS
+          coordinates: -5,-10
+        70:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineS
+          coordinates: -4,-10
+        71:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineS
+          coordinates: -3,-10
+        72:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineS
+          coordinates: -2,-10
+        73:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelLineS
+          coordinates: -1,-10
+      -1,0:
+        13:
+          color: '#FFFFFFFF'
+          id: BrickTileSteelCornerSw
+          coordinates: -8,0
+        15:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelCornerSw
+          coordinates: -8,0
+        20:
+          color: '#FFFFFFFF'
+          id: MiniTileSteelInnerSw
+          coordinates: -7,0
     type: DecalGrid
   - tiles:
       -1,-4: 0
@@ -235,7 +506,7 @@ entities:
       -11,-4: 0
       -11,-3: 0
       -11,-2: 0
-      -11,-1: 0
+      -11,-1: 1
       -10,-13: 0
       -10,-12: 0
       -10,-11: 0
@@ -248,7 +519,7 @@ entities:
       -10,-4: 0
       -10,-3: 0
       -10,-2: 0
-      -10,-1: 0
+      -10,-1: 1
       -9,-13: 0
       -9,-12: 0
       -9,-11: 0
@@ -302,11 +573,11 @@ entities:
       -5,-12: 0
       -5,-11: 0
       -5,-10: 0
-      -5,-9: 0
+      -5,-9: 1
       -5,-8: 0
-      -5,-7: 1
-      -5,-6: 1
-      -5,-5: 1
+      -5,-7: 2
+      -5,-6: 2
+      -5,-5: 2
       -5,-4: 0
       -5,-3: 0
       -5,-2: 0
@@ -318,9 +589,9 @@ entities:
       -4,-10: 0
       -4,-9: 0
       -4,-8: 0
-      -4,-7: 1
-      -4,-6: 1
-      -4,-5: 1
+      -4,-7: 2
+      -4,-6: 2
+      -4,-5: 2
       -4,-4: 0
       -4,-3: 0
       -4,-2: 0
@@ -343,9 +614,9 @@ entities:
       -2,-10: 0
       -2,-9: 0
       -2,-8: 0
-      -2,-7: 2
-      -2,-6: 2
-      -2,-5: 2
+      -2,-7: 3
+      -2,-6: 3
+      -2,-5: 3
       -2,-4: 0
       -2,-3: 0
       -2,-2: 0
@@ -359,9 +630,9 @@ entities:
       -1,-10: 0
       -1,-9: 0
       -1,-8: 0
-      -1,-7: 2
-      -1,-6: 2
-      -1,-5: 2
+      -1,-7: 3
+      -1,-6: 3
+      -1,-5: 3
       -12,0: 0
       -11,0: 0
       -10,0: 0
@@ -410,9 +681,9 @@ entities:
       1,-10: 0
       1,-9: 0
       1,-8: 0
-      1,-7: 3
-      1,-6: 3
-      1,-5: 4
+      1,-7: 4
+      1,-6: 4
+      1,-5: 5
       1,-4: 0
       1,-3: 0
       1,-2: 0
@@ -424,11 +695,11 @@ entities:
       2,-12: 0
       2,-11: 0
       2,-10: 0
-      2,-9: 0
+      2,-9: 1
       2,-8: 0
-      2,-7: 3
-      2,-6: 3
-      2,-5: 4
+      2,-7: 4
+      2,-6: 4
+      2,-5: 5
       2,-4: 0
       2,-3: 0
       2,-2: 0
@@ -440,7 +711,7 @@ entities:
       3,-12: 0
       3,-11: 0
       3,-10: 0
-      3,-9: 0
+      3,-9: 1
       3,-8: 0
       3,-4: 0
       3,-3: 0
@@ -455,9 +726,9 @@ entities:
       4,-10: 0
       4,-9: 0
       4,-8: 0
-      4,-7: 3
-      4,-6: 3
-      4,-5: 3
+      4,-7: 4
+      4,-6: 4
+      4,-5: 4
       4,-4: 0
       4,-3: 0
       4,-2: 0
@@ -469,9 +740,9 @@ entities:
       5,-10: 0
       5,-9: 0
       5,-8: 0
-      5,-7: 3
-      5,-6: 3
-      5,-5: 3
+      5,-7: 4
+      5,-6: 4
+      5,-5: 4
       5,-4: 0
       5,-3: 0
       5,-2: 0
@@ -607,6 +878,21 @@ entities:
     - volume: 2500
       temperature: 293.15
       moles:
+      - 21.213781
+      - 79.80423
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+      - 0
+    - volume: 2500
+      temperature: 293.15
+      moles:
       - 6666.982
       - 0
       - 0
@@ -667,6 +953,10 @@ entities:
     type: GridAtmosphere
   - id: IsvConstruct
     type: BecomesStation
+  - type: OccluderTree
+  - type: Shuttle
+  - type: GridPathfinding
+  - type: RadiationGridResistance
 - uid: 6
   type: CableMV
   components:
@@ -796,7 +1086,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -3961,14 +4250,6 @@ entities:
   - pos: 6.5,-8.5
     parent: 5
     type: Transform
-  - materialWhiteList:
-    - Steel
-    - Glass
-    - Plasma
-    - Uranium
-    - Gold
-    - Silver
-    type: Lathe
 - uid: 504
   type: ResearchAndDevelopmentServer
   components:
@@ -4018,10 +4299,6 @@ entities:
   - pos: -2.5,-8.5
     parent: 5
     type: Transform
-  - containers:
-      microwave_entity_container: !type:Container
-        ents: []
-    type: ContainerContainer
 - uid: 512
   type: AutolatheMachineCircuitboard
   components:
@@ -4328,7 +4605,6 @@ entities:
       - BulletImpassable
       - InteractImpassable
       - Opaque
-      mass: 100
     - shape: !type:PhysShapeCircle
         position: 0,-0.5
         radius: 0.2
@@ -4361,7 +4637,6 @@ entities:
       - BulletImpassable
       - InteractImpassable
       - Opaque
-      mass: 100
     - shape: !type:PhysShapeCircle
         position: 0,-0.5
         radius: 0.2
@@ -4436,11 +4711,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 571
   type: Poweredlight
   components:
@@ -4450,11 +4720,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 572
   type: Poweredlight
   components:
@@ -4464,11 +4729,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 573
   type: Poweredlight
   components:
@@ -4477,11 +4737,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 574
   type: Poweredlight
   components:
@@ -4491,11 +4746,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 575
   type: Poweredlight
   components:
@@ -4504,11 +4754,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 576
   type: Poweredlight
   components:
@@ -4518,11 +4763,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 577
   type: Poweredlight
   components:
@@ -4532,11 +4772,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 578
   type: Poweredlight
   components:
@@ -4546,11 +4781,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 579
   type: Poweredlight
   components:
@@ -4560,11 +4790,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 580
   type: Poweredlight
   components:
@@ -4573,11 +4798,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 581
   type: Poweredlight
   components:
@@ -4586,11 +4806,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 582
   type: PoweredlightSodium
   components:
@@ -4599,11 +4814,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 583
   type: PoweredlightSodium
   components:
@@ -4613,11 +4823,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 584
   type: PoweredlightExterior
   components:
@@ -4627,11 +4832,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 585
   type: PoweredlightExterior
   components:
@@ -4641,11 +4841,6 @@ entities:
     type: Transform
   - powerLoad: 0
     type: ApcPowerReceiver
-  - inputs:
-      On: []
-      Off: []
-      Toggle: []
-    type: SignalReceiver
 - uid: 586
   type: CableApcExtension
   components:
@@ -4737,7 +4932,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -4774,7 +4968,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -4811,7 +5004,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -4848,7 +5040,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -4885,7 +5076,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -4922,7 +5112,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -4959,7 +5148,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -4995,7 +5183,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -5031,7 +5218,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -5068,7 +5254,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -5105,7 +5290,6 @@ entities:
       layer:
       - MidImpassable
       - LowImpassable
-      mass: 50
     - shape: !type:PolygonShape
         vertices:
         - 0.4,0.5
@@ -5231,7 +5415,7 @@ entities:
     type: Transform
   - enabled: False
     type: AmbientSound
-  - powerLoad: 500
+  - powerLoad: 50
     type: ApcPowerReceiver
   - radius: 2.5
     type: PointLight

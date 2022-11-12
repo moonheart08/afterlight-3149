@@ -1,6 +1,6 @@
 ### Connecting dialog when you start up the game
 
-connecting-title = Outer Rim 14
+connecting-title = Afterlight: 3159
 connecting-exit = Exit
 connecting-retry = Retry
 connecting-reconnect = Reconnect

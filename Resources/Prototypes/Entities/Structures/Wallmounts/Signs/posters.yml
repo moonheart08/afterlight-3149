@@ -126,7 +126,7 @@
   parent: PosterBase
   id: PosterContrabandMissingGloves
   name: "Missing Gloves"
-  description: "This poster references the uproar that followed Nanotrasen's financial cuts toward insulated-glove purchases."
+  description: "This poster references the uproar that followed many corporate financial cuts toward insulated-glove purchases."
   components:
   - type: Sprite
     state: poster9_contraband
@@ -135,7 +135,7 @@
   parent: PosterBase
   id: PosterContrabandHackingGuide
   name: "Hacking Guide"
-  description: "This poster details the internal workings of the common Nanotrasen airlock. Sadly, it appears out of date."
+  description: "This poster details the internal workings of the common John & Cooper Industrial Manufacturing (JCIM) airlock. Sadly, it appears out of date."
   components:
   - type: Sprite
     state: poster10_contraband
@@ -528,6 +528,24 @@
   - type: Sprite
     state: poster54_contraband
 
+- type: entity
+  parent: PosterBase
+  id: PosterContrabandRise
+  name: "Rise Up"
+  description: "A poster depicting a grey shirted man holding a crowbar with the words Rise written above it."
+  components:
+  - type: Sprite
+    state: poster55_contraband
+
+- type: entity
+  parent: PosterBase
+  id: PosterContrabandRevolt
+  name: "Revolt"
+  description: "Revolutionist propaganda, manufactured by the Syndicate."
+  components:
+  - type: Sprite
+    state: poster56_contraband
+
 
 # Legit
 - type: entity
@@ -831,7 +849,7 @@
   parent: PosterBase
   id: PosterLegitNoERP
   name: "No ERP"
-  description: "This poster reminds the crew that Eroticism and Pornography are banned on Nanotrasen stations."
+  description: "This poster reminds the crew that Eroticism and Pornography are banned on most stations."
   components:
   - type: Sprite
     state: poster34_legit
@@ -871,6 +889,15 @@
   components:
   - type: Sprite
     state: poster38_legit
+
+- type: entity
+  parent: PosterBase
+  id: PosterLegitSecWatch
+  name: "Sec is Watching You"
+  description: A poster reminding you that security is watching your every move.'
+  components:
+  - type: Sprite
+    state: poster39_legit
 
 #maps
 
@@ -963,3 +990,12 @@
   components:
   - type: Sprite
     state: waystationmap
+
+- type: entity
+  parent: PosterBase
+  id: PosterMapOrigin
+  name: "origin map"
+  description: "A map of Origin Station."
+  components:
+  - type: Sprite
+    state: originmap
