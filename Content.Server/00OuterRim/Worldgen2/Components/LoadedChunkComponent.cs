@@ -6,4 +6,5 @@
 [RegisterComponent]
 public sealed class LoadedChunkComponent : Component
 {
+    public List<EntityUid>? Loaders = null;
 }

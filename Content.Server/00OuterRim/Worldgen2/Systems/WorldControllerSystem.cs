@@ -95,7 +95,7 @@ public sealed class WorldControllerSystem : EntitySystem
     {
         //TODO: Use struct enumerator for all entity queries here once available.
         //TODO: Maybe don't allocate a big collection every frame?
-        var chunksToLoad = new Dictionary<EntityUid, HashSet<Vector2i>>();
+        var chunksToLoad = new Dictionary<EntityUid, Dictionary<Vector2i, List<EntityUid>>>();
 
         foreach (var controller in EntityQuery<WorldControllerComponent>())
         {
@@ -120,7 +120,9 @@ public sealed class WorldControllerSystem : EntitySystem
             }
         }
 
-        foreach (var (worldLoader, xform) in EntityQuery<WorldLoaderComponent, TransformComponent>())
+        var loaderEnum = EntityQueryEnumerator<WorldLoaderComponent, TransformComponent>();
+
+        while (loaderEnum.MoveNext(out var worldLoader, out var xform))
         {
             var mapOrNull = xform.MapUid;
             if (mapOrNull is null)
@@ -129,23 +131,31 @@ public sealed class WorldControllerSystem : EntitySystem
             if (!chunksToLoad.ContainsKey(map))
                 continue;
 
-            var coords = WorldGen.WorldToChunkCoords(xform.Coordinates.ToVector2i(EntityManager, _mapManager));
-            var chunks = new GridPointsNearEnumerator(coords, (int)Math.Ceiling(worldLoader.Radius / 128.0f));
+            var wc = xform.Coordinates.ToVector2i(EntityManager, _mapManager);
+            var coords = WorldGen.WorldToChunkCoords(wc);
+            var chunks = new GridPointsNearEnumerator(coords, (int)Math.Ceiling(worldLoader.Radius / (float)WorldGen.ChunkSize));
 
             var set = chunksToLoad[map];
 
             while (chunks.MoveNext(out var chunk))
             {
-                set.Add(chunk.Value);
+                if (!set.TryGetValue(chunk.Value, out _))
+                {
+                    set[chunk.Value] = new(4);
+                }
+                set[chunk.Value].Add(worldLoader.Owner);
             }
         }
 
+        var mindEnum = EntityQueryEnumerator<MindComponent, TransformComponent>();
+        var ghostQuery = GetEntityQuery<GhostComponent>();
+
         // Mindful entities get special privilege as they're always a player and we don't want the illusion being broken around them.
-        foreach (var (mind, xform) in EntityQuery<MindComponent, TransformComponent>())
+        while (mindEnum.MoveNext(out var mind, out var xform))
         {
             if (!mind.HasMind)
                 continue;
-            if (HasComp<GhostComponent>(mind.Owner))
+            if (ghostQuery.HasComponent(mind.Owner))
                 continue;
             var mapOrNull = xform.MapUid;
             if (mapOrNull is null)
@@ -154,19 +164,25 @@ public sealed class WorldControllerSystem : EntitySystem
             if (!chunksToLoad.ContainsKey(map))
                 continue;
 
-            var coords = WorldGen.WorldToChunkCoords(xform.Coordinates.ToVector2i(EntityManager, _mapManager));
+            var wc = xform.Coordinates.ToVector2i(EntityManager, _mapManager);
+            var coords = WorldGen.WorldToChunkCoords(wc);
             var chunks = new GridPointsNearEnumerator(coords, PlayerLoadRadius);
 
             var set = chunksToLoad[map];
 
             while (chunks.MoveNext(out var chunk))
             {
-                set.Add(chunk.Value);
+                if (!set.TryGetValue(chunk.Value, out _))
+                {
+                    set[chunk.Value] = new(4);
+                }
+                set[chunk.Value].Add(mind.Owner);
             }
         }
 
+        var loadedEnum = EntityQueryEnumerator<LoadedChunkComponent, TransformComponent>();
         // Make sure these chunks get unloaded at the end of the tick.
-        foreach (var (_, xform) in EntityQuery<LoadedChunkComponent, TransformComponent>())
+        while (loadedEnum.MoveNext(out var _, out var xform))
         {
             var mapOrNull = xform.MapUid;
             if (mapOrNull is null)
@@ -184,7 +200,7 @@ public sealed class WorldControllerSystem : EntitySystem
 
             var coords = WorldGen.WorldToChunkCoords(xform.Coordinates.ToVector2i(EntityManager, _mapManager));
 
-            if (!chunksToLoad[map].Contains(coords))
+            if (!chunksToLoad[map].ContainsKey(coords))
                 RemCompDeferred<LoadedChunkComponent>(xform.Owner);
         }
 
@@ -193,17 +209,23 @@ public sealed class WorldControllerSystem : EntitySystem
 
         var startTime = _gameTiming.RealTime;
         var count = 0;
+        var loadedQuery = GetEntityQuery<LoadedChunkComponent>();
+        var controllerQuery = GetEntityQuery<WorldControllerComponent>();
         foreach (var (map, chunks) in chunksToLoad)
         {
-
-            foreach (var chunk in chunks)
+            var controller = controllerQuery.GetComponent(map);
+            foreach (var (chunk, loaders) in chunks)
             {
-                var ent = GetOrCreateChunk(chunk, map); // Ensure everything loads.
-                if (ent is not null && !HasComp<LoadedChunkComponent>(ent.Value))
+                var ent = GetOrCreateChunk(chunk, map, controller); // Ensure everything loads.
+                LoadedChunkComponent? c = null;
+                if (ent is not null && !loadedQuery.TryGetComponent(ent.Value, out c))
                 {
-                    AddComp<LoadedChunkComponent>(ent.Value);
+                    c = AddComp<LoadedChunkComponent>(ent.Value);
                     count += 1;
                 }
+
+                if (c is not null)
+                    c.Loaders = loaders;
             }
         }
 
@@ -214,9 +236,9 @@ public sealed class WorldControllerSystem : EntitySystem
         }
     }
 
-    public EntityUid? GetOrCreateChunk(Vector2i chunk, EntityUid map)
+    public EntityUid? GetOrCreateChunk(Vector2i chunk, EntityUid map, WorldControllerComponent? controller = null)
     {
-        if (!TryComp<WorldControllerComponent>(map, out var controller))
+        if (!Resolve(map, ref controller))
         {
             throw new Exception($"tried to use {ToPrettyString(map)} as a world map, without actually being one.");
         }

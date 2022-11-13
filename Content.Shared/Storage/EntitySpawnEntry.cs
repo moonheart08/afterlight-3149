@@ -44,7 +44,7 @@ public struct EntitySpawnEntry
     ///     </example>
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
-    [DataField("orGroup")] public string? GroupId = null;
+    [DataField("orGroup")] public string GroupId = string.Empty;
 
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("amount")] public int Amount = 1;
@@ -59,6 +59,79 @@ public struct EntitySpawnEntry
 
     public EntitySpawnEntry() { }
 }
+
+
+
+
+    public sealed class EntitySpawnCollectionCache
+    {
+        private sealed class OrGroup
+        {
+            public List<EntitySpawnEntry> Entries { get; set; } = new();
+            public float CumulativeProbability { get; set; } = 0f;
+        }
+
+        private Dictionary<string, OrGroup> OrGroups = new();
+
+        public EntitySpawnCollectionCache(IEnumerable<EntitySpawnEntry> entries)
+        {
+            // collect groups together, create singular items that pass probability
+            foreach (var entry in entries)
+            {
+                if (!OrGroups.TryGetValue(entry.GroupId, out OrGroup? orGroup))
+                {
+                    orGroup = new();
+                    OrGroups.Add(entry.GroupId, orGroup);
+                }
+
+                orGroup.Entries.Add(entry);
+                orGroup.CumulativeProbability += entry.SpawnProbability;
+                continue;
+            }
+        }
+
+        /// <summary>
+        ///     Using a collection of entity spawn entries, picks a random list of entity prototypes to spawn from that collection.
+        /// </summary>
+        /// <remarks>
+        ///     This does not spawn the entities. The caller is responsible for doing so, since it may want to do something
+        ///     special to those entities (offset them, insert them into storage, etc)
+        /// </remarks>
+        /// <param name="random">Resolve param.</param>
+        /// <param name="spawned">List that spawned entities are inserted into.</param>
+        /// <returns>A list of entity prototypes that should be spawned.</returns>
+        /// <remarks>This is primarily useful if you're calling it many times over, as it lets you reuse the list repeatedly.</remarks>
+        public void GetSpawns(IRobustRandom random, ref List<string?> spawned)
+        {
+            // handle orgroup spawns
+            foreach (var spawnValue in OrGroups.Values)
+            {
+                // For each group use the added cumulative probability to roll a double in that range
+                double diceRoll = random.NextDouble() * spawnValue.CumulativeProbability;
+                // Add the entry's spawn probability to this value, if equals or lower, spawn item, otherwise continue to next item.
+                var cumulative = 0.0;
+                foreach (var entry in spawnValue.Entries)
+                {
+                    cumulative += entry.SpawnProbability;
+                    if (diceRoll > cumulative)
+                        continue;
+                    // Dice roll succeeded, add item and break loop
+
+                    var amount = entry.Amount;
+
+                    if (entry.MaxAmount > amount)
+                        amount = random.Next(amount, entry.MaxAmount);
+
+                    for (var index = 0; index < amount; index++)
+                    {
+                        spawned.Add(entry.PrototypeId);
+                    }
+
+                    break;
+                }
+            }
+        }
+    }
 
 public static class EntitySpawnCollection
 {
@@ -90,46 +163,29 @@ public static class EntitySpawnCollection
         foreach (var entry in entries)
         {
             // Handle "Or" groups
-            if (!string.IsNullOrEmpty(entry.GroupId))
+            if (!orGroupedSpawns.TryGetValue(entry.GroupId, out OrGroup? orGroup))
             {
-                if (!orGroupedSpawns.TryGetValue(entry.GroupId, out OrGroup? orGroup))
-                {
-                    orGroup = new();
-                    orGroupedSpawns.Add(entry.GroupId, orGroup);
-                }
-
-                orGroup.Entries.Add(entry);
-                orGroup.CumulativeProbability += entry.SpawnProbability;
-                continue;
+                orGroup = new();
+                orGroupedSpawns.Add(entry.GroupId, orGroup);
             }
 
-            // else
-            // Check random spawn
-            // ReSharper disable once CompareOfFloatsByEqualityOperator
-            if (entry.SpawnProbability != 1f && !random.Prob(entry.SpawnProbability)) continue;
-
-            var amount = entry.Amount;
-
-            if (entry.MaxAmount > amount)
-                amount = random.Next(amount, entry.MaxAmount);
-
-            for (var i = 0; i < amount; i++)
-            {
-                spawned.Add(entry.PrototypeId);
-            }
+            orGroup.Entries.Add(entry);
+            orGroup.CumulativeProbability += entry.SpawnProbability;
+            continue;
         }
 
         // handle orgroup spawns
         foreach (var spawnValue in orGroupedSpawns.Values)
         {
             // For each group use the added cumulative probability to roll a double in that range
-            double diceRoll = random.NextDouble() * spawnValue.CumulativeProbability;
+            var diceRoll = random.NextDouble() * spawnValue.CumulativeProbability;
             // Add the entry's spawn probability to this value, if equals or lower, spawn item, otherwise continue to next item.
             var cumulative = 0.0;
             foreach (var entry in spawnValue.Entries)
             {
                 cumulative += entry.SpawnProbability;
-                if (diceRoll > cumulative) continue;
+                if (diceRoll > cumulative)
+                    continue;
                 // Dice roll succeeded, add item and break loop
 
                 var amount = entry.Amount;
