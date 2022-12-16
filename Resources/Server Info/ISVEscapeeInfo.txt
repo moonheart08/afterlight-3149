@@ -1,2 +1,7 @@
-﻿A small escape pod. It's been retrofitted with uranium generators, gas-driven thrusters, and cryogenic storage, making it technically capable as a living space.
-Does not include ore processing equipment, not advisable to pick this if there are no other players!
+A small escape pod mainly used by prisoners to escape serving time in jail.
+Retrofitted with uranium generators, gas-driven thrusters, and cryogenic storage,
+making it technically capable as a living space. Does not include ore processing equipment.
+
+Remarks: DO NOT pick this if there are no other players! With no ore processor means
+no powering the generators, YOU WILL BE STRANDED.
+Roster: 3 Passengers
