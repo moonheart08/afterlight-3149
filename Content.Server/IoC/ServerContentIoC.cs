@@ -1,4 +1,4 @@
-using Content.Server._00OuterRim.Worldgen.Tools;
+using Content.Server._00OuterRim.Worldgen2.Tools;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;

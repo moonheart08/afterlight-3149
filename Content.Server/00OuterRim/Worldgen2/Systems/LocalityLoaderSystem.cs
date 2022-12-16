@@ -3,18 +3,10 @@
 namespace Content.Server._00OuterRim.Worldgen2.Systems;
 
 /// <summary>
-/// This handles...
+/// This handles loading in objects based on distance from player, using some metadata on chunks.
 /// </summary>
 public sealed class LocalityLoaderSystem : BaseWorldSystem
 {
-
-
-    /// <inheritdoc/>
-    public override void Initialize()
-    {
-
-    }
-
     public override void Update(float frameTime)
     {
         var e = EntityQueryEnumerator<LocalityLoaderComponent, TransformComponent>();

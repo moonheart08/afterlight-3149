@@ -1,4 +1,4 @@
-// FastNoise.cs
+﻿// FastNoise.cs
 //
 // MIT License
 //
@@ -38,7 +38,7 @@ using FN_DECIMAL = System.Single;
 #endif
 using System.Runtime.CompilerServices;
 
-namespace Content.Server._00OuterRim.Worldgen.Tools;
+namespace Content.Server._00OuterRim.Worldgen2.Tools;
 
 public class FastNoise
 {

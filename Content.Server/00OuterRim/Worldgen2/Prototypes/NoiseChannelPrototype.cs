@@ -1,4 +1,4 @@
-﻿using Content.Server._00OuterRim.Worldgen.Tools;
+﻿using Content.Server._00OuterRim.Worldgen2.Tools;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Array;
 

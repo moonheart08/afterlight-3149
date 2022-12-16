@@ -43,6 +43,7 @@ public sealed class BiomePrototype : IPrototype, IInheritingPrototype
     [AlwaysPushInheritance]
     public EntityPrototype.ComponentRegistry ChunkComponents { get; } = new();
 
+    //TODO: Get someone to make this a method on componentregistry that does it Correctly.
     /// <summary>
     /// Applies the worldgen config to the given target (presumably a map.)
     /// </summary>

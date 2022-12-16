@@ -19,6 +19,7 @@ public sealed class WorldgenConfigPrototype : IPrototype
     [DataField("components", required: true)]
     public EntityPrototype.ComponentRegistry Components { get; } = default!;
 
+    //TODO: Get someone to make this a method on componentregistry that does it Correctly.
     /// <summary>
     /// Applies the worldgen config to the given target (presumably a map.)
     /// </summary>

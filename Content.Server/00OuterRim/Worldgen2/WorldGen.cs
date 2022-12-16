@@ -4,6 +4,9 @@ namespace Content.Server._00OuterRim.Worldgen2;
 
 public static class WorldGen
 {
+    /// <summary>
+    /// Be very, very careful about the value of this.
+    /// </summary>
     public const int ChunkSize = 128;
 
     [Pure]
@@ -17,7 +20,6 @@ public static class WorldGen
     {
         return inp / ChunkSize;
     }
-
 
     [Pure]
     public static Vector2 ChunkToWorldCoords(Vector2i inp)

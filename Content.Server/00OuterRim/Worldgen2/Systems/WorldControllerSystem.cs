@@ -240,7 +240,7 @@ public sealed class WorldControllerSystem : EntitySystem
     {
         if (!Resolve(map, ref controller))
         {
-            throw new Exception($"tried to use {ToPrettyString(map)} as a world map, without actually being one.");
+            throw new Exception($"Tried to use {ToPrettyString(map)} as a world map, without actually being one.");
         }
 
         if (controller.Chunks.TryGetValue(chunk, out var ent))

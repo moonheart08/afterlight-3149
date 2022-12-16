@@ -95,7 +95,7 @@ namespace Content.Server.GameTicking
 
             for (var i = 0; i < 128; i++)
             {
-                var loc = _robustRandom.Pick(_world.SafeSpawnLocations);
+                /*var loc = _robustRandom.Pick(_world.SafeSpawnLocations);
 
                 if (_mapManager.FindGridsIntersecting(DefaultMap,
                         Box2.CenteredAround((loc * WorldChunkSystem.ChunkSize) - (WorldChunkSystem.ChunkSize / 2),
@@ -112,7 +112,7 @@ namespace Content.Server.GameTicking
                     var mid = _mapManager.GetMapEntityId(DefaultMap);
                     xform.Coordinates = new EntityCoordinates(mid, offs);
                 }
-
+*/
                 return;
             }
         }
